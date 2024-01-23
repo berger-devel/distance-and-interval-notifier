@@ -1,0 +1,873 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F80D613828E7AFAD00FC0AA7 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613728E7AFAD00FC0AA7 /* Preview.swift */; };
+		F80D613A28E7D47000FC0AA7 /* WorkoutPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */; };
+		F80D613C28E7D59400FC0AA7 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */; };
+		F80D613E28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */; };
+		F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1428CE876D0006577D /* AmountPicker.swift */; };
+		F815DE1728CE90900006577D /* ExerciseExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1628CE90900006577D /* ExerciseExt.swift */; };
+		F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1828CFAFF20006577D /* AmountFormatter.swift */; };
+		F821DBA228E78137006ABA88 /* PreviewWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */; };
+		F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */; };
+		F835309E28A9A18800BF3CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835309D28A9A18800BF3CB2 /* AppDelegate.swift */; };
+		F83530D928AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */; };
+		F835314F28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */; };
+		F835315328AA8FCC00BF3CB2 /* UserNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */; };
+		F835315628AA90B100BF3CB2 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */; };
+		F835315A28AACC5700BF3CB2 /* SoundsDirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */; };
+		F835316628AC185500BF3CB2 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316528AC185500BF3CB2 /* ColorScheme.swift */; };
+		F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */; };
+		F835316A28AC37C600BF3CB2 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316928AC37C600BF3CB2 /* ExerciseList.swift */; };
+		F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */; };
+		F835317528AD2B4E00BF3CB2 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835317428AD2B4E00BF3CB2 /* Formatters.swift */; };
+		F866C40C28D27234007BF8BF /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866C40B28D27234007BF8BF /* UnitPicker.swift */; };
+		F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */; };
+		F8722A5B28A01635005A2718 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5A28A01635005A2718 /* ContentView.swift */; };
+		F8722A5D28A01636005A2718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8722A5C28A01636005A2718 /* Assets.xcassets */; };
+		F8722A6028A01636005A2718 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8722A5F28A01636005A2718 /* Preview Assets.xcassets */; };
+		F8722A6A28A01636005A2718 /* Distance_and_Interval_NotfierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A6928A01636005A2718 /* Distance_and_Interval_NotfierTests.swift */; };
+		F8722A7428A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */; };
+		F8722A7628A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */; };
+		F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */; };
+		F8722A8728A04400005A2718 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A8628A04400005A2718 /* LocationManager.swift */; };
+		F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC028AEC418007AB401 /* WorkoutList.swift */; };
+		F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC428AEC825007AB401 /* WorkoutListItem.swift */; };
+		F888AAC928AECE7F007AB401 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC828AECE7F007AB401 /* Constants.swift */; };
+		F888AACC28B02576007AB401 /* WorkoutStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AACB28B02576007AB401 /* WorkoutStorage.swift */; };
+		F888AACF28B02A2D007AB401 /* workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */; };
+		F888AB1128B4FA13007AB401 /* WorkoutEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1028B4FA13007AB401 /* WorkoutEditSheet.swift */; };
+		F888AB1328B65872007AB401 /* SymbolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1228B65872007AB401 /* SymbolPicker.swift */; };
+		F888AB1528B65971007AB401 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1428B65971007AB401 /* ColorPicker.swift */; };
+		F888AB2128B96F7C007AB401 /* WorkoutExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB2028B96F7C007AB401 /* WorkoutExt.swift */; };
+		F8B9224E29CE17AC0081C238 /* NotificationFrequencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */; };
+		F8B9225029CE3CE40081C238 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224F29CE3CE40081C238 /* Icon.swift */; };
+		F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */; };
+		F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */; };
+		F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE03029D0E67200085D2B /* StartButton.swift */; };
+		F8E8D72729CE0E0B00CB8B51 /* QuantityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F8722A6628A01636005A2718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8722A4D28A01635005A2718 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8722A5428A01635005A2718;
+			remoteInfo = "Distance and Interval Notfier";
+		};
+		F8722A7028A01636005A2718 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8722A4D28A01635005A2718 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8722A5428A01635005A2718;
+			remoteInfo = "Distance and Interval Notfier";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F80D613728E7AFAD00FC0AA7 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPersistenceManager.swift; sourceTree = "<group>"; };
+		F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePersistenceManager.swift; sourceTree = "<group>"; };
+		F815DE1428CE876D0006577D /* AmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPicker.swift; sourceTree = "<group>"; };
+		F815DE1628CE90900006577D /* ExerciseExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseExt.swift; sourceTree = "<group>"; };
+		F815DE1828CFAFF20006577D /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
+		F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWorkouts.swift; sourceTree = "<group>"; };
+		F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenterDelegate.swift; sourceTree = "<group>"; };
+		F835309D28A9A18800BF3CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F835309F28A9B50D00BF3CB2 /* Distance-and-Interval-Notfier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Distance-and-Interval-Notfier-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerDelegate.swift; sourceTree = "<group>"; };
+		F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
+		F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifier.swift; sourceTree = "<group>"; };
+		F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
+		F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsDirectoryManager.swift; sourceTree = "<group>"; };
+		F835316528AC185500BF3CB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListItem.swift; sourceTree = "<group>"; };
+		F835316928AC37C600BF3CB2 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
+		F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditSheet.swift; sourceTree = "<group>"; };
+		F835317428AD2B4E00BF3CB2 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		F866C40B28D27234007BF8BF /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
+		F8722A5528A01635005A2718 /* Distance and Interval Notfier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Distance and Interval Notfier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierApp.swift; sourceTree = "<group>"; };
+		F8722A5A28A01635005A2718 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F8722A5C28A01636005A2718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8722A5F28A01636005A2718 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F8722A6528A01636005A2718 /* Distance and Interval NotfierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Distance and Interval NotfierTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8722A6928A01636005A2718 /* Distance_and_Interval_NotfierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierTests.swift; sourceTree = "<group>"; };
+		F8722A6F28A01636005A2718 /* Distance and Interval NotfierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Distance and Interval NotfierUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITests.swift; sourceTree = "<group>"; };
+		F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F8722A8528A03FE9005A2718 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Distance and Interval Notfier-InfoPlist.strings"; sourceTree = "<group>"; };
+		F8722A8628A04400005A2718 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		F888AAC028AEC418007AB401 /* WorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutList.swift; sourceTree = "<group>"; };
+		F888AAC428AEC825007AB401 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
+		F888AAC828AECE7F007AB401 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F888AACB28B02576007AB401 /* WorkoutStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStorage.swift; sourceTree = "<group>"; };
+		F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workouts.xcdatamodel; sourceTree = "<group>"; };
+		F888AB1028B4FA13007AB401 /* WorkoutEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditSheet.swift; sourceTree = "<group>"; };
+		F888AB1228B65872007AB401 /* SymbolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPicker.swift; sourceTree = "<group>"; };
+		F888AB1428B65971007AB401 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		F888AB2028B96F7C007AB401 /* WorkoutExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExt.swift; sourceTree = "<group>"; };
+		F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequencyPicker.swift; sourceTree = "<group>"; };
+		F8B9224F29CE3CE40081C238 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceIcon.swift; sourceTree = "<group>"; };
+		F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTracker.swift; sourceTree = "<group>"; };
+		F8DCE03029D0E67200085D2B /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPicker.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8722A5228A01635005A2718 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6228A01636005A2718 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6C28A01636005A2718 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F821DBA028E7810E006ABA88 /* preview */ = {
+			isa = PBXGroup;
+			children = (
+				F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */,
+				F80D613728E7AFAD00FC0AA7 /* Preview.swift */,
+			);
+			path = preview;
+			sourceTree = "<group>";
+		};
+		F835315028AA8D2C00BF3CB2 /* speechSynthesis */ = {
+			isa = PBXGroup;
+			children = (
+				F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */,
+				F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */,
+			);
+			path = speechSynthesis;
+			sourceTree = "<group>";
+		};
+		F835315128AA8FBE00BF3CB2 /* userNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */,
+				F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */,
+			);
+			path = userNotifications;
+			sourceTree = "<group>";
+		};
+		F835315428AA909E00BF3CB2 /* location */ = {
+			isa = PBXGroup;
+			children = (
+				F8722A8628A04400005A2718 /* LocationManager.swift */,
+				F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */,
+			);
+			path = location;
+			sourceTree = "<group>";
+		};
+		F835316B28AD226000BF3CB2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F888AB2028B96F7C007AB401 /* WorkoutExt.swift */,
+				F815DE1628CE90900006577D /* ExerciseExt.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F835316E28AD253C00BF3CB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F888AB1D28B80E78007AB401 /* picker */,
+				F888AAC728AEC83C007AB401 /* workout */,
+				F888AAC628AEC82A007AB401 /* exercise */,
+				F835316528AC185500BF3CB2 /* ColorScheme.swift */,
+				F815DE1828CFAFF20006577D /* AmountFormatter.swift */,
+				F8B9224F29CE3CE40081C238 /* Icon.swift */,
+				F8DCE03029D0E67200085D2B /* StartButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F835317328AD2B3200BF3CB2 /* formatters */ = {
+			isa = PBXGroup;
+			children = (
+				F835317428AD2B4E00BF3CB2 /* Formatters.swift */,
+			);
+			path = formatters;
+			sourceTree = "<group>";
+		};
+		F8722A4C28A01635005A2718 = {
+			isa = PBXGroup;
+			children = (
+				F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */,
+				F8722A5728A01635005A2718 /* Distance and Interval Notfier */,
+				F8722A6828A01636005A2718 /* Distance and Interval NotfierTests */,
+				F8722A7228A01636005A2718 /* Distance and Interval NotfierUITests */,
+				F8722A5628A01635005A2718 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8722A5628A01635005A2718 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8722A5528A01635005A2718 /* Distance and Interval Notfier.app */,
+				F8722A6528A01636005A2718 /* Distance and Interval NotfierTests.xctest */,
+				F8722A6F28A01636005A2718 /* Distance and Interval NotfierUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8722A5728A01635005A2718 /* Distance and Interval Notfier */ = {
+			isa = PBXGroup;
+			children = (
+				F8DCE02A29D0C6A200085D2B /* exerciseTracking */,
+				F821DBA028E7810E006ABA88 /* preview */,
+				F888AACA28B0255D007AB401 /* persistence */,
+				F835316E28AD253C00BF3CB2 /* Views */,
+				F835317328AD2B3200BF3CB2 /* formatters */,
+				F835316B28AD226000BF3CB2 /* model */,
+				F835315428AA909E00BF3CB2 /* location */,
+				F835315128AA8FBE00BF3CB2 /* userNotifications */,
+				F835315028AA8D2C00BF3CB2 /* speechSynthesis */,
+				F835309F28A9B50D00BF3CB2 /* Distance-and-Interval-Notfier-Info.plist */,
+				F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */,
+				F8722A5A28A01635005A2718 /* ContentView.swift */,
+				F8722A5C28A01636005A2718 /* Assets.xcassets */,
+				F8722A5E28A01636005A2718 /* Preview Content */,
+				F835309D28A9A18800BF3CB2 /* AppDelegate.swift */,
+				F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */,
+				F888AAC828AECE7F007AB401 /* Constants.swift */,
+			);
+			path = "Distance and Interval Notfier";
+			sourceTree = "<group>";
+		};
+		F8722A5E28A01636005A2718 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F8722A5F28A01636005A2718 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F8722A6828A01636005A2718 /* Distance and Interval NotfierTests */ = {
+			isa = PBXGroup;
+			children = (
+				F8722A6928A01636005A2718 /* Distance_and_Interval_NotfierTests.swift */,
+			);
+			path = "Distance and Interval NotfierTests";
+			sourceTree = "<group>";
+		};
+		F8722A7228A01636005A2718 /* Distance and Interval NotfierUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */,
+				F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */,
+			);
+			path = "Distance and Interval NotfierUITests";
+			sourceTree = "<group>";
+		};
+		F888AAC628AEC82A007AB401 /* exercise */ = {
+			isa = PBXGroup;
+			children = (
+				F835316928AC37C600BF3CB2 /* ExerciseList.swift */,
+				F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */,
+				F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */,
+				F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */,
+			);
+			path = exercise;
+			sourceTree = "<group>";
+		};
+		F888AAC728AEC83C007AB401 /* workout */ = {
+			isa = PBXGroup;
+			children = (
+				F888AAC028AEC418007AB401 /* WorkoutList.swift */,
+				F888AAC428AEC825007AB401 /* WorkoutListItem.swift */,
+				F888AB1028B4FA13007AB401 /* WorkoutEditSheet.swift */,
+			);
+			path = workout;
+			sourceTree = "<group>";
+		};
+		F888AACA28B0255D007AB401 /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F888AACB28B02576007AB401 /* WorkoutStorage.swift */,
+				F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */,
+				F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */,
+				F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */,
+				F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		F888AB1D28B80E78007AB401 /* picker */ = {
+			isa = PBXGroup;
+			children = (
+				F888AB1428B65971007AB401 /* ColorPicker.swift */,
+				F888AB1228B65872007AB401 /* SymbolPicker.swift */,
+				F815DE1428CE876D0006577D /* AmountPicker.swift */,
+				F866C40B28D27234007BF8BF /* UnitPicker.swift */,
+				F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */,
+				F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */,
+			);
+			path = picker;
+			sourceTree = "<group>";
+		};
+		F8DCE02A29D0C6A200085D2B /* exerciseTracking */ = {
+			isa = PBXGroup;
+			children = (
+				F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */,
+			);
+			path = exerciseTracking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F8722A5428A01635005A2718 /* Distance and Interval Notfier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8722A7928A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval Notfier" */;
+			buildPhases = (
+				F8722A5128A01635005A2718 /* Sources */,
+				F8722A5228A01635005A2718 /* Frameworks */,
+				F8722A5328A01635005A2718 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Distance and Interval Notfier";
+			productName = "Distance and Interval Notfier";
+			productReference = F8722A5528A01635005A2718 /* Distance and Interval Notfier.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8722A6428A01636005A2718 /* Distance and Interval NotfierTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8722A7C28A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval NotfierTests" */;
+			buildPhases = (
+				F8722A6128A01636005A2718 /* Sources */,
+				F8722A6228A01636005A2718 /* Frameworks */,
+				F8722A6328A01636005A2718 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8722A6728A01636005A2718 /* PBXTargetDependency */,
+			);
+			name = "Distance and Interval NotfierTests";
+			productName = "Distance and Interval NotfierTests";
+			productReference = F8722A6528A01636005A2718 /* Distance and Interval NotfierTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F8722A6E28A01636005A2718 /* Distance and Interval NotfierUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8722A7F28A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval NotfierUITests" */;
+			buildPhases = (
+				F8722A6B28A01636005A2718 /* Sources */,
+				F8722A6C28A01636005A2718 /* Frameworks */,
+				F8722A6D28A01636005A2718 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8722A7128A01636005A2718 /* PBXTargetDependency */,
+			);
+			name = "Distance and Interval NotfierUITests";
+			productName = "Distance and Interval NotfierUITests";
+			productReference = F8722A6F28A01636005A2718 /* Distance and Interval NotfierUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8722A4D28A01635005A2718 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					F8722A5428A01635005A2718 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F8722A6428A01636005A2718 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F8722A5428A01635005A2718;
+					};
+					F8722A6E28A01636005A2718 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F8722A5428A01635005A2718;
+					};
+				};
+			};
+			buildConfigurationList = F8722A5028A01635005A2718 /* Build configuration list for PBXProject "Distance and Interval Notfier" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F8722A4C28A01635005A2718;
+			productRefGroup = F8722A5628A01635005A2718 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8722A5428A01635005A2718 /* Distance and Interval Notfier */,
+				F8722A6428A01636005A2718 /* Distance and Interval NotfierTests */,
+				F8722A6E28A01636005A2718 /* Distance and Interval NotfierUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F8722A5328A01635005A2718 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8722A6028A01636005A2718 /* Preview Assets.xcassets in Resources */,
+				F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */,
+				F8722A5D28A01636005A2718 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6328A01636005A2718 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6D28A01636005A2718 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8722A5128A01635005A2718 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */,
+				F835315328AA8FCC00BF3CB2 /* UserNotifier.swift in Sources */,
+				F835309E28A9A18800BF3CB2 /* AppDelegate.swift in Sources */,
+				F888AB1128B4FA13007AB401 /* WorkoutEditSheet.swift in Sources */,
+				F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */,
+				F8B9225029CE3CE40081C238 /* Icon.swift in Sources */,
+				F835315628AA90B100BF3CB2 /* LocationManagerDelegate.swift in Sources */,
+				F80D613A28E7D47000FC0AA7 /* WorkoutPersistenceManager.swift in Sources */,
+				F8B9224E29CE17AC0081C238 /* NotificationFrequencyPicker.swift in Sources */,
+				F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */,
+				F888AACF28B02A2D007AB401 /* workouts.xcdatamodeld in Sources */,
+				F888AB1528B65971007AB401 /* ColorPicker.swift in Sources */,
+				F888AACC28B02576007AB401 /* WorkoutStorage.swift in Sources */,
+				F835315A28AACC5700BF3CB2 /* SoundsDirectoryManager.swift in Sources */,
+				F8722A5B28A01635005A2718 /* ContentView.swift in Sources */,
+				F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */,
+				F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */,
+				F8E8D72729CE0E0B00CB8B51 /* QuantityPicker.swift in Sources */,
+				F835317528AD2B4E00BF3CB2 /* Formatters.swift in Sources */,
+				F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */,
+				F835314F28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift in Sources */,
+				F888AB2128B96F7C007AB401 /* WorkoutExt.swift in Sources */,
+				F835316628AC185500BF3CB2 /* ColorScheme.swift in Sources */,
+				F80D613C28E7D59400FC0AA7 /* PersistenceHelper.swift in Sources */,
+				F888AB1328B65872007AB401 /* SymbolPicker.swift in Sources */,
+				F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */,
+				F80D613E28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift in Sources */,
+				F815DE1728CE90900006577D /* ExerciseExt.swift in Sources */,
+				F866C40C28D27234007BF8BF /* UnitPicker.swift in Sources */,
+				F80D613828E7AFAD00FC0AA7 /* Preview.swift in Sources */,
+				F888AAC928AECE7F007AB401 /* Constants.swift in Sources */,
+				F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */,
+				F83530D928AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift in Sources */,
+				F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */,
+				F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */,
+				F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */,
+				F821DBA228E78137006ABA88 /* PreviewWorkouts.swift in Sources */,
+				F8722A8728A04400005A2718 /* LocationManager.swift in Sources */,
+				F835316A28AC37C600BF3CB2 /* ExerciseList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6128A01636005A2718 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8722A6A28A01636005A2718 /* Distance_and_Interval_NotfierTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8722A6B28A01636005A2718 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8722A7628A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift in Sources */,
+				F8722A7428A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F8722A6728A01636005A2718 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8722A5428A01635005A2718 /* Distance and Interval Notfier */;
+			targetProxy = F8722A6628A01636005A2718 /* PBXContainerItemProxy */;
+		};
+		F8722A7128A01636005A2718 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8722A5428A01635005A2718 /* Distance and Interval Notfier */;
+			targetProxy = F8722A7028A01636005A2718 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8722A8528A03FE9005A2718 /* en */,
+			);
+			name = "Distance and Interval Notfier-InfoPlist.strings";
+			path = "Distance and Interval Notfier";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F8722A7728A01636005A2718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F8722A7828A01636005A2718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F8722A7A28A01637005A2718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Distance and Interval Notfier/Preview Content\"";
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Distance-and-Interval-Notfier-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-Notfier";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F8722A7B28A01637005A2718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Distance and Interval Notfier/Preview Content\"";
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Distance-and-Interval-Notfier-Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-Notfier";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F8722A7D28A01637005A2718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Distance and Interval Notfier.app/Distance and Interval Notfier";
+			};
+			name = Debug;
+		};
+		F8722A7E28A01637005A2718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Distance and Interval Notfier.app/Distance and Interval Notfier";
+			};
+			name = Release;
+		};
+		F8722A8028A01637005A2718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Distance and Interval Notfier";
+			};
+			name = Debug;
+		};
+		F8722A8128A01637005A2718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NQ733BXCZL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Distance and Interval Notfier";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F8722A5028A01635005A2718 /* Build configuration list for PBXProject "Distance and Interval Notfier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8722A7728A01636005A2718 /* Debug */,
+				F8722A7828A01636005A2718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8722A7928A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval Notfier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8722A7A28A01637005A2718 /* Debug */,
+				F8722A7B28A01637005A2718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8722A7C28A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval NotfierTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8722A7D28A01637005A2718 /* Debug */,
+				F8722A7E28A01637005A2718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8722A7F28A01637005A2718 /* Build configuration list for PBXNativeTarget "Distance and Interval NotfierUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8722A8028A01637005A2718 /* Debug */,
+				F8722A8128A01637005A2718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */,
+			);
+			currentVersion = F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */;
+			path = workouts.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F8722A4D28A01635005A2718 /* Project object */;
+}
