@@ -15,10 +15,10 @@
 		F815DE1728CE90900006577D /* ExerciseExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1628CE90900006577D /* ExerciseExt.swift */; };
 		F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1828CFAFF20006577D /* AmountFormatter.swift */; };
 		F821DBA228E78137006ABA88 /* PreviewWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */; };
+		F8251EDD2BEFFA7B00E33B1B /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */; };
+		F8251EDF2BEFFB5500E33B1B /* DistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */; };
 		F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */; };
 		F835309E28A9A18800BF3CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835309D28A9A18800BF3CB2 /* AppDelegate.swift */; };
-		F83530D928AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */; };
-		F835314F28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */; };
 		F835315328AA8FCC00BF3CB2 /* UserNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */; };
 		F835315628AA90B100BF3CB2 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */; };
 		F835315A28AACC5700BF3CB2 /* SoundsDirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */; };
@@ -26,7 +26,6 @@
 		F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */; };
 		F835316A28AC37C600BF3CB2 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316928AC37C600BF3CB2 /* ExerciseList.swift */; };
 		F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */; };
-		F835317528AD2B4E00BF3CB2 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835317428AD2B4E00BF3CB2 /* Formatters.swift */; };
 		F866C40C28D27234007BF8BF /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866C40B28D27234007BF8BF /* UnitPicker.swift */; };
 		F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */; };
 		F8722A5B28A01635005A2718 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5A28A01635005A2718 /* ContentView.swift */; };
@@ -80,11 +79,11 @@
 		F815DE1628CE90900006577D /* ExerciseExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseExt.swift; sourceTree = "<group>"; };
 		F815DE1828CFAFF20006577D /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWorkouts.swift; sourceTree = "<group>"; };
+		F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
+		F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTracker.swift; sourceTree = "<group>"; };
 		F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenterDelegate.swift; sourceTree = "<group>"; };
 		F835309D28A9A18800BF3CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F835309F28A9B50D00BF3CB2 /* Distance-and-Interval-Notfier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Distance-and-Interval-Notfier-Info.plist"; sourceTree = SOURCE_ROOT; };
-		F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerDelegate.swift; sourceTree = "<group>"; };
-		F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifier.swift; sourceTree = "<group>"; };
 		F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsDirectoryManager.swift; sourceTree = "<group>"; };
@@ -92,7 +91,6 @@
 		F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListItem.swift; sourceTree = "<group>"; };
 		F835316928AC37C600BF3CB2 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditSheet.swift; sourceTree = "<group>"; };
-		F835317428AD2B4E00BF3CB2 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		F866C40B28D27234007BF8BF /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
 		F8722A5528A01635005A2718 /* Distance and Interval Notfier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Distance and Interval Notfier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierApp.swift; sourceTree = "<group>"; };
@@ -157,15 +155,6 @@
 			path = preview;
 			sourceTree = "<group>";
 		};
-		F835315028AA8D2C00BF3CB2 /* speechSynthesis */ = {
-			isa = PBXGroup;
-			children = (
-				F835314E28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift */,
-				F83530D828AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift */,
-			);
-			path = speechSynthesis;
-			sourceTree = "<group>";
-		};
 		F835315128AA8FBE00BF3CB2 /* userNotifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,14 +196,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F835317328AD2B3200BF3CB2 /* formatters */ = {
-			isa = PBXGroup;
-			children = (
-				F835317428AD2B4E00BF3CB2 /* Formatters.swift */,
-			);
-			path = formatters;
-			sourceTree = "<group>";
-		};
 		F8722A4C28A01635005A2718 = {
 			isa = PBXGroup;
 			children = (
@@ -243,11 +224,9 @@
 				F821DBA028E7810E006ABA88 /* preview */,
 				F888AACA28B0255D007AB401 /* persistence */,
 				F835316E28AD253C00BF3CB2 /* Views */,
-				F835317328AD2B3200BF3CB2 /* formatters */,
 				F835316B28AD226000BF3CB2 /* model */,
 				F835315428AA909E00BF3CB2 /* location */,
 				F835315128AA8FBE00BF3CB2 /* userNotifications */,
-				F835315028AA8D2C00BF3CB2 /* speechSynthesis */,
 				F835309F28A9B50D00BF3CB2 /* Distance-and-Interval-Notfier-Info.plist */,
 				F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */,
 				F8722A5A28A01635005A2718 /* ContentView.swift */,
@@ -335,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */,
+				F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */,
+				F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */,
 			);
 			path = exerciseTracking;
 			sourceTree = "<group>";
@@ -403,7 +384,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					F8722A5428A01635005A2718 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -488,11 +469,11 @@
 				F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */,
 				F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */,
 				F8E8D72729CE0E0B00CB8B51 /* QuantityPicker.swift in Sources */,
-				F835317528AD2B4E00BF3CB2 /* Formatters.swift in Sources */,
 				F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */,
-				F835314F28AA8CEB00BF3CB2 /* SpeechSynthesizer.swift in Sources */,
+				F8251EDF2BEFFB5500E33B1B /* DistanceTracker.swift in Sources */,
 				F888AB2128B96F7C007AB401 /* WorkoutExt.swift in Sources */,
 				F835316628AC185500BF3CB2 /* ColorScheme.swift in Sources */,
+				F8251EDD2BEFFA7B00E33B1B /* TimeTracker.swift in Sources */,
 				F80D613C28E7D59400FC0AA7 /* PersistenceHelper.swift in Sources */,
 				F888AB1328B65872007AB401 /* SymbolPicker.swift in Sources */,
 				F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */,
@@ -502,7 +483,6 @@
 				F80D613828E7AFAD00FC0AA7 /* Preview.swift in Sources */,
 				F888AAC928AECE7F007AB401 /* Constants.swift in Sources */,
 				F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */,
-				F83530D928AA4FE300BF3CB2 /* SpeechSynthesizerDelegate.swift in Sources */,
 				F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */,
 				F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */,
 				F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */,
@@ -594,6 +574,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -655,6 +636,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

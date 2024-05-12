@@ -8,7 +8,6 @@
 import os
 import SwiftUI
 import CoreLocation
-import AVFAudio
 
 struct ContentView: View {
     var body: some View {

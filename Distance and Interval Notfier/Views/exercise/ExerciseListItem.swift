@@ -13,11 +13,15 @@ struct ExerciseListItem: View {
     @Binding
     private var exercise: UIExercise
     
+    @Binding
+    private var progress: Double
+    
     @State
     private var isSelected = false
     
-    init(_ exercise: Binding<UIExercise>) {
+    init(_ exercise: Binding<UIExercise>, _ progress: Binding<Double>) {
         self._exercise = exercise
+        self._progress = progress
     }
     
     var body: some View {
@@ -48,6 +52,10 @@ struct ExerciseListItem: View {
                             .symbolRenderingMode(.multicolor)
                             .foregroundStyle(Color(UIColor.systemBlue))
                     }
+                    
+                    Spacer()
+                    
+                    Text("\(Int(progress))")
                 }
             }
         }
@@ -66,7 +74,7 @@ struct ExerciseListItemPreview: PreviewProvider {
     }()
     
     static var previews: some View {
-        ExerciseListItem(Binding(get: { exercise }, set: { _ in }))
+        ExerciseListItem(Binding(get: { exercise }, set: { _ in }), Binding(get: { 12.3 }, set: { _ in }))
             .previewLayout(.sizeThatFits)
     }
 }

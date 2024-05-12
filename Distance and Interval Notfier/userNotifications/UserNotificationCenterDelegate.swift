@@ -7,7 +7,6 @@
 
 import Foundation
 import UserNotifications
-import AVFAudio
 import os
 
 class UserNotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate {
@@ -21,6 +20,6 @@ class UserNotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner])
+        completionHandler([.badge, .sound, .list, .banner])
     }
 }

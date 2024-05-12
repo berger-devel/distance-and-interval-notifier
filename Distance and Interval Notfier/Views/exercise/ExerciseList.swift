@@ -29,16 +29,19 @@ struct ExerciseList: View {
     
     var workout: Workout?
     
+    @Binding
+    private var exercises: [UIExercise]
+    
     @State
     private var newWorkout = CurrentWorkout()
     @State
     private var currentWorkout: CurrentWorkout = CurrentWorkout()
     
-    @Binding
-    private var exercises: [UIExercise]
-    
     @State
     private var selectedExercise = UIExercise()
+    
+    @State
+    private var exerciseTracker = ExerciseTracker()
     
     private let formerValues: [UUID : UIExercise]
     
@@ -54,10 +57,10 @@ struct ExerciseList: View {
     private var isCreating = false
     
     @State
-    private var exerciseTracker = ExerciseTracker()
+    private var isRunning = false
     
     @State
-    private var isRunning = false
+    private var progress = 0.0
     
     init(workout: Workout, exercises: Binding<[UIExercise]>, formerValues: [UUID : UIExercise]) {
         self.workout = workout
@@ -88,7 +91,8 @@ struct ExerciseList: View {
                                 selectedExercise = exercise
                             }) {
                                 ExerciseListItem(
-                                    Binding(get: { exercise }, set: { _ in })
+                                    Binding(get: { exercise }, set: { _ in }),
+                                    Binding(get: { progress }, set: { _ in })
                                 )
                             }
                             .foregroundColor(ColorScheme.LIST_ITEM_TEXT_COLOR)
@@ -165,29 +169,6 @@ struct ExerciseList: View {
                             workoutPersistenceManger.addWorkout(newWorkout, context)
                         }
                     }
-//                    .sheet(isPresented: $isNewWorkoutSheetPresented) {
-//                        NavigationStack {
-//                            WorkoutEditSheet($newWorkout)
-//                                .toolbar {
-//                                    ToolbarItem(placement: .confirmationAction) {
-//                                        Button(action: {
-//                                            persistenceManager.addWorkout(newWorkout, context)
-//                                            isEditSheetPresented = false
-//                                        }) {
-//                                            Text("Done")
-//                                        }
-//                                    }
-//
-//                                    ToolbarItem(placement: .cancellationAction) {
-//                                        Button(action: {
-//                                            isEditSheetPresented = false
-//                                        }) {
-//                                            Text("Cancel")
-//                                        }
-//                                    }
-//                                }
-//                        }
-//                    }
                     
                     if (workout?.exercises ?? []).count > 0 {
                         StartButton(isRunning: $isRunning, start: start, stop: stop)
@@ -212,6 +193,8 @@ struct ExerciseList: View {
         self.isRunning = true
         exerciseTracker.start(exercises, onFinish: {
             isRunning = false
+        }, onUpdate: { progress in
+            self.progress = progress
         })
     }
     
@@ -221,7 +204,7 @@ struct ExerciseList: View {
     }
     
     func onExerciseFinish() {
-        
+        isRunning = false
     }
 }
 

@@ -26,12 +26,15 @@ class LocationManager {
         clLocationManager.delegate = locationManagerDelegate
     }
     
-    func setDistanceCallback(_ distanceCallback: @escaping (Double) -> ()) {
-        locationManagerDelegate.setDistanceCallback(distanceCallback)
+    func setDistanceCallback(_ onUpdateDistance: @escaping (Double) -> ()) {
+        locationManagerDelegate.updateDistance = onUpdateDistance
     }
     
     func start() {
-        clLocationManager.requestAlwaysAuthorization()
+        locationManagerDelegate.onAuthorize = {
+            self.clLocationManager.requestAlwaysAuthorization()
+        }
+        clLocationManager.requestWhenInUseAuthorization()
         clLocationManager.startUpdatingLocation()
     }
     

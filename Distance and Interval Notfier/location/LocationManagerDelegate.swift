@@ -12,12 +12,13 @@ import os
 
 class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     
+    var onAuthorize = { }
+    var updateDistance: (Double) -> Void = { _ in }
+    
     private var lastLocations: [CLLocation] = []
     private var movingAvgLocations = CLLocation()
-    private var milestone = 0.0
     
     private var updateLocation: (CLLocation) -> Void = { _ in }
-    private var updateDistance: (Double) -> Void = { _ in }
     
     override init() {
         super.init()
@@ -26,6 +27,7 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        onAuthorize()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations: [CLLocation]) {
@@ -54,6 +56,10 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         lastLocations.append(location)
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        Logger().log("error: \(error.localizedDescription)")
+    }
+    
     private func calculateMovingAverage() -> CLLocation {
         return lastLocations.suffix(3).reduce(CLLocation(latitude: 0.0, longitude: 0.0), {(avg, location) in
             return CLLocation(
@@ -61,13 +67,5 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
                 longitude: avg.coordinate.longitude + location.coordinate.longitude / 3.0
             )
         })
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        Logger().log("error: \(error.localizedDescription)")
-    }
-    
-    func setDistanceCallback(_ distanceCallback: @escaping (Double) -> Void) {
-        updateDistance = distanceCallback
     }
 }
