@@ -49,7 +49,7 @@ struct WorkoutPersistenceManager {
         do {
             return try context.fetch(fetchRequest)
         } catch {
-            PersistenceHelper.logError("Failed to fetch all workouts", error)
+            Log.error("Failed to fetch all workouts", error)
             return []
         }
     }

@@ -47,7 +47,9 @@ struct WorkoutListItemPreview: PreviewProvider {
     }()
     
     static var previews: some View {
-        WorkoutListItem(workout: workouts.first!)
-            .previewLayout(.sizeThatFits)
+        if let workout = workouts.first {
+            WorkoutListItem(workout: workout)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }

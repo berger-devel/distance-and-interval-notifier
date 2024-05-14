@@ -30,13 +30,16 @@ struct NotificationFrequencyPicker: View {
 
 enum NotificationFrequency: Int16, CustomStringConvertible {
     static func from(_ ordinal: Int16) -> NotificationFrequency {
-        if let notificationFrequency = NotificationFrequency(rawValue: ordinal) {
+        do {
+            guard let notificationFrequency = NotificationFrequency(rawValue: ordinal) else {
+                throw OptionalError.from("notificationFrequency")
+            }
+            
             return notificationFrequency
-        } else {
-            PersistenceHelper.logError("Failed to retrieve NotificationFrequency from ordinal \(ordinal)", NotificationFrequencyError.Ordinal)
+        } catch {
+            Log.error("Error converting ordinal to NotificationiFrequency", error)
             return .ONCE
         }
-                                       
     }
     
     case ONCE, TWICE, THREE, FOUR, FIVE

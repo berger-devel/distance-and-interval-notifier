@@ -49,3 +49,7 @@ struct Constants {
     
     static var STARTBUTTON_FONT_SIZE = 24.0
 }
+
+enum OptionalError: Error {
+    case from(_ identifier: String)
+}

@@ -22,7 +22,7 @@ struct WorkoutList: View {
 
     @FetchRequest(sortDescriptors: WorkoutStorage.workoutSortDescriptors)
     private var workouts: FetchedResults<Workout>
-
+    
     @State
     private var newWorkout = CurrentWorkout()
 
@@ -52,7 +52,9 @@ struct WorkoutList: View {
                     }
                 }
                 .onDelete { indexSet in
-                    persistenceManager.delete(workouts[indexSet.first!], context)
+                    if let index = indexSet.first {
+                        persistenceManager.delete(workouts[index], context)
+                    }
                 }
                 .onMove(perform: { indexSet, newPosition in
                     persistenceManager.move(indexSet, to: newPosition, context)
@@ -61,18 +63,10 @@ struct WorkoutList: View {
             }
             .navigationTitle("My Workouts")
             .toolbar {
-//                ToolbarItem {
-//                    if (workouts.count != 0) {
-//                        EditButton()
-//                    }
-//                }
-
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button(action: {
-//                            withAnimation(.easeIn(duration: 1000)) {
-                                isEditSheetPresented = true
-//                            }
+                            isEditSheetPresented = true
                         }) {
                             Image(systemName: "plus.circle.fill")
                             Text("New Workout")
@@ -92,17 +86,53 @@ struct WorkoutList: View {
                     workout: workout,
                     exercises: Binding(
                         get: {
-                            return workout.exercises!.map({ exercise in UIExercise(from: exercise as! Exercise) })
+                            do {
+                                guard let exercises = workout.exercises else {
+                                    throw OptionalError.from("exercises")
+                                }
+                                
+                                return try exercises.map({ exercise in
+                                    guard let exercise = exercise as? Exercise else {
+                                        throw OptionalError.from("exercise")
+                                    }
+                                    return UIExercise(from: exercise)
+                                })
+                            } catch {
+                                Log.error("Error getting exercises", error)
+                                return []
+                            }
                         },
                         set: { exercises in
-                            (workout.exercises!.array as! [Exercise]).forEach({ exercise in context.delete(exercise) })
-                            workout.exercises = NSOrderedSet(array: exercises)
-                            PersistenceHelper.commit(context, errorLogMessage: "Failed to update exercises of workout")
+                            do {
+                                guard let exercises = workout.exercises?.array as? [Exercise] else {
+                                    throw OptionalError.from("exercises")
+                                }
+                                
+                                exercises.forEach({ exercise in context.delete(exercise) })
+                                workout.exercises = NSOrderedSet(array: exercises)
+                                PersistenceHelper.commit(context, errorLogMessage: "Failed to update exercises of workout")
+                            } catch {
+                                Log.error("Error setting exercises", error)
+                            }
                         }
                     ),
-                    formerValues: (workout.exercises!.array as! [Exercise]).reduce(into: [:], { dict, exercise in
-                        dict[exercise.id!] = UIExercise(from: exercise)
-                    })
+                    formerValues: {
+                        do {
+                            guard let exercises = workout.exercises?.array as? [Exercise] else {
+                                throw OptionalError.from("exercises")
+                            }
+                            
+                            return try exercises.reduce(into: [:], { dict, exercise in
+                                guard let id = exercise.id else {
+                                    throw OptionalError.from("id")
+                                }
+                                
+                                return dict[id] = UIExercise(from: exercise)
+                            })
+                        } catch {
+                            return [:]
+                        }
+                    } ()
                 )
             }
         }

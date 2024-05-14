@@ -27,12 +27,12 @@ class WorkoutStorage: ObservableObject {
         persistentContainer = NSPersistentContainer(name: "workouts")
         
         if inMemory {
-            persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            persistentContainer.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        persistentContainer.loadPersistentStores {(_, error) in
-            if let error = error as NSError? {
-                Logger().error("Failed to load persistent stores \(error.localizedDescription)")
+        persistentContainer.loadPersistentStores { _, error in
+            if let error = error {
+                Log.error("Failed to load persistent stores", error)
             }
         }
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true

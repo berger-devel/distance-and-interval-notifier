@@ -52,16 +52,27 @@ struct UIExercise: Hashable, Equatable {
     init() { }
     
     init(from exercise: Exercise) {
-        exerciseId = exercise.id!
-        name = exercise.name!
-        sfSymbol = exercise.sfSymbol!
-        colorIndex = Int(exercise.colorIndex)
-        amount = Double(exercise.amount)
-        changedAmount = Double(exercise.amount)
-        unit = Unit(rawValue: Int(exercise.unit))!
-        quantity = unit.quantity
-        notificationFrequency = NotificationFrequency(rawValue: exercise.notificationFrequency)!
-        announceBothQuantities = exercise.announceBothQuantities
-        completed = false
+        do {
+            guard let id = exercise.id,
+                  let name = exercise.name,
+                  let sfSymbol = exercise.sfSymbol,
+                  let unit = Unit(rawValue: Int(exercise.unit)),
+                  let notificationFrequency = NotificationFrequency(rawValue: exercise.notificationFrequency) else {
+                throw OptionalError.from("id, name, sfSymbol, unit, notificationFrequency")
+            }
+            exerciseId = id
+            self.name = name
+            self.sfSymbol = sfSymbol
+            colorIndex = Int(exercise.colorIndex)
+            amount = Double(exercise.amount)
+            changedAmount = Double(exercise.amount)
+            self.unit = unit
+            quantity = unit.quantity
+            self.notificationFrequency = notificationFrequency
+            announceBothQuantities = exercise.announceBothQuantities
+            completed = false
+        } catch {
+            Log.error("Error initializing UIExercise", error)
+        }
     }
 }

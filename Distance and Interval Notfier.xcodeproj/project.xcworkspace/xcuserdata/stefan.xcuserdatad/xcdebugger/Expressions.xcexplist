@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "UserNotifier.createDigitAudioFileUrl(_:at:):UserNotifier.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;\(Int(digit * position))&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #2 in closure #1 in closure #4 in closure #1 in WorkoutEditSheet.body.getter:WorkoutEditSheet.swift">
          <PersistentStrings>
             <PersistentString
@@ -168,6 +176,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "NotificationSoundGenerator.createDigitAudioFileUrl(_:at:):NotificationSoundGenerator.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;\(digit * Int(position))&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "Int(remainder / position)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #4 in closure #1 in closure #1 in WorkoutList.body.getter:WorkoutList.swift">
          <PersistentStrings>
             <PersistentString
@@ -180,6 +199,17 @@
          <PersistentStrings>
             <PersistentString
                value = "workout">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in TimeTracker.track(exercise:onFinish:onUpdate:):TimeTracker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "interval * Double(i)">
+            </PersistentString>
+            <PersistentString
+               value = "round(exercise.amount / Double(notificationFrequency) * Double(i))">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -229,10 +259,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "UserNotifier.generateTimeNotificationSound(uuid:amount:unit:):UserNotifier.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;\(Int(round(amount)))&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in UserNotificationCenterDelegate.userNotificationCenter(_:willPresent:withCompletionHandler:):UserNotificationCenterDelegate.swift">
          <PersistentStrings>
             <PersistentString
                value = "AVSpeechSynthesisVoice.speechVoices()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in WorkoutListItem.body.getter:WorkoutListItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "workout.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ExerciseListItem.ExerciseText.body.getter:ExerciseListItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;\(exercise.amount)&quot;">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -248,26 +302,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ExerciseListItem.ExerciseText.body.getter:ExerciseListItem.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "&quot;\(exercise.amount)&quot;">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "ExerciseEditSheet.init(_:):ExerciseEditSheet.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.exercise.unit.quantity">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in WorkoutListItem.body.getter:WorkoutListItem.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "workout.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -419,6 +457,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #2 in TimeTracker.track(exercise:onFinish:onUpdate:):TimeTracker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "elapsed">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LocationManagerDelegate.init():LocationManagerDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -466,15 +512,18 @@
          contextName = "closure #1 in closure #2 in closure #1 in closure #1 in closure #1 in closure #2 in closure #1 in WorkoutEditSheet.body.getter:WorkoutEditSheet.swift">
          <PersistentStrings>
             <PersistentString
-               value = "geometry.size.width">
-            </PersistentString>
-            <PersistentString
                value = "max(Int(geometry.size.width / 30.0), WorkoutEditSheet.availableSymbols.endIndex)">
             </PersistentString>
             <PersistentString
                value = "Int(geometry.size.width / 30.0)">
             </PersistentString>
+            <PersistentString
+               value = "geometry.size.width">
+            </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DistanceTracker.track(exercise:onFinish:onUpdate:):DistanceTracker.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #4 in closure #1 in WorkoutList.body.getter:WorkoutList.swift">

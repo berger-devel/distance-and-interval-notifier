@@ -93,7 +93,7 @@ struct ExerciseEditSheet: View {
                         AmountPicker(selectedExercise: $selectedExercise, formerValues: formerValues, availableAmounts: availableAmounts)
                     }
                     .listRowBackground(ColorScheme.LIST_ROW_BACKGROUND(colorScheme))
-                    .onChange(of: selectedExercise.unit) { unit in
+                    .onChange(of: selectedExercise.unit, initial: false) {
                         selectedExercise.amount = defaultAmount
                     }
                     

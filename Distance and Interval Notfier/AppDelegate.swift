@@ -7,17 +7,13 @@
 
 import Foundation
 import UIKit
-import os
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    private let userNotificationCenterDelegate = UserNotificationCenterDelegate()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        UNUserNotificationCenter.current().delegate = userNotificationCenterDelegate
         SoundsDirectoryManager.createSoundsDirectory()
         SoundsDirectoryManager.initCleanupTimer()
-        
         return true
     }
 }

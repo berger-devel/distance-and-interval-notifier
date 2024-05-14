@@ -81,8 +81,9 @@ struct ExerciseList: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
+            VStack(spacing: 0) {
+                ZStack {
+                    ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
                     List {
                         ForEach(exercises, id: \.self) { exercise in
                             Button(action: {
@@ -98,23 +99,58 @@ struct ExerciseList: View {
                             .foregroundColor(ColorScheme.LIST_ITEM_TEXT_COLOR)
                         }
                         .onDelete { indexSet in
-                            persistenceManager.delete(workout!.exercises![indexSet.first!] as! Exercise, of: workout!, context)
+                            do {
+                                guard let workout = workout else {
+                                    throw OptionalError.from("workout")
+                                }
+                                
+                                if let index = indexSet.first {
+                                    guard let exercise = workout.exercises?[index] as? Exercise else {
+                                        throw OptionalError.from("exercise")
+                                    }
+                                    
+                                    persistenceManager.delete(exercise, of: workout, context)
+                                }
+                            } catch {
+                                Log.error("Error deleting exercise", error)
+                            }
                         }
+                        .onMove(perform: { indexSet, newPosition in
+                            do {
+                                guard let workout = workout else {
+                                    throw OptionalError.from("workout")
+                                }
+                                
+                                persistenceManager.move(indexSet, of: workout, to: newPosition, context)
+                            } catch {
+                                Log.error("Error moving exercise", error)
+                            }
+                        })
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
                             HStack {
-                                Icon(sfSymbol: workout!.sfSymbol!, color: ColorScheme.ICON_COLOR(Int(workout!.colorIndex)), small: true)
-                                Text(workout!.name!)
-                                    .lineLimit(1)
+                                if let workout = workout {
+                                    Icon(sfSymbol: workout.sfSymbol ?? "xmark", color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)), small: true)
+                                    Text(workout.name ?? "Error")
+                                        .lineLimit(1)
+                                }
                             }
                         }
                         
                         ToolbarItem {
                             Button(action: {
-                                currentWorkout = CurrentWorkout.from(workout!)
-                                isWorkoutEditSheetPresented = true
+                                do {
+                                    guard let workout = workout else {
+                                        throw OptionalError.from("workout")
+                                    }
+                                    
+                                    currentWorkout = CurrentWorkout.from(workout)
+                                    isWorkoutEditSheetPresented = true
+                                } catch {
+                                    Log.error("Error presenting workout edit sheet", error)
+                                }
                             }) {
                                 Image(systemName: "square.and.pencil")
                             }
@@ -139,29 +175,37 @@ struct ExerciseList: View {
                     .sheet(isPresented: $isEditSheetPresented) {
                         NavigationStack {
                             ExerciseEditSheet($selectedExercise, formerValues: formerValues[selectedExercise.exerciseId])
-                            .toolbar {
-                                ToolbarItem(placement: .confirmationAction) {
-                                    Button(action: {
-                                        saveExercise()
-                                        isEditSheetPresented = false
-                                    }) {
-                                        Text("Done")
+                                .toolbar {
+                                    ToolbarItem(placement: .confirmationAction) {
+                                        Button(action: {
+                                            saveExercise()
+                                            isEditSheetPresented = false
+                                        }) {
+                                            Text("Done")
+                                        }
+                                    }
+                                    
+                                    ToolbarItem(placement: .cancellationAction) {
+                                        Button(action: {
+                                            isEditSheetPresented = false
+                                        }) {
+                                            Text("Cancel")
+                                        }
                                     }
                                 }
-                                
-                                ToolbarItem(placement: .cancellationAction) {
-                                    Button(action: {
-                                        isEditSheetPresented = false
-                                    }) {
-                                        Text("Cancel")
-                                    }
-                                }
-                            }
                         }
                     }
                     .sheet(isPresented: $isWorkoutEditSheetPresented) {
                         WorkoutEditSheet($currentWorkout, $isWorkoutEditSheetPresented) {
-                            workoutPersistenceManger.updateWorkout(workout!, from: currentWorkout, context)
+                            do {
+                                guard let workout = workout else {
+                                    throw OptionalError.from("workout")
+                                }
+                                
+                                workoutPersistenceManger.updateWorkout(workout, from: currentWorkout, context)
+                            } catch {
+                                Log.error("Error finishing workout update", error)
+                            }
                         }
                     }
                     .sheet(isPresented: $isNewWorkoutSheetPresented) {
@@ -169,23 +213,38 @@ struct ExerciseList: View {
                             workoutPersistenceManger.addWorkout(newWorkout, context)
                         }
                     }
-                    
-                    if (workout?.exercises ?? []).count > 0 {
+                }
+                
+                if (workout?.exercises ?? []).count > 0 {
+                    VStack {
+                        Spacer()
                         StartButton(isRunning: $isRunning, start: start, stop: stop)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: 140)
+                    .background(ColorScheme.BACKGROUND_COLOR(colorScheme))
+                    .ignoresSafeArea()
+                }
             }
             .ignoresSafeArea(.container, edges: [.bottom])
         }
     }
     
     func saveExercise() {
-        if isCreating {
-            persistenceManager.add(selectedExercise, to: workout!, context)
-        } else {
-            if selectedExercise.unit == formerValues[selectedExercise.exerciseId]?.unit {
-                selectedExercise.amount = selectedExercise.changedAmount
+        do {
+            guard let workout = workout else {
+                throw OptionalError.from("workout")
             }
-            persistenceManager.update(selectedExercise, of: workout!, context)
+            
+            if isCreating {
+                persistenceManager.add(selectedExercise, to: workout, context)
+            } else {
+                if selectedExercise.unit == formerValues[selectedExercise.exerciseId]?.unit {
+                    selectedExercise.amount = selectedExercise.changedAmount
+                }
+                persistenceManager.update(selectedExercise, of: workout, context)
+            }
+        } catch {
+            Log.error("Error saving exercise", error)
         }
     }
     
@@ -221,10 +280,41 @@ struct ExerciseList_Previews: PreviewProvider {
     
     static var previews: some View {
         ExerciseList(workout: workout, exercises: Binding(
-            get: { workout.exercises!.map({ exercise in UIExercise(from: exercise as! Exercise) }) },
+            get: {
+                do {
+                    guard let exercises = workout.exercises else {
+                        throw OptionalError.from("exercises")
+                    }
+                    
+                    return try exercises.map({ exercise in
+                        guard let exercise = exercise as? Exercise else {
+                            throw OptionalError.from("exercise")
+                        }
+                        
+                        return UIExercise(from: exercise)
+                    })
+                } catch {
+                    Log.error("Could not get exercises", error)
+                    return []
+                }
+            },
             set: { _ in }
-        ), formerValues: (workout.exercises!.array as! [Exercise]).reduce(into: [:], { dict, exercise in
-            dict[exercise.id!] = UIExercise(from: exercise) })
-        )
+        ), formerValues: {
+            do {
+                guard let exercises = workout.exercises?.array as? [Exercise] else {
+                    throw OptionalError.from("exercises")
+                }
+                
+                return try exercises.reduce(into: [:], { dict, exercise in
+                    guard let id = exercise.id else {
+                        throw OptionalError.from("id")
+                    }
+                    
+                    dict[id] = UIExercise(from: exercise) })
+            } catch {
+                Log.error("Could not take former values", error)
+                return [:]
+            }
+        }())
     }
 }

@@ -36,15 +36,15 @@ struct AmountPicker: View {
             Picker(
                 selection: Binding(
                     get: { () -> Double in
-                        if formerValues != nil && selectedExercise.unit == formerValues!.unit {
-                            return selectedExercise.changedAmount
+                        if let formerValues = formerValues, selectedExercise.unit == formerValues.unit {
+                                return selectedExercise.changedAmount
                         } else {
                             return selectedExercise.amount
                         }
                     },
                     set: { amount in
-                        if formerValues != nil && selectedExercise.unit == formerValues!.unit {
-                            selectedExercise.changedAmount = amount
+                        if let formerValues = formerValues, selectedExercise.unit == formerValues.unit {
+                                selectedExercise.changedAmount = amount
                         } else {
                             selectedExercise.amount = amount
                         }

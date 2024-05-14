@@ -17,7 +17,7 @@ struct PreviewWorkouts {
             for exerciseIndex in 0 ... 2 {
                 let exercise = Exercise(context: context)
                 exercise.workout = workout
-                exercise.name = "\(exercise.name!) \(exerciseIndex)"
+                exercise.name = "\(exercise.name ?? "No exercise name") \(exerciseIndex)"
             }
         }
         do {

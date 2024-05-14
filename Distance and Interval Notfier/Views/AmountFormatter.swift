@@ -17,6 +17,15 @@ struct AmountFormatter {
     }
     
     func string(from amount: Double) -> String {
-        return numberFormatter.string(from: NSNumber(value: amount))!
+        do {
+            guard let string = numberFormatter.string(from: NSNumber(value: amount)) else {
+                throw OptionalError.from("string")
+            }
+            
+            return string
+        } catch {
+            Log.error("Could not format amount", error)
+            return ""
+        }
     }
 }

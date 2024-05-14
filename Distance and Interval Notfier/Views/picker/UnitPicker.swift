@@ -56,12 +56,23 @@ enum Unit: Int, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .SECOND: return "Seconds"
-        case .MINUTE: return "Minutes"
-        case .HOUR: return "Hours"
-        case .METER: return "Meters"
-        case .KILOMETER: return "Kilometers"
-        case .MILE: return "Miles"
+        case .SECOND: "Seconds"
+        case .MINUTE: "Minutes"
+        case .HOUR: "Hours"
+        case .METER: "Meters"
+        case .KILOMETER: "Kilometers"
+        case .MILE: "Miles"
+        }
+    }
+    
+    var shortDescription: String {
+        switch self {
+        case .SECOND: "sec"
+        case .MINUTE: "min"
+        case .HOUR: "h"
+        case .METER: "m"
+        case .KILOMETER: "km"
+        case .MILE: "mi"
         }
     }
 }

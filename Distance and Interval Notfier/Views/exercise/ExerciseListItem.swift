@@ -30,8 +30,7 @@ struct ExerciseListItem: View {
             VStack(alignment: .leading) {
                 Text(exercise.name).font(.title)
                 HStack(spacing: 0) {
-                    Text("\(AmountFormatter().string(from: exercise.amount))"
-                         + " \(exercise.unit.rawValue)  ")
+                    Text("\(AmountFormatter().string(from: exercise.amount))\(exercise.unit.shortDescription)  ")
                     .font(.system(.headline))
                     .fontWeight(.medium)
                     

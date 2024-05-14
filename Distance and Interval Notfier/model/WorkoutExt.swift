@@ -31,7 +31,20 @@ extension Workout {
 
 struct CurrentWorkout {
     static func from(_ workout: Workout) -> CurrentWorkout {
-        return CurrentWorkout(name: workout.name!, sfSymbol: workout.sfSymbol!, colorIndex: Int(workout.colorIndex))
+        do {
+            guard let name = workout.name else {
+                throw OptionalError.from("name")
+            }
+            
+            guard let sfSymbol = workout.sfSymbol else {
+                throw OptionalError.from("sfSymbol")
+            }
+            
+            return CurrentWorkout(name: name, sfSymbol: sfSymbol, colorIndex: Int(workout.colorIndex))
+        } catch {
+            Log.error("Error creating current workout", error)
+            return CurrentWorkout()
+        }
     }
     
     var name = "New Workout"

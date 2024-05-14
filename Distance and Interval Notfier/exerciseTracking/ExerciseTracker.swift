@@ -7,8 +7,14 @@
 
 import Foundation
 import UserNotifications
+import CoreLocation
 
 class ExerciseTracker {
+    
+    private let userNotifier = UserNotifier()
+    private let userNotificationCenterDelegate = UserNotificationCenterDelegate()
+    private let clLocationManager = CLLocationManager()
+    private let locationManagerDelegate = LocationManagerDelegate()
     
     private let timeTracker = TimeTracker()
     private let distanceTracker = DistanceTracker()
@@ -20,12 +26,30 @@ class ExerciseTracker {
     private var onUpdate: (Double) -> () = { _ in }
     
     func start(_ exercises: [UIExercise], onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { [self] _,_ in 
-            exerciseIterator = exercises.makeIterator()
-            self.onFinish = onFinish
-            self.onUpdate = onUpdate
-            nextExercise()
+        userNotifier.cancel()
+        
+        Task {
+            do {
+                UNUserNotificationCenter.current().delegate = userNotificationCenterDelegate
+                try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+            } catch {
+                Log.error("Error requesting notificaton authorizatino", error)
+            }
+            
+            if !exercises.filter({ exercise in exercise.unit.quantity == .DISTANCE }).isEmpty {
+                clLocationManager.delegate = locationManagerDelegate
+                locationManagerDelegate.onAuthorize = {
+                    self.clLocationManager.requestAlwaysAuthorization()
+                }
+                clLocationManager.requestWhenInUseAuthorization()
+            }
         }
+        
+        exerciseIterator = exercises.makeIterator()
+        self.onFinish = onFinish
+        self.onUpdate = onUpdate
+        
+        nextExercise()
     }
     
     func nextExercise() {
@@ -33,14 +57,15 @@ class ExerciseTracker {
             if nextExercise.unit.quantity == .TIME {
                 timeTracker.track(exercise: nextExercise, onFinish: self.nextExercise, onUpdate: onUpdate)
             } else {
-                distanceTracker.track(exercise: nextExercise, onFinish: onFinish, onUpdate: onUpdate)
+                distanceTracker.track(exercise: nextExercise, onFinish: self.nextExercise, onUpdate: onUpdate)
             }
         } else {
-            stop()
+            onFinish()
         }
     }
     
     func stop() {
+        userNotifier.cancel()
         timeTracker.stop()
         distanceTracker.stop()
         onFinish()
