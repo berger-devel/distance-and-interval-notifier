@@ -13,52 +13,37 @@ struct AmountPicker: View {
     @Environment(\.colorScheme)
     private var colorScheme
     
-    @Binding
-    private var selectedExercise: UIExercise
-    
-    @State
-    private var dirty: Bool = false
-    
-    private let formerValues: UIExercise?
-    
-    private let availableAmounts: [Double]
-    
+    private let unit: Unit
     private let amountFormatter = AmountFormatter()
     
-    init(selectedExercise: Binding<UIExercise>, formerValues: UIExercise?, availableAmounts: [Double]) {
-        self._selectedExercise = selectedExercise
-        self.formerValues = formerValues
-        self.availableAmounts = availableAmounts
+    @Binding
+    private var amount: Double
+
+    @Binding
+    private var selectedQuantity: Quantity
+    
+    init(amount: Binding<Double>, unit: Unit, selectedQuantity: Binding<Quantity>) {
+        self.unit = unit
+        
+        self._amount = amount
+        self._selectedQuantity = selectedQuantity
     }
     
     var body: some View {
         ZStack {
+            ColorScheme.LIST_ROW_BACKGROUND(colorScheme)
+                        
             Picker(
-                selection: Binding(
-                    get: { () -> Double in
-                        if let formerValues = formerValues, selectedExercise.unit == formerValues.unit {
-                                return selectedExercise.changedAmount
-                        } else {
-                            return selectedExercise.amount
-                        }
-                    },
-                    set: { amount in
-                        if let formerValues = formerValues, selectedExercise.unit == formerValues.unit {
-                                selectedExercise.changedAmount = amount
-                        } else {
-                            selectedExercise.amount = amount
-                        }
-                    }
-                ),
+                selection: $amount,
                 label: Text("")
             ) {
-                ForEach(availableAmounts, id: \.self) { amount in
+                ForEach(Constants.AVAILABLE_AMOUNTS(unit), id: \.self) { amount in
                     Text(self.amountFormatter.string(from: amount))
                 }
             }
             .pickerStyle(.wheel)
             
-            if selectedExercise.quantity != selectedExercise.unit.quantity {
+            if selectedQuantity != unit.quantity {
                 ColorScheme.GRAY_OVERLAY(colorScheme)
             }
         }

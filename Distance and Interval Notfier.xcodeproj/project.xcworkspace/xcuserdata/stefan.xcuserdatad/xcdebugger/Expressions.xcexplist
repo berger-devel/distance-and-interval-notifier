@@ -67,6 +67,14 @@
          contextName = "LocationManager.locationManager(_:didFailWithError:):LocationManager.swift">
       </ContextState>
       <ContextState
+         contextName = "ExerciseListItem.init(_:_:):ExerciseListItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "exercise.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "WorkoutPersistenceManager.addWorkout(_:):WorkoutPersistenceManager.swift">
          <PersistentStrings>
             <PersistentString
@@ -85,6 +93,14 @@
             </PersistentString>
             <PersistentString
                value = "CLLocation(latitude: 0.0, longitude: 0.0).distance(from: CLLocation(latitude: sd[0], longitude: sd[1]))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #4 in closure #2 in closure #1 in closure #1 in closure #1 in ExerciseList.body.getter:ExerciseList.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "workout.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -207,6 +223,9 @@
          <PersistentStrings>
             <PersistentString
                value = "interval * Double(i)">
+            </PersistentString>
+            <PersistentString
+               value = "amount">
             </PersistentString>
             <PersistentString
                value = "round(exercise.amount / Double(notificationFrequency) * Double(i))">
@@ -340,6 +359,14 @@
          contextName = "static ColorPicker.colorEquals(_:_:):ColorPicker.swift">
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in ExerciseEditSheetSymbolSection.body.getter:SymbolPicker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "rowCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "WorkoutPersistenceManager.fetchAllWorkouts():WorkoutPersistenceManager.swift">
          <PersistentStrings>
             <PersistentString
@@ -378,13 +405,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in ExerciseListItem.ExerciseText.body.getter:ExerciseListItem.swift">
+         contextName = "closure #2 in TimeTracker.track(exercise:onFinish:onUpdate:):TimeTracker.swift">
          <PersistentStrings>
             <PersistentString
-               value = "exercise.unit!">
-            </PersistentString>
-            <PersistentString
-               value = "exercise.name!">
+               value = "elapsed">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -419,21 +443,36 @@
          contextName = "closure #3 in closure #1 in closure #1 in WorkoutList.body.getter:WorkoutList.swift">
          <PersistentStrings>
             <PersistentString
+               value = "index0.last">
+            </PersistentString>
+            <PersistentString
+               value = "indexSet.first!">
+            </PersistentString>
+            <PersistentString
+               value = "workouts[workout.sortIndex].name">
+            </PersistentString>
+            <PersistentString
                value = "index0.first">
             </PersistentString>
             <PersistentString
                value = "workouts.nsSortDescriptors">
             </PersistentString>
             <PersistentString
-               value = "index0.last">
+               value = "reorderedWorkouts.map({ w in w.name })">
+            </PersistentString>
+            <PersistentString
+               value = "workouts[workout.sortIndex].sortIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in ExerciseList.body.getter:ExerciseList.swift">
+         contextName = "closure #1 in closure #1 in ExerciseListItem.ExerciseText.body.getter:ExerciseListItem.swift">
          <PersistentStrings>
             <PersistentString
-               value = "exercises[0].name">
+               value = "exercise.unit!">
+            </PersistentString>
+            <PersistentString
+               value = "exercise.name!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -457,10 +496,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #2 in TimeTracker.track(exercise:onFinish:onUpdate:):TimeTracker.swift">
+         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in ExerciseList.body.getter:ExerciseList.swift">
          <PersistentStrings>
             <PersistentString
-               value = "elapsed">
+               value = "exercises[0].name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -495,6 +534,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "TimeTracker.track(exercise:onFinish:onUpdate:):TimeTracker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "exercise.amount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in closure #1 in closure #1 in LocationManager.start():LocationManager.swift">
       </ContextState>
       <ContextState
@@ -512,13 +559,13 @@
          contextName = "closure #1 in closure #2 in closure #1 in closure #1 in closure #1 in closure #2 in closure #1 in WorkoutEditSheet.body.getter:WorkoutEditSheet.swift">
          <PersistentStrings>
             <PersistentString
+               value = "geometry.size.width">
+            </PersistentString>
+            <PersistentString
                value = "max(Int(geometry.size.width / 30.0), WorkoutEditSheet.availableSymbols.endIndex)">
             </PersistentString>
             <PersistentString
                value = "Int(geometry.size.width / 30.0)">
-            </PersistentString>
-            <PersistentString
-               value = "geometry.size.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -663,6 +710,17 @@
          <PersistentStrings>
             <PersistentString
                value = "NSNumber(value: Float(amount))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in WorkoutList.reassingSortIndices():WorkoutList.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "workout.sortIndex">
+            </PersistentString>
+            <PersistentString
+               value = "workout.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

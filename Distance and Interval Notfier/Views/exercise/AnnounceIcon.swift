@@ -27,14 +27,3 @@ struct AnnounceIcon: View {
         }
     }
 }
-
-struct AnnounceIconPreview: PreviewProvider {
-    static var previews: some View {
-        AnnounceIcon(quantity: .TIME)
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName(".TIME")
-        AnnounceIcon(quantity: .DISTANCE)
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName(".DISTANCE")
-    }
-}

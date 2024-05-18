@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F80D613828E7AFAD00FC0AA7 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613728E7AFAD00FC0AA7 /* Preview.swift */; };
-		F80D613A28E7D47000FC0AA7 /* WorkoutPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */; };
-		F80D613C28E7D59400FC0AA7 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */; };
-		F80D613E28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */; };
+		F806E05C2BF57A5A00B3B421 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806E05B2BF57A5A00B3B421 /* DoneButton.swift */; };
+		F806E05E2BF697B400B3B421 /* ExerciseListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */; };
 		F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1428CE876D0006577D /* AmountPicker.swift */; };
-		F815DE1728CE90900006577D /* ExerciseExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1628CE90900006577D /* ExerciseExt.swift */; };
 		F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1828CFAFF20006577D /* AmountFormatter.swift */; };
-		F821DBA228E78137006ABA88 /* PreviewWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */; };
+		F81D66332BF55AD800C7037D /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66322BF55AD800C7037D /* Unit.swift */; };
+		F81D66352BF55B2F00C7037D /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66342BF55B2F00C7037D /* Quantity.swift */; };
+		F81D66372BF56F6A00C7037D /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66362BF56F6A00C7037D /* CancelButton.swift */; };
+		F8242C4A2BF6B564003C953C /* EditSheetIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8242C492BF6B564003C953C /* EditSheetIcon.swift */; };
+		F8242C4C2BF6B892003C953C /* NameSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8242C4B2BF6B892003C953C /* NameSection.swift */; };
+		F8242C4E2BF6BAE5003C953C /* NotificationFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8242C4D2BF6BAE5003C953C /* NotificationFrequency.swift */; };
+		F8242C502BF6BED2003C953C /* SymbolPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8242C4F2BF6BED2003C953C /* SymbolPickerItem.swift */; };
+		F8242C522BF6C3A2003C953C /* ColorPickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8242C512BF6C3A2003C953C /* ColorPickerItem.swift */; };
 		F8251EDD2BEFFA7B00E33B1B /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */; };
 		F8251EDF2BEFFB5500E33B1B /* DistanceTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */; };
 		F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */; };
@@ -26,7 +30,7 @@
 		F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */; };
 		F835316A28AC37C600BF3CB2 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316928AC37C600BF3CB2 /* ExerciseList.swift */; };
 		F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */; };
-		F866C40C28D27234007BF8BF /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866C40B28D27234007BF8BF /* UnitPicker.swift */; };
+		F866C40C28D27234007BF8BF /* OptionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866C40B28D27234007BF8BF /* OptionsSection.swift */; };
 		F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */; };
 		F8722A5B28A01635005A2718 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A5A28A01635005A2718 /* ContentView.swift */; };
 		F8722A5D28A01636005A2718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8722A5C28A01636005A2718 /* Assets.xcassets */; };
@@ -38,12 +42,9 @@
 		F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC028AEC418007AB401 /* WorkoutList.swift */; };
 		F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC428AEC825007AB401 /* WorkoutListItem.swift */; };
 		F888AAC928AECE7F007AB401 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC828AECE7F007AB401 /* Constants.swift */; };
-		F888AACC28B02576007AB401 /* WorkoutStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AACB28B02576007AB401 /* WorkoutStorage.swift */; };
-		F888AACF28B02A2D007AB401 /* workouts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */; };
 		F888AB1128B4FA13007AB401 /* WorkoutEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1028B4FA13007AB401 /* WorkoutEditSheet.swift */; };
-		F888AB1328B65872007AB401 /* SymbolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1228B65872007AB401 /* SymbolPicker.swift */; };
-		F888AB1528B65971007AB401 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1428B65971007AB401 /* ColorPicker.swift */; };
-		F888AB2128B96F7C007AB401 /* WorkoutExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB2028B96F7C007AB401 /* WorkoutExt.swift */; };
+		F888AB1328B65872007AB401 /* SymbolSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1228B65872007AB401 /* SymbolSection.swift */; };
+		F888AB1528B65971007AB401 /* ColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AB1428B65971007AB401 /* ColorSection.swift */; };
 		F889D2AE2BF14CD600EA19BC /* 20.wav in Resources */ = {isa = PBXBuildFile; fileRef = F889D2AD2BF14CD600EA19BC /* 20.wav */; };
 		F889D2D62BF167D700EA19BC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889D2D52BF167D700EA19BC /* Log.swift */; };
 		F889D2D82BF1A78D00EA19BC /* NotificationSoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889D2D72BF1A78D00EA19BC /* NotificationSoundGenerator.swift */; };
@@ -158,12 +159,16 @@
 		F889D3BE2BF22B7E00EA19BC /* 700.wav in Resources */ = {isa = PBXBuildFile; fileRef = F889D3B52BF22B7E00EA19BC /* 700.wav */; };
 		F889D3C02BF260EC00EA19BC /* minutes.wav in Resources */ = {isa = PBXBuildFile; fileRef = F889D3BF2BF260EC00EA19BC /* minutes.wav */; };
 		F889D3C22BF2617100EA19BC /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889D3C12BF2617100EA19BC /* Converter.swift */; };
-		F8B9224E29CE17AC0081C238 /* NotificationFrequencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */; };
+		F8B9224E29CE17AC0081C238 /* NotificationFrequencySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224D29CE17AC0081C238 /* NotificationFrequencySection.swift */; };
 		F8B9225029CE3CE40081C238 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224F29CE3CE40081C238 /* Icon.swift */; };
+		F8CC32C52BF5566D006F2678 /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC32C42BF5566D006F2678 /* UnitPicker.swift */; };
 		F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */; };
 		F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */; };
 		F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE03029D0E67200085D2B /* StartButton.swift */; };
+		F8E4602B2BF7CF10007FF950 /* ExerciseListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */; };
 		F8E8D72729CE0E0B00CB8B51 /* QuantityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */; };
+		F8FC049B2BF3D90500C3FE3A /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC049A2BF3D90500C3FE3A /* Workout.swift */; };
+		F8FC049D2BF3DA2100C3FE3A /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC049C2BF3DA2100C3FE3A /* Exercise.swift */; };
 		F8FDCA262BF0F1730050CA2C /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FDCA252BF0F1730050CA2C /* AudioProcessor.swift */; };
 /* End PBXBuildFile section */
 
@@ -185,14 +190,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F80D613728E7AFAD00FC0AA7 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
-		F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPersistenceManager.swift; sourceTree = "<group>"; };
-		F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
-		F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePersistenceManager.swift; sourceTree = "<group>"; };
+		F806E05B2BF57A5A00B3B421 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
+		F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListToolbar.swift; sourceTree = "<group>"; };
 		F815DE1428CE876D0006577D /* AmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPicker.swift; sourceTree = "<group>"; };
-		F815DE1628CE90900006577D /* ExerciseExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseExt.swift; sourceTree = "<group>"; };
 		F815DE1828CFAFF20006577D /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
-		F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWorkouts.swift; sourceTree = "<group>"; };
+		F81D66322BF55AD800C7037D /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		F81D66342BF55B2F00C7037D /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
+		F81D66362BF56F6A00C7037D /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		F8242C492BF6B564003C953C /* EditSheetIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetIcon.swift; sourceTree = "<group>"; };
+		F8242C4B2BF6B892003C953C /* NameSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSection.swift; sourceTree = "<group>"; };
+		F8242C4D2BF6BAE5003C953C /* NotificationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequency.swift; sourceTree = "<group>"; };
+		F8242C4F2BF6BED2003C953C /* SymbolPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPickerItem.swift; sourceTree = "<group>"; };
+		F8242C512BF6C3A2003C953C /* ColorPickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerItem.swift; sourceTree = "<group>"; };
 		F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
 		F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTracker.swift; sourceTree = "<group>"; };
 		F835309B28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenterDelegate.swift; sourceTree = "<group>"; };
@@ -201,11 +210,11 @@
 		F835315228AA8FCC00BF3CB2 /* UserNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifier.swift; sourceTree = "<group>"; };
 		F835315528AA90B100BF3CB2 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsDirectoryManager.swift; sourceTree = "<group>"; };
-		F835316528AC185500BF3CB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		F835316528AC185500BF3CB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = Views/ColorScheme.swift; sourceTree = "<group>"; };
 		F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListItem.swift; sourceTree = "<group>"; };
 		F835316928AC37C600BF3CB2 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditSheet.swift; sourceTree = "<group>"; };
-		F866C40B28D27234007BF8BF /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
+		F866C40B28D27234007BF8BF /* OptionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OptionsSection.swift; path = ../../picker/OptionsSection.swift; sourceTree = "<group>"; };
 		F8722A5528A01635005A2718 /* Distance and Interval Notfier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Distance and Interval Notfier.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8722A5828A01635005A2718 /* Distance_and_Interval_NotfierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierApp.swift; sourceTree = "<group>"; };
 		F8722A5A28A01635005A2718 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -220,12 +229,9 @@
 		F888AAC028AEC418007AB401 /* WorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutList.swift; sourceTree = "<group>"; };
 		F888AAC428AEC825007AB401 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		F888AAC828AECE7F007AB401 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F888AACB28B02576007AB401 /* WorkoutStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStorage.swift; sourceTree = "<group>"; };
-		F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workouts.xcdatamodel; sourceTree = "<group>"; };
 		F888AB1028B4FA13007AB401 /* WorkoutEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditSheet.swift; sourceTree = "<group>"; };
-		F888AB1228B65872007AB401 /* SymbolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPicker.swift; sourceTree = "<group>"; };
-		F888AB1428B65971007AB401 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		F888AB2028B96F7C007AB401 /* WorkoutExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExt.swift; sourceTree = "<group>"; };
+		F888AB1228B65872007AB401 /* SymbolSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SymbolSection.swift; path = ../../picker/SymbolSection.swift; sourceTree = "<group>"; };
+		F888AB1428B65971007AB401 /* ColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSection.swift; sourceTree = "<group>"; };
 		F889D2AD2BF14CD600EA19BC /* 20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 20.wav; sourceTree = "<group>"; };
 		F889D2D52BF167D700EA19BC /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F889D2D72BF1A78D00EA19BC /* NotificationSoundGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSoundGenerator.swift; sourceTree = "<group>"; };
@@ -340,12 +346,16 @@
 		F889D3B52BF22B7E00EA19BC /* 700.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 700.wav; sourceTree = "<group>"; };
 		F889D3BF2BF260EC00EA19BC /* minutes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = minutes.wav; sourceTree = "<group>"; };
 		F889D3C12BF2617100EA19BC /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequencyPicker.swift; sourceTree = "<group>"; };
+		F8B9224D29CE17AC0081C238 /* NotificationFrequencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationFrequencySection.swift; path = ../../picker/NotificationFrequencySection.swift; sourceTree = "<group>"; };
 		F8B9224F29CE3CE40081C238 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		F8CC32C42BF5566D006F2678 /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
 		F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceIcon.swift; sourceTree = "<group>"; };
 		F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTracker.swift; sourceTree = "<group>"; };
 		F8DCE03029D0E67200085D2B /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListState.swift; sourceTree = "<group>"; };
 		F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPicker.swift; sourceTree = "<group>"; };
+		F8FC049A2BF3D90500C3FE3A /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		F8FC049C2BF3DA2100C3FE3A /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		F8FDCA252BF0F1730050CA2C /* AudioProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,10 +387,21 @@
 		F821DBA028E7810E006ABA88 /* preview */ = {
 			isa = PBXGroup;
 			children = (
-				F821DBA128E78137006ABA88 /* PreviewWorkouts.swift */,
-				F80D613728E7AFAD00FC0AA7 /* Preview.swift */,
 			);
 			path = preview;
+			sourceTree = "<group>";
+		};
+		F8242C482BF6B4EB003C953C /* editSheet */ = {
+			isa = PBXGroup;
+			children = (
+				F8242C492BF6B564003C953C /* EditSheetIcon.swift */,
+				F8242C4B2BF6B892003C953C /* NameSection.swift */,
+				F866C40B28D27234007BF8BF /* OptionsSection.swift */,
+				F8B9224D29CE17AC0081C238 /* NotificationFrequencySection.swift */,
+				F888AB1228B65872007AB401 /* SymbolSection.swift */,
+				F888AB1428B65971007AB401 /* ColorSection.swift */,
+			);
+			path = editSheet;
 			sourceTree = "<group>";
 		};
 		F835315128AA8FBE00BF3CB2 /* userNotifications */ = {
@@ -403,8 +424,9 @@
 		F835316B28AD226000BF3CB2 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				F888AB2028B96F7C007AB401 /* WorkoutExt.swift */,
-				F815DE1628CE90900006577D /* ExerciseExt.swift */,
+				F8CC32C62BF55A21006F2678 /* enum */,
+				F8FC049A2BF3D90500C3FE3A /* Workout.swift */,
+				F8FC049C2BF3DA2100C3FE3A /* Exercise.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -412,15 +434,25 @@
 		F835316E28AD253C00BF3CB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F84B4FD42BF6AF2D00AE2EA1 /* toolbar */,
+				F8242C482BF6B4EB003C953C /* editSheet */,
 				F888AB1D28B80E78007AB401 /* picker */,
 				F888AAC728AEC83C007AB401 /* workout */,
 				F888AAC628AEC82A007AB401 /* exercise */,
-				F835316528AC185500BF3CB2 /* ColorScheme.swift */,
 				F815DE1828CFAFF20006577D /* AmountFormatter.swift */,
 				F8B9224F29CE3CE40081C238 /* Icon.swift */,
 				F8DCE03029D0E67200085D2B /* StartButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F84B4FD42BF6AF2D00AE2EA1 /* toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				F806E05B2BF57A5A00B3B421 /* DoneButton.swift */,
+				F81D66362BF56F6A00C7037D /* CancelButton.swift */,
+			);
+			path = toolbar;
 			sourceTree = "<group>";
 		};
 		F8722A4C28A01635005A2718 = {
@@ -450,7 +482,6 @@
 				F8FDCA242BF0F1560050CA2C /* audioProcessing */,
 				F8DCE02A29D0C6A200085D2B /* exerciseTracking */,
 				F821DBA028E7810E006ABA88 /* preview */,
-				F888AACA28B0255D007AB401 /* persistence */,
 				F835316E28AD253C00BF3CB2 /* Views */,
 				F835316B28AD226000BF3CB2 /* model */,
 				F835315428AA909E00BF3CB2 /* location */,
@@ -462,6 +493,7 @@
 				F8722A5E28A01636005A2718 /* Preview Content */,
 				F835309D28A9A18800BF3CB2 /* AppDelegate.swift */,
 				F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */,
+				F835316528AC185500BF3CB2 /* ColorScheme.swift */,
 				F888AAC828AECE7F007AB401 /* Constants.swift */,
 				F889D2D52BF167D700EA19BC /* Log.swift */,
 			);
@@ -500,6 +532,8 @@
 				F835316728AC1BF900BF3CB2 /* ExerciseListItem.swift */,
 				F835316F28AD257400BF3CB2 /* ExerciseEditSheet.swift */,
 				F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */,
+				F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */,
+				F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */,
 			);
 			path = exercise;
 			sourceTree = "<group>";
@@ -514,29 +548,26 @@
 			path = workout;
 			sourceTree = "<group>";
 		};
-		F888AACA28B0255D007AB401 /* persistence */ = {
-			isa = PBXGroup;
-			children = (
-				F888AACB28B02576007AB401 /* WorkoutStorage.swift */,
-				F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */,
-				F80D613928E7D47000FC0AA7 /* WorkoutPersistenceManager.swift */,
-				F80D613B28E7D59400FC0AA7 /* PersistenceHelper.swift */,
-				F80D613D28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift */,
-			);
-			path = persistence;
-			sourceTree = "<group>";
-		};
 		F888AB1D28B80E78007AB401 /* picker */ = {
 			isa = PBXGroup;
 			children = (
-				F888AB1428B65971007AB401 /* ColorPicker.swift */,
-				F888AB1228B65872007AB401 /* SymbolPicker.swift */,
-				F815DE1428CE876D0006577D /* AmountPicker.swift */,
-				F866C40B28D27234007BF8BF /* UnitPicker.swift */,
 				F8E8D72629CE0E0B00CB8B51 /* QuantityPicker.swift */,
-				F8B9224D29CE17AC0081C238 /* NotificationFrequencyPicker.swift */,
+				F8CC32C42BF5566D006F2678 /* UnitPicker.swift */,
+				F815DE1428CE876D0006577D /* AmountPicker.swift */,
+				F8242C4F2BF6BED2003C953C /* SymbolPickerItem.swift */,
+				F8242C512BF6C3A2003C953C /* ColorPickerItem.swift */,
 			);
 			path = picker;
+			sourceTree = "<group>";
+		};
+		F8CC32C62BF55A21006F2678 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				F81D66322BF55AD800C7037D /* Unit.swift */,
+				F81D66342BF55B2F00C7037D /* Quantity.swift */,
+				F8242C4D2BF6BAE5003C953C /* NotificationFrequency.swift */,
+			);
+			path = enum;
 			sourceTree = "<group>";
 		};
 		F8DCE02A29D0C6A200085D2B /* exerciseTracking */ = {
@@ -923,43 +954,48 @@
 				F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */,
 				F835315328AA8FCC00BF3CB2 /* UserNotifier.swift in Sources */,
 				F835309E28A9A18800BF3CB2 /* AppDelegate.swift in Sources */,
+				F8242C4A2BF6B564003C953C /* EditSheetIcon.swift in Sources */,
+				F81D66352BF55B2F00C7037D /* Quantity.swift in Sources */,
 				F888AB1128B4FA13007AB401 /* WorkoutEditSheet.swift in Sources */,
 				F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */,
+				F8FC049D2BF3DA2100C3FE3A /* Exercise.swift in Sources */,
 				F8B9225029CE3CE40081C238 /* Icon.swift in Sources */,
+				F8CC32C52BF5566D006F2678 /* UnitPicker.swift in Sources */,
 				F835315628AA90B100BF3CB2 /* LocationManagerDelegate.swift in Sources */,
 				F889D2D62BF167D700EA19BC /* Log.swift in Sources */,
-				F80D613A28E7D47000FC0AA7 /* WorkoutPersistenceManager.swift in Sources */,
-				F8B9224E29CE17AC0081C238 /* NotificationFrequencyPicker.swift in Sources */,
+				F8B9224E29CE17AC0081C238 /* NotificationFrequencySection.swift in Sources */,
 				F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */,
-				F888AACF28B02A2D007AB401 /* workouts.xcdatamodeld in Sources */,
-				F888AB1528B65971007AB401 /* ColorPicker.swift in Sources */,
-				F888AACC28B02576007AB401 /* WorkoutStorage.swift in Sources */,
+				F888AB1528B65971007AB401 /* ColorSection.swift in Sources */,
 				F835315A28AACC5700BF3CB2 /* SoundsDirectoryManager.swift in Sources */,
+				F8242C4E2BF6BAE5003C953C /* NotificationFrequency.swift in Sources */,
 				F889D3C22BF2617100EA19BC /* Converter.swift in Sources */,
+				F81D66332BF55AD800C7037D /* Unit.swift in Sources */,
+				F8242C4C2BF6B892003C953C /* NameSection.swift in Sources */,
 				F8722A5B28A01635005A2718 /* ContentView.swift in Sources */,
 				F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */,
+				F806E05C2BF57A5A00B3B421 /* DoneButton.swift in Sources */,
+				F8E4602B2BF7CF10007FF950 /* ExerciseListState.swift in Sources */,
 				F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */,
 				F8E8D72729CE0E0B00CB8B51 /* QuantityPicker.swift in Sources */,
 				F835316828AC1BF900BF3CB2 /* ExerciseListItem.swift in Sources */,
 				F8251EDF2BEFFB5500E33B1B /* DistanceTracker.swift in Sources */,
-				F888AB2128B96F7C007AB401 /* WorkoutExt.swift in Sources */,
+				F806E05E2BF697B400B3B421 /* ExerciseListToolbar.swift in Sources */,
+				F8FC049B2BF3D90500C3FE3A /* Workout.swift in Sources */,
 				F835316628AC185500BF3CB2 /* ColorScheme.swift in Sources */,
 				F8251EDD2BEFFA7B00E33B1B /* TimeTracker.swift in Sources */,
-				F80D613C28E7D59400FC0AA7 /* PersistenceHelper.swift in Sources */,
-				F888AB1328B65872007AB401 /* SymbolPicker.swift in Sources */,
+				F81D66372BF56F6A00C7037D /* CancelButton.swift in Sources */,
+				F888AB1328B65872007AB401 /* SymbolSection.swift in Sources */,
 				F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */,
-				F80D613E28E7D79C00FC0AA7 /* ExercisePersistenceManager.swift in Sources */,
 				F889D2D82BF1A78D00EA19BC /* NotificationSoundGenerator.swift in Sources */,
-				F815DE1728CE90900006577D /* ExerciseExt.swift in Sources */,
-				F866C40C28D27234007BF8BF /* UnitPicker.swift in Sources */,
+				F866C40C28D27234007BF8BF /* OptionsSection.swift in Sources */,
 				F8FDCA262BF0F1730050CA2C /* AudioProcessor.swift in Sources */,
-				F80D613828E7AFAD00FC0AA7 /* Preview.swift in Sources */,
 				F888AAC928AECE7F007AB401 /* Constants.swift in Sources */,
 				F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */,
 				F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */,
 				F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */,
+				F8242C502BF6BED2003C953C /* SymbolPickerItem.swift in Sources */,
 				F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */,
-				F821DBA228E78137006ABA88 /* PreviewWorkouts.swift in Sources */,
+				F8242C522BF6C3A2003C953C /* ColorPickerItem.swift in Sources */,
 				F835316A28AC37C600BF3CB2 /* ExerciseList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1200,7 +1236,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NQ733BXCZL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1220,7 +1256,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NQ733BXCZL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1239,7 +1275,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NQ733BXCZL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1258,7 +1294,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NQ733BXCZL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.stefan-berger.Distance-and-Interval-NotfierUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1309,19 +1345,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F888AACD28B02A2D007AB401 /* workouts.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */,
-			);
-			currentVersion = F888AACE28B02A2D007AB401 /* workouts.xcdatamodel */;
-			path = workouts.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F8722A4D28A01635005A2718 /* Project object */;
 }

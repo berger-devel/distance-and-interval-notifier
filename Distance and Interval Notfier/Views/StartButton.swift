@@ -65,21 +65,8 @@ struct StartButton: View {
             }
         }
         .padding([.bottom], 30)
-    }
-    
-    struct StartButton_Previews: PreviewProvider {
-        @State
-        private static var isRunning = true
-        @State
-        private static var isNotRunning = false
-        
-        static var previews: some View {
-            VStack {
-                StartButton(isRunning: $isNotRunning, start: {}, stop: {})
-                    .previewDevice("iPhone 13 Pro Max")
-                StartButton(isRunning: $isRunning, start: {}, stop: {})
-                    .previewDevice("iPhone 13 Pro Max")
-            }
-        }
+        .frame(maxWidth: .infinity, maxHeight: 140)
+        .background(ColorScheme.BACKGROUND_COLOR(colorScheme))
+        .ignoresSafeArea()
     }
 }

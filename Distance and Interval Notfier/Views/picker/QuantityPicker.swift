@@ -9,26 +9,22 @@ import Foundation
 import SwiftUI
 
 struct QuantityPicker: View {
-    @Binding
-    private var selectedQuantity: Quantity
     
-    init(selectedQuantity: Binding<Quantity>) {
-        self._selectedQuantity = selectedQuantity
+    @Binding
+    private var quantity: Quantity
+    
+    init(quantity: Binding<Quantity>) {
+        self._quantity = quantity
     }
     
     var body: some View {
-        Picker(selection: $selectedQuantity, label: Text("")) {
-            Text("Time").tag(Quantity.TIME)
-            Text("Distance").tag(Quantity.DISTANCE)
+        Picker(
+            selection: $quantity,
+            label: Text("")
+        ) {
+            Text(Quantity.TIME.description).tag(Quantity.TIME)
+            Text(Quantity.DISTANCE.description).tag(Quantity.DISTANCE)
         }
         .pickerStyle(.segmented)
-    }
-}
-
-enum Quantity: Int, CustomStringConvertible {
-    case TIME, DISTANCE
-    
-    var description: String {
-        return self == .TIME ? "time" : "distance"
     }
 }

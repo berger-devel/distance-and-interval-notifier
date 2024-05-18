@@ -13,7 +13,7 @@ class TimeTracker {
     
     private var isTracking = false
     
-    func track(exercise: UIExercise, onFinish: @escaping () -> (), onUpdate: @escaping(Double) -> ()) {
+    func track(exercise: Exercise, onFinish: @escaping () -> (), onUpdate: @escaping(Double) -> ()) {
         isTracking = true
         
         let notificationFrequency = exercise.notificationFrequency.rawValue + 1

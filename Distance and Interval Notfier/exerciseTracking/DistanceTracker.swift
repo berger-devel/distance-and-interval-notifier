@@ -18,7 +18,7 @@ class DistanceTracker {
     private var notificationDistance = 0.0
     private var notifications = 0.0
     
-    private var exercise = UIExercise()
+    private var exercise = Exercise()
     private var onFinish: () -> () = { }
     private var onUpdate: (Double) -> () = { _ in }
     
@@ -27,7 +27,7 @@ class DistanceTracker {
     
     private var isTracking = false
     
-    func track(exercise: UIExercise, onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {  
+    func track(exercise: Exercise, onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {  
         isTracking = true
         
         distance = 0.0
@@ -74,13 +74,7 @@ class DistanceTracker {
     }
     
     private func calculateNotificationDistance() {
-        notificationDistance = exercise.amount
-        if exercise.unit == .MINUTE {
-            notificationDistance *= 60.0
-        } else if exercise.unit == .HOUR {
-            notificationDistance *= 360
-        }
-        notificationDistance /= Double(exercise.notificationFrequency.rawValue + 1)
+        notificationDistance = exercise.amount / Double(exercise.notificationFrequency.rawValue + 1)
     }
     
     private func calculateMovingAverage() -> CLLocation {
@@ -97,7 +91,6 @@ class DistanceTracker {
     private func updateDistance(distance: Double) {
         self.distance += distance
         
-        Log.debug("distance: \(self.distance)")
         self.onUpdate(self.distance)
         
         if (self.distance >= self.notificationDistance * self.notifications) {

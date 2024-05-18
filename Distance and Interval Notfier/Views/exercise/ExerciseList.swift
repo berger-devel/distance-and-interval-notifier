@@ -7,13 +7,12 @@
 
 import Foundation
 import SwiftUI
-import os
-import CoreData
+import SwiftData
 
 struct ExerciseList: View {
     
-    @Environment(\.managedObjectContext)
-    private var context: NSManagedObjectContext
+    @Environment(\.modelContext)
+    private var modelContext
     
     @Environment(\.colorScheme)
     private var colorScheme
@@ -24,59 +23,20 @@ struct ExerciseList: View {
     @Environment(\.editMode)
     private var editMode
     
-    private let persistenceManager: ExercisePersistenceManager
-    private let workoutPersistenceManger: WorkoutPersistenceManager
+    let workout: Workout
     
-    var workout: Workout?
+    @Query
+    private var exercises: [Exercise] = []
     
-    @Binding
-    private var exercises: [UIExercise]
+    @StateObject
+    private var state = ExerciseListState()
     
-    @State
-    private var newWorkout = CurrentWorkout()
-    @State
-    private var currentWorkout: CurrentWorkout = CurrentWorkout()
-    
-    @State
-    private var selectedExercise = UIExercise()
-    
-    @State
-    private var exerciseTracker = ExerciseTracker()
-    
-    private let formerValues: [UUID : UIExercise]
-    
-    @Binding
-    private var isNewWorkoutSheetPresented: Bool
-    @State
-    private var isWorkoutEditSheetPresented = false
-    
-    @State
-    private var isEditSheetPresented = false
-    
-    @State
-    private var isCreating = false
-    
-    @State
-    private var isRunning = false
-    
-    @State
-    private var progress = 0.0
-    
-    init(workout: Workout, exercises: Binding<[UIExercise]>, formerValues: [UUID : UIExercise]) {
+    init(workout: Workout) {
         self.workout = workout
-        persistenceManager = ExercisePersistenceManager()
-        workoutPersistenceManger = WorkoutPersistenceManager()
-        self._exercises = exercises
-        self.formerValues = formerValues
-        self._isNewWorkoutSheetPresented = Binding(get: { false }, set: { _ in })
-    }
-    
-    init(_ isNewWorkoutSheetPresented: Binding<Bool>) {
-        persistenceManager = ExercisePersistenceManager()
-        workoutPersistenceManger = WorkoutPersistenceManager()
-        self._exercises = Binding(get: { [] }, set: { _ in })
-        self.formerValues = [:]
-        self._isNewWorkoutSheetPresented = isNewWorkoutSheetPresented
+        let workoutId = workout.persistentModelID
+        _exercises = Query(filter: #Predicate<Exercise> { exercise in
+            exercise.workout?.persistentModelID == workoutId
+        }, sort: [SortDescriptor(\.sortIndex)] )
     }
     
     var body: some View {
@@ -85,236 +45,71 @@ struct ExerciseList: View {
                 ZStack {
                     ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
                     List {
-                        ForEach(exercises, id: \.self) { exercise in
+                        ForEach(exercises) { exercise in
                             Button(action: {
-                                isCreating = false
-                                isEditSheetPresented = true
-                                selectedExercise = exercise
+                                state.selectedExercise = exercise
+                                state.editedExercise = Exercise()
+                                state.editedExercise.copyValues(from: exercise)
+                                state.isEditSheetPresented = true
                             }) {
-                                ExerciseListItem(
-                                    Binding(get: { exercise }, set: { _ in }),
-                                    Binding(get: { progress }, set: { _ in })
-                                )
+                                ExerciseListItem(exercise, $state.progress)
                             }
-                            .foregroundColor(ColorScheme.LIST_ITEM_TEXT_COLOR)
                         }
                         .onDelete { indexSet in
-                            do {
-                                guard let workout = workout else {
-                                    throw OptionalError.from("workout")
-                                }
-                                
-                                if let index = indexSet.first {
-                                    guard let exercise = workout.exercises?[index] as? Exercise else {
-                                        throw OptionalError.from("exercise")
-                                    }
-                                    
-                                    persistenceManager.delete(exercise, of: workout, context)
-                                }
-                            } catch {
-                                Log.error("Error deleting exercise", error)
+                            if let index = indexSet.first {
+                                modelContext.delete(exercises[index])
                             }
                         }
                         .onMove(perform: { indexSet, newPosition in
-                            do {
-                                guard let workout = workout else {
-                                    throw OptionalError.from("workout")
-                                }
-                                
-                                persistenceManager.move(indexSet, of: workout, to: newPosition, context)
-                            } catch {
-                                Log.error("Error moving exercise", error)
-                            }
+                            var reorderedExercises = exercises
+                            reorderedExercises.move(fromOffsets: indexSet, toOffset: newPosition)
+                            reorderedExercises.enumerated().forEach({ index, exercise in
+                                exercise.sortIndex = index
+                            })
                         })
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            HStack {
-                                if let workout = workout {
-                                    Icon(sfSymbol: workout.sfSymbol ?? "xmark", color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)), small: true)
-                                    Text(workout.name ?? "Error")
-                                        .lineLimit(1)
-                                }
-                            }
-                        }
-                        
-                        ToolbarItem {
-                            Button(action: {
-                                do {
-                                    guard let workout = workout else {
-                                        throw OptionalError.from("workout")
-                                    }
-                                    
-                                    currentWorkout = CurrentWorkout.from(workout)
-                                    isWorkoutEditSheetPresented = true
-                                } catch {
-                                    Log.error("Error presenting workout edit sheet", error)
-                                }
-                            }) {
-                                Image(systemName: "square.and.pencil")
-                            }
-                        }
-                        
-                        ToolbarItem {
-                            EditButton()
-                        }
-                        
-                        ToolbarItem {
-                            HStack {
-                                Button(action: {
-                                    selectedExercise = UIExercise()
-                                    isCreating = true
-                                    isEditSheetPresented = true
-                                }) {
-                                    Image(systemName: "plus")
-                                }
-                            }
-                        }
+                        ExerciseListToolbar(workout: workout, onAddExercise: {
+                            state.editedExercise = Exercise()
+                            state.isCreateSheetPresented = true
+                        }, onEditWorkout: {
+                            state.editedWorkout.copyValues(from: workout)
+                            state.isWorkoutEditSheetPresented = true
+                        })
                     }
-                    .sheet(isPresented: $isEditSheetPresented) {
-                        NavigationStack {
-                            ExerciseEditSheet($selectedExercise, formerValues: formerValues[selectedExercise.exerciseId])
-                                .toolbar {
-                                    ToolbarItem(placement: .confirmationAction) {
-                                        Button(action: {
-                                            saveExercise()
-                                            isEditSheetPresented = false
-                                        }) {
-                                            Text("Done")
-                                        }
-                                    }
-                                    
-                                    ToolbarItem(placement: .cancellationAction) {
-                                        Button(action: {
-                                            isEditSheetPresented = false
-                                        }) {
-                                            Text("Cancel")
-                                        }
-                                    }
-                                }
-                        }
+                    .sheet(isPresented: $state.isCreateSheetPresented) {
+                        ExerciseEditSheet($state.editedExercise, onDone: {
+                            state.isCreateSheetPresented = false
+                            modelContext.insert(state.editedExercise)
+                            state.editedExercise.workout = workout
+                        }, onCancel: {
+                            state.isCreateSheetPresented = false
+                        })
                     }
-                    .sheet(isPresented: $isWorkoutEditSheetPresented) {
-                        WorkoutEditSheet($currentWorkout, $isWorkoutEditSheetPresented) {
-                            do {
-                                guard let workout = workout else {
-                                    throw OptionalError.from("workout")
-                                }
-                                
-                                workoutPersistenceManger.updateWorkout(workout, from: currentWorkout, context)
-                            } catch {
-                                Log.error("Error finishing workout update", error)
-                            }
-                        }
+                    .sheet(isPresented: $state.isEditSheetPresented) {
+                        ExerciseEditSheet($state.editedExercise, onDone: {
+                            state.isEditSheetPresented = false
+                            state.selectedExercise.copyValues(from: state.editedExercise)
+                        }, onCancel: {
+                            state.isEditSheetPresented = false
+                        })
                     }
-                    .sheet(isPresented: $isNewWorkoutSheetPresented) {
-                        WorkoutEditSheet($newWorkout, $isNewWorkoutSheetPresented) {
-                            workoutPersistenceManger.addWorkout(newWorkout, context)
-                        }
+                    .sheet(isPresented: $state.isWorkoutEditSheetPresented) {
+                        WorkoutEditSheet(Binding<Workout> (get: { state.editedWorkout }, set: { _ in }), onDone: {
+                            state.isWorkoutEditSheetPresented = false
+                            workout.copyValues(from: state.editedWorkout)
+                        }, onCancel: {
+                            state.isWorkoutEditSheetPresented = false
+                        })
                     }
                 }
                 
-                if (workout?.exercises ?? []).count > 0 {
-                    VStack {
-                        Spacer()
-                        StartButton(isRunning: $isRunning, start: start, stop: stop)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: 140)
-                    .background(ColorScheme.BACKGROUND_COLOR(colorScheme))
-                    .ignoresSafeArea()
+                if (workout.exercises).count > 0 {
+                    StartButton(isRunning: $state.isRunning, start: { state.start(exercises) }, stop: state.stop)
                 }
             }
             .ignoresSafeArea(.container, edges: [.bottom])
         }
-    }
-    
-    func saveExercise() {
-        do {
-            guard let workout = workout else {
-                throw OptionalError.from("workout")
-            }
-            
-            if isCreating {
-                persistenceManager.add(selectedExercise, to: workout, context)
-            } else {
-                if selectedExercise.unit == formerValues[selectedExercise.exerciseId]?.unit {
-                    selectedExercise.amount = selectedExercise.changedAmount
-                }
-                persistenceManager.update(selectedExercise, of: workout, context)
-            }
-        } catch {
-            Log.error("Error saving exercise", error)
-        }
-    }
-    
-    func start() {
-        self.isRunning = true
-        exerciseTracker.start(exercises, onFinish: {
-            isRunning = false
-        }, onUpdate: { progress in
-            self.progress = progress
-        })
-    }
-    
-    func stop() {
-        exerciseTracker.stop()
-        isRunning = false
-    }
-    
-    func onExerciseFinish() {
-        isRunning = false
-    }
-}
-
-struct ExerciseList_Previews: PreviewProvider {
-    private static let workoutStorage = WorkoutStorage.preview
-    private static let workout = {
-        let context = workoutStorage.persistentContainer.viewContext
-        let workout = Workout.from(CurrentWorkout(name: "A Workout", sfSymbol: "hands.clap", colorIndex: 0), context: context)
-        for _ in 0 ... 2 {
-            Exercise(context: context).workout = workout
-        }
-        return workout
-    }()
-    
-    static var previews: some View {
-        ExerciseList(workout: workout, exercises: Binding(
-            get: {
-                do {
-                    guard let exercises = workout.exercises else {
-                        throw OptionalError.from("exercises")
-                    }
-                    
-                    return try exercises.map({ exercise in
-                        guard let exercise = exercise as? Exercise else {
-                            throw OptionalError.from("exercise")
-                        }
-                        
-                        return UIExercise(from: exercise)
-                    })
-                } catch {
-                    Log.error("Could not get exercises", error)
-                    return []
-                }
-            },
-            set: { _ in }
-        ), formerValues: {
-            do {
-                guard let exercises = workout.exercises?.array as? [Exercise] else {
-                    throw OptionalError.from("exercises")
-                }
-                
-                return try exercises.reduce(into: [:], { dict, exercise in
-                    guard let id = exercise.id else {
-                        throw OptionalError.from("id")
-                    }
-                    
-                    dict[id] = UIExercise(from: exercise) })
-            } catch {
-                Log.error("Could not take former values", error)
-                return [:]
-            }
-        }())
     }
 }

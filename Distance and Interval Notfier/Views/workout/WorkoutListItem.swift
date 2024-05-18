@@ -11,45 +11,32 @@ import CoreData
 
 struct WorkoutListItem: View {
     
-    @ObservedObject
+    @State
     var workout: Workout
     
-    var body: some View {
-            HStack(spacing: Constants.WORKOUT_LIST_SPACING) {
-                Icon(sfSymbol: workout.sfSymbol ?? "calendar", color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)))
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(workout.name ?? "NIL")
-                            .fontWeight(Constants.BOLD)
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Text("\((workout.exercises ?? []).count) exercises")
-                        Spacer()
-                    }
-                }
-            }
-            .frame(maxHeight: Constants.WORKOUT_LIST_ITEM_HEIGHT)
+    init(workout: Workout) {
+        self.workout = workout
     }
-}
-
-struct WorkoutListItemPreview: PreviewProvider {
     
-    private static var workouts: [Workout] = {
-        do {
-            return try WorkoutStorage.preview.persistentContainer.viewContext.fetch(Workout.fetchRequest())
-        } catch {
-            return []
+    var body: some View {
+        HStack(spacing: Constants.WORKOUT_LIST_SPACING) {
+            Icon(sfSymbol: workout.sfSymbol, color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)))
+            VStack(alignment: .leading) {
+                Spacer()
+                HStack {
+                    Text(workout.name)
+                        .fontWeight(Constants.BOLD)
+                    Spacer()
+                }
+                
+                HStack {
+                    Text("\(workout.exercises.count) exercises")
+                    Spacer()
+                }
+                
+                Spacer()
+            }
         }
-    }()
-    
-    static var previews: some View {
-        if let workout = workouts.first {
-            WorkoutListItem(workout: workout)
-                .previewLayout(.sizeThatFits)
-        }
+        .frame(maxHeight: Constants.WORKOUT_LIST_ITEM_HEIGHT)
     }
 }

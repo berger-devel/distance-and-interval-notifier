@@ -21,11 +21,11 @@ class ExerciseTracker {
     
     private var distance: Double = 0.0
     
-    private var exerciseIterator: IndexingIterator<[UIExercise]>?
+    private var exerciseIterator: IndexingIterator<[Exercise]>?
     private var onFinish: () -> () = { }
     private var onUpdate: (Double) -> () = { _ in }
     
-    func start(_ exercises: [UIExercise], onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {
+    func start(_ exercises: [Exercise], onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {
         userNotifier.cancel()
         
         Task {

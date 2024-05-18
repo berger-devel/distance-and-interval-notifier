@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Distance_and_Interval_NotfierApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    private let workoutStorage = WorkoutStorage.shared
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, workoutStorage.persistentContainer.viewContext)
         }
+        .modelContainer(for: [Workout.self, Exercise.self])
     }
 }
