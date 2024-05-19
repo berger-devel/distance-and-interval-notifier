@@ -59,7 +59,7 @@ class DistanceTracker {
                         lastMovingAvgLocation = calculateMovingAverage()
                     } else  if lastLocations.count > 3 {
                         let avgLocation = calculateMovingAverage()
-                        updateDistance(distance: avgLocation.distance(from: lastMovingAvgLocation))
+                        updateDistance(exerciseName: exercise.appearance.name, distance: avgLocation.distance(from: lastMovingAvgLocation))
                         lastMovingAvgLocation = avgLocation
                     }
                 }
@@ -74,7 +74,7 @@ class DistanceTracker {
     }
     
     private func calculateNotificationDistance() {
-        notificationDistance = exercise.amount / Double(exercise.notificationFrequency.rawValue + 1)
+        notificationDistance = (exercise.unit == .METER ? exercise.amount : exercise.amount * 1000) / Double(exercise.notificationFrequency.rawValue + 1)
     }
     
     private func calculateMovingAverage() -> CLLocation {
@@ -88,21 +88,32 @@ class DistanceTracker {
         return CLLocation(latitude: clLocation.coordinate.latitude / 3, longitude: clLocation.coordinate.longitude / 3)
     }
     
-    private func updateDistance(distance: Double) {
+    private func updateDistance(exerciseName: String, distance: Double) {
         self.distance += distance
+        let notificationAmount = self.notificationDistance * self.notifications
         
-        self.onUpdate(self.distance)
-        
-        if (self.distance >= self.notificationDistance * self.notifications) {
+        if (self.distance >= notificationAmount) {
             Task {
-                await self.userNotifier.notify(amount: self.distance, unit: .METER)
+                let meters: Double
+                let kilometers: Double?
+                if notificationAmount < 1000 {
+                    meters = notificationAmount
+                    kilometers = nil
+                } else {
+                    meters = notificationAmount.truncatingRemainder(dividingBy: 1000)
+                    kilometers = Double(Int(notificationAmount / 1000))
+                }
+                await self.userNotifier.notify(title: exerciseName, meters: meters, kilometers: kilometers)
             }
             self.notifications += 1.0
         }
         
-        if (self.distance >= exercise.amount) {
+        if (self.distance >= (exercise.unit == .METER ? exercise.amount : exercise.amount * 1000)) {
+            self.onUpdate(exercise.amount)
             self.stop()
             onFinish()
+        } else {
+            self.onUpdate(self.distance)
         }
     }
 }

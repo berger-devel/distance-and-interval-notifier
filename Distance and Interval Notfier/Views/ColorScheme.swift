@@ -15,9 +15,10 @@ struct ColorScheme {
     static func ICON_COLOR(_ index: Int) -> Color { AVAILABLE_COLORS[Int(index)] }
     static var ICON_FOREGROUND_COLOR = { colorScheme in colorScheme == SwiftUI.ColorScheme.light ? Color.white : Color(.systemGray5) }
     
+    static var REPETITION_ICON_COLOR = Color(.systemRed)
     static var QUANTITY_ICON_GREY = Color(.systemYellow)
-    static var TIME_ICON_COLOR = STARTBUTTON_COLOR
-    static var DISTANCE_ICON_COLOR1 = Color(red: 53/255, green: 199/255, blue: 98/255)
+    static var DISTANCE_ICON_COLOR = Color(.systemGreen)
+    static var NOTIFICATION_ICON_COLOR = Color(.systemBlue)
     
     static var BACKGROUND_COLOR = { colorScheme in colorScheme == SwiftUI.ColorScheme.light ? Color(.systemGray6) : Color(.black) }
     

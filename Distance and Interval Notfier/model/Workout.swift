@@ -11,26 +11,21 @@ import SwiftData
 @Model
 class Workout {
     
-    var name: String 
-    var sfSymbol: String
-    var colorIndex: Int
+    @Attribute
+    var appearance: Appearance
+    
+    var sortIndex: Int
     
     @Relationship(deleteRule: .cascade, inverse: \Exercise.workout)
     var exercises: [Exercise]
     
-    var sortIndex: Int
-    
     init() {
-        name = "New Workout"
-        sfSymbol = "bicycle"
-        colorIndex = 0
-        exercises = []
+        appearance = Appearance(name: "New Workout", sfSymbol: "bicycle", colorIndex: 0)
         sortIndex = 0
+        exercises = []
     }
     
     func copyValues(from workout: Workout) {
-        name = workout.name
-        sfSymbol = workout.sfSymbol
-        colorIndex = workout.colorIndex
+        appearance = workout.appearance
     }
 }

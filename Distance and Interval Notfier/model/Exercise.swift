@@ -11,36 +11,35 @@ import SwiftData
 @Model
 class Exercise {
     
-    var name: String
+    var appearance: Appearance
+    
+    var sortIndex: Int
+    
     var amount: Double
     var unit: Unit
     var notificationFrequency: NotificationFrequency
     var announceBothQuantities: Bool
-    var sfSymbol: String
-    var colorIndex: Int
+    var repetitionFrequency: Int
     
     var workout: Workout?
     
-    var sortIndex: Int
-    
     init() {
-        name = "New Exercise"
+        appearance = Appearance(name: "New Exercise", sfSymbol: "bicycle", colorIndex: 0)
+        
+        sortIndex = 0
         amount = Constants.TIME_AMOUNTS_SECOND[0]
         unit = .SECOND
         notificationFrequency = .ONCE
         announceBothQuantities = false
-        sfSymbol = "bicycle"
-        colorIndex = 0
-        sortIndex = 0
+        repetitionFrequency = Constants.REPETITION_AMOUNTS[0]
     }
     
     func copyValues(from exercise: Exercise) {
-        name = exercise.name
+        appearance = exercise.appearance
         amount = exercise.amount
         unit = exercise.unit
         notificationFrequency = exercise.notificationFrequency
         announceBothQuantities = exercise.announceBothQuantities
-        sfSymbol = exercise.sfSymbol
-        colorIndex = exercise.colorIndex
+        repetitionFrequency = exercise.repetitionFrequency
     }
 }

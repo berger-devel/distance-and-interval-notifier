@@ -22,18 +22,17 @@ struct NotificationFrequencySection: View {
     
     var body: some View {
         Section("Notifications") {
+            Picker(selection: $exercise.notificationFrequency, label: Text("")) {
+                ForEach(NotificationFrequency.allCases, id: \.self) { notificationFrequency in
+                    Text(String(describing: notificationFrequency)).tag(notificationFrequency)
+                }
+            }
+            .pickerStyle(.wheel)
+
             Toggle(isOn: $exercise.announceBothQuantities) {
-                Text("Also announce \($exercise.unit.quantity.wrappedValue == .TIME ? Quantity.DISTANCE.description.lowercased() : Quantity.TIME.description.lowercased() )")
+                Text("Also announce \($exercise.unit.quantity.wrappedValue == .TIME ? String(describing: Quantity.DISTANCE).lowercased() : String(describing: Quantity.TIME).lowercased() )")
             }
         }
         .listRowBackground(ColorScheme.LIST_ROW_BACKGROUND(colorScheme))
-        Picker(selection: $exercise.notificationFrequency, label: Text("")) {
-            Text(NotificationFrequency.ONCE.description).tag(NotificationFrequency.ONCE)
-            Text(NotificationFrequency.TWICE.description).tag(NotificationFrequency.TWICE)
-            Text(NotificationFrequency.THREE.description).tag(NotificationFrequency.THREE)
-            Text(NotificationFrequency.FOUR.description).tag(NotificationFrequency.FOUR)
-            Text(NotificationFrequency.FIVE.description).tag(NotificationFrequency.FIVE)
-        }
-        .pickerStyle(.wheel)
     }
 }

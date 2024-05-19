@@ -34,7 +34,8 @@ struct ColorSection: View {
                     ForEach(0 ..< rowCount, id: \.self) { lineIndex in
                         HStack(spacing: 0) {
                             ForEach(0 ..< min(itemCountPerRow, ColorScheme.ICON_COLOR_COUNT - lineIndex * itemCountPerRow), id: \.self) { index in
-                                ColorPickerItem(colorIndex: lineIndex * itemCountPerRow + index, selected: selectedColorIndex)
+                                let colorIndex = lineIndex * itemCountPerRow + index
+                                ColorPickerItem(colorIndex: colorIndex, selected: colorIndex == selectedColorIndex)
                                     .onTapGesture {
                                         selectedColorIndex = lineIndex * itemCountPerRow + index
                                     }

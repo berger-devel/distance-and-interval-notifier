@@ -17,12 +17,12 @@ struct ExerciseEditSheet: View {
     private let onCancel: () -> ()
     
     @Binding
-    private var selectedExercise: Exercise
+    private var exercise: Exercise
     
-    init(_ selectedExercise: Binding<Exercise>, onDone: @escaping () -> (), onCancel: @escaping () -> ()) {
+    init(_ exercise: Binding<Exercise>, onDone: @escaping () -> (), onCancel: @escaping () -> ()) {
         self.onDone = onDone
         self.onCancel = onCancel
-        self._selectedExercise = selectedExercise
+        self._exercise = exercise
     }
     
     var body: some View {        
@@ -32,12 +32,12 @@ struct ExerciseEditSheet: View {
                     ColorScheme.BACKGROUND_COLOR(colorScheme)
                         .ignoresSafeArea(.all)
                     Form {
-                        EditSheetIcon(sfSymbol: selectedExercise.sfSymbol, colorIndex: selectedExercise.colorIndex)
-                        NameSection(name: $selectedExercise.name)
-                        OptionsSection(exercise: $selectedExercise)
-                        NotificationFrequencySection(exercise: $selectedExercise)
-                        SymbolSection(sfSymbol: $selectedExercise.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
-                        ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: $selectedExercise.colorIndex)
+                        EditSheetIcon(sfSymbol: exercise.appearance.sfSymbol, colorIndex: exercise.appearance.colorIndex)
+                        NameSection(name: $exercise.appearance.name)
+                        OptionsSection(exercise: $exercise)
+                        NotificationFrequencySection(exercise: $exercise)
+                        SymbolSection(sfSymbol: $exercise.appearance.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
+                        ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: $exercise.appearance.colorIndex)
                     }
                 }
             }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NotificationFrequency: Int, CustomStringConvertible, Codable {
+enum NotificationFrequency: Int, CustomStringConvertible, CaseIterable, Codable {
     static func from(_ ordinal: Int) -> NotificationFrequency {
         do {
             guard let notificationFrequency = NotificationFrequency(rawValue: ordinal) else {

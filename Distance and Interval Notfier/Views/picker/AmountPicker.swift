@@ -14,7 +14,6 @@ struct AmountPicker: View {
     private var colorScheme
     
     private let unit: Unit
-    private let amountFormatter = AmountFormatter()
     
     @Binding
     private var amount: Double
@@ -38,7 +37,7 @@ struct AmountPicker: View {
                 label: Text("")
             ) {
                 ForEach(Constants.AVAILABLE_AMOUNTS(unit), id: \.self) { amount in
-                    Text(self.amountFormatter.string(from: amount))
+                    Text(String(Int(amount)))
                 }
             }
             .pickerStyle(.wheel)

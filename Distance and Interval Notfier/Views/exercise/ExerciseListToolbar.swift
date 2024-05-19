@@ -24,8 +24,8 @@ struct ExerciseListToolbar: ToolbarContent {
     var body: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             HStack {
-                Icon(sfSymbol: workout.sfSymbol, color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)), small: true)
-                Text(workout.name)
+                Icon(sfSymbol: workout.appearance.sfSymbol, color: ColorScheme.ICON_COLOR(Int(workout.appearance.colorIndex)), small: true)
+                Text(workout.appearance.name)
                     .lineLimit(1)
             }
         }

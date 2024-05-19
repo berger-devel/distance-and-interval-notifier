@@ -29,10 +29,10 @@ struct WorkoutEditSheet: View {
         NavigationStack {
             GeometryReader { geometry in
                 Form {
-                    EditSheetIcon(sfSymbol: workout.sfSymbol, colorIndex: workout.colorIndex)
-                    NameSection(name: $workout.name)
-                    SymbolSection(sfSymbol: $workout.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
-                    ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: $workout.colorIndex)
+                    EditSheetIcon(sfSymbol: workout.appearance.sfSymbol, colorIndex: workout.appearance.colorIndex)
+                    NameSection(name: $workout.appearance.name)
+                    SymbolSection(sfSymbol: $workout.appearance.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
+                    ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: $workout.appearance.colorIndex)
                 }
             }
             .toolbar {

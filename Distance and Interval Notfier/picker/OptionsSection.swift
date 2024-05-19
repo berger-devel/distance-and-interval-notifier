@@ -36,6 +36,17 @@ struct OptionsSection: View {
                 AmountPicker(amount: $exercise.amount, unit: exercise.unit, selectedQuantity: $selectedQuantity)
                 Spacer()
             }
+        
+            HStack {
+                Picker(selection: $exercise.repetitionFrequency, label: Text("Perform")) {
+                    ForEach(Constants.REPETITION_AMOUNTS, id: \.self) { repetitionFrequency in
+                        Text(String(describing: repetitionFrequency)).tag(repetitionFrequency)
+                    }
+                }
+                .pickerStyle(.automatic)
+                Text("times")
+            }
+            
             .listRowBackground(ColorScheme.LIST_ROW_BACKGROUND(colorScheme))
             .onChange(of: exercise.unit, initial: false) {
                 exercise.amount = Constants.DEFAULT_AMOUNT(exercise.unit)

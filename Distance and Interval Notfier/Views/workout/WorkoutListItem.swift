@@ -20,11 +20,11 @@ struct WorkoutListItem: View {
     
     var body: some View {
         HStack(spacing: Constants.WORKOUT_LIST_SPACING) {
-            Icon(sfSymbol: workout.sfSymbol, color: ColorScheme.ICON_COLOR(Int(workout.colorIndex)))
+            Icon(sfSymbol: workout.appearance.sfSymbol, color: ColorScheme.ICON_COLOR(Int(workout.appearance.colorIndex)))
             VStack(alignment: .leading) {
                 Spacer()
                 HStack {
-                    Text(workout.name)
+                    Text(workout.appearance.name)
                         .fontWeight(Constants.BOLD)
                     Spacer()
                 }

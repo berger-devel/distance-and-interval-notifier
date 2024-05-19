@@ -72,13 +72,10 @@ class AudioProcessor {
         assetExport?.outputURL = fileDestinationUrl
         
         await assetExport?.export()
-        switch assetExport?.status{
-        case  .failed:
+        if assetExport?.status == .failed {
             Log.error("Error exporting audio file", assetExport?.error)
-        case .cancelled:
+        } else if assetExport?.status == .cancelled {
             Log.error("Audio file export cancelled", assetExport?.error)
-        default:
-            Log.debug("Created notification audio file")
         }
     }
 }

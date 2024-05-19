@@ -37,10 +37,9 @@ struct Constants {
     
     static let DISTANCE_AMOUNTS_METER: [Double] = Array([10, 20] + stride(from: 50, through: 500, by: 50)) + Array(stride(from: 1000, through: 3000, by: 100))
     static let DISTANCE_AMOUNTS_KILOMETER: [Double] = Array(stride(from: 1.0, through: 20.0, by: 1.0)) + Array(stride(from:25.0, through: 40.0, by: 5.0)) + [42.195, 45.0, 50.0]
-    static let DISTANCE_AMOUNTS_MILES: [Double] = Array(stride(from: 1.0, through: 10.0, by: 1)) + [15.0, 25.0, 26.219, 30.0]
     
     static let TIME_AMOUNTS_SECOND: [Double] = Array(stride(from: 10.0, through: 180.0, by: 10.0))
-    static let TIME_AMOUNTS_MINUTE: [Double] = Array(stride(from: 1.0, through: 30.0, by: 1.0)) + Array(stride(from: 40.0, through: 60.0, by: 10.0)) + Array(stride(from: 90.0, through: 180.0, by: 30.0))
+    static let TIME_AMOUNTS_MINUTE: [Double] = Array(stride(from: 1.0, through: 30.0, by: 1.0)) + Array(stride(from: 35, through: 60.0, by: 5.0)) + Array(stride(from: 90.0, through: 180.0, by: 30.0))
     static let TIME_AMOUNTS_HOUR: [Double] = Array(stride(from: 1.0, through: 5.0, by: 1.0))
     
     static let AVAILABLE_AMOUNTS: (Unit) -> [Double] = { unit in
@@ -55,8 +54,6 @@ struct Constants {
             return Constants.DISTANCE_AMOUNTS_METER
         case .KILOMETER:
             return Constants.DISTANCE_AMOUNTS_KILOMETER
-        case .MILE:
-            return Constants.DISTANCE_AMOUNTS_MILES
         }
     }
     
@@ -72,10 +69,10 @@ struct Constants {
             return Constants.DISTANCE_AMOUNTS_METER[0]
         case .KILOMETER:
             return Constants.DISTANCE_AMOUNTS_KILOMETER[0]
-        case .MILE:
-            return Constants.DISTANCE_AMOUNTS_MILES[0]
         }
     }
+    
+    static let REPETITION_AMOUNTS: [Int] = Array(stride(from: 1, through: 10, by: 1)) + Array(stride(from: 15, through: 50, by: 5)) + Array(stride(from: 60, through: 100, by: 10))
     
     static let WORKOUT_LIST_ITEM_CORNER_RADIUS = 10.0
     static let WORKOUT_LIST_ITEM_HEIGHT = 72.5

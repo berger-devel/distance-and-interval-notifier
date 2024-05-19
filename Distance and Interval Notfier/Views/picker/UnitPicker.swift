@@ -26,13 +26,12 @@ struct UnitPicker: View {
             label: Text("")
         ) {
             if(selectedQuantity == .TIME) {
-                Text(Unit.SECOND.description).tag(Unit.SECOND)
-                Text(Unit.MINUTE.description).tag(Unit.MINUTE)
-                Text(Unit.HOUR.description).tag(Unit.HOUR)
+                Text(String(describing: Unit.SECOND)).tag(Unit.SECOND)
+                Text(String(describing: Unit.MINUTE)).tag(Unit.MINUTE)
+                Text(String(describing: Unit.HOUR)).tag(Unit.HOUR)
             } else {
-                Text(Unit.METER.description).tag(Unit.METER)
-                Text(Unit.KILOMETER.description).tag(Unit.KILOMETER)
-                Text(Unit.MILE.description).tag(Unit.MILE)
+                Text(String(describing: Unit.METER)).tag(Unit.METER)
+                Text(String(describing: Unit.KILOMETER)).tag(Unit.KILOMETER)
             }
         }
         .pickerStyle(.segmented)

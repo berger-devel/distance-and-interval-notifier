@@ -22,7 +22,7 @@ struct AnnounceIcon: View {
                 .font(.system(size: 20))
         case .DISTANCE:
             Image(systemName: "point.topleft.down.curvedto.point.filled.bottomright.up")
-                .foregroundStyle(Color(.systemGreen))
+                .foregroundStyle(ColorScheme.DISTANCE_ICON_COLOR)
                 .font(.system(size: 20))
         }
     }

@@ -10,7 +10,6 @@
 		F806E05C2BF57A5A00B3B421 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806E05B2BF57A5A00B3B421 /* DoneButton.swift */; };
 		F806E05E2BF697B400B3B421 /* ExerciseListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */; };
 		F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1428CE876D0006577D /* AmountPicker.swift */; };
-		F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815DE1828CFAFF20006577D /* AmountFormatter.swift */; };
 		F81D66332BF55AD800C7037D /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66322BF55AD800C7037D /* Unit.swift */; };
 		F81D66352BF55B2F00C7037D /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66342BF55B2F00C7037D /* Quantity.swift */; };
 		F81D66372BF56F6A00C7037D /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D66362BF56F6A00C7037D /* CancelButton.swift */; };
@@ -163,6 +162,12 @@
 		F8B9225029CE3CE40081C238 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224F29CE3CE40081C238 /* Icon.swift */; };
 		F8CC32C52BF5566D006F2678 /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC32C42BF5566D006F2678 /* UnitPicker.swift */; };
 		F8CD82FD29D4B3CC00B82BDF /* AnnounceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */; };
+		F8CEC5372BF9F5350076B7F2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CEC5362BF9F5350076B7F2 /* Appearance.swift */; };
+		F8CEC5392BFA14CD0076B7F2 /* kilometers.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC5382BFA14CD0076B7F2 /* kilometers.wav */; };
+		F8CEC53C2BFA36980076B7F2 /* kilometer.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC53A2BFA36980076B7F2 /* kilometer.wav */; };
+		F8CEC53D2BFA36980076B7F2 /* hour.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC53B2BFA36980076B7F2 /* hour.wav */; };
+		F8CEC53F2BFA36B60076B7F2 /* hours.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC53E2BFA36B60076B7F2 /* hours.wav */; };
+		F8CEC5412BFA3A430076B7F2 /* minute.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC5402BFA3A430076B7F2 /* minute.wav */; };
 		F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */; };
 		F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE03029D0E67200085D2B /* StartButton.swift */; };
 		F8E4602B2BF7CF10007FF950 /* ExerciseListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */; };
@@ -193,7 +198,6 @@
 		F806E05B2BF57A5A00B3B421 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListToolbar.swift; sourceTree = "<group>"; };
 		F815DE1428CE876D0006577D /* AmountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPicker.swift; sourceTree = "<group>"; };
-		F815DE1828CFAFF20006577D /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		F81D66322BF55AD800C7037D /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		F81D66342BF55B2F00C7037D /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		F81D66362BF56F6A00C7037D /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -350,6 +354,12 @@
 		F8B9224F29CE3CE40081C238 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F8CC32C42BF5566D006F2678 /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
 		F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceIcon.swift; sourceTree = "<group>"; };
+		F8CEC5362BF9F5350076B7F2 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		F8CEC5382BFA14CD0076B7F2 /* kilometers.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kilometers.wav; sourceTree = "<group>"; };
+		F8CEC53A2BFA36980076B7F2 /* kilometer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kilometer.wav; sourceTree = "<group>"; };
+		F8CEC53B2BFA36980076B7F2 /* hour.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hour.wav; sourceTree = "<group>"; };
+		F8CEC53E2BFA36B60076B7F2 /* hours.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hours.wav; sourceTree = "<group>"; };
+		F8CEC5402BFA3A430076B7F2 /* minute.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = minute.wav; sourceTree = "<group>"; };
 		F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTracker.swift; sourceTree = "<group>"; };
 		F8DCE03029D0E67200085D2B /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 		F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListState.swift; sourceTree = "<group>"; };
@@ -427,6 +437,7 @@
 				F8CC32C62BF55A21006F2678 /* enum */,
 				F8FC049A2BF3D90500C3FE3A /* Workout.swift */,
 				F8FC049C2BF3DA2100C3FE3A /* Exercise.swift */,
+				F8CEC5362BF9F5350076B7F2 /* Appearance.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -439,7 +450,6 @@
 				F888AB1D28B80E78007AB401 /* picker */,
 				F888AAC728AEC83C007AB401 /* workout */,
 				F888AAC628AEC82A007AB401 /* exercise */,
-				F815DE1828CFAFF20006577D /* AmountFormatter.swift */,
 				F8B9224F29CE3CE40081C238 /* Icon.swift */,
 				F8DCE03029D0E67200085D2B /* StartButton.swift */,
 			);
@@ -703,8 +713,13 @@
 				F889D3AD2BF22B7E00EA19BC /* 800.wav */,
 				F889D3B12BF22B7E00EA19BC /* 900.wav */,
 				F889D2E82BF1B66600EA19BC /* seconds.wav */,
+				F8CEC5402BFA3A430076B7F2 /* minute.wav */,
 				F889D3BF2BF260EC00EA19BC /* minutes.wav */,
+				F8CEC53B2BFA36980076B7F2 /* hour.wav */,
+				F8CEC53E2BFA36B60076B7F2 /* hours.wav */,
 				F889D2E72BF1B66600EA19BC /* meters.wav */,
+				F8CEC53A2BFA36980076B7F2 /* kilometer.wav */,
+				F8CEC5382BFA14CD0076B7F2 /* kilometers.wav */,
 			);
 			path = sounds;
 			sourceTree = "<group>";
@@ -773,7 +788,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					F8722A5428A01635005A2718 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -830,6 +845,7 @@
 				F889D2DE2BF1AD7400EA19BC /* 50.wav in Resources */,
 				F889D3962BF22A9900EA19BC /* 73.wav in Resources */,
 				F889D3662BF22A9900EA19BC /* 35.wav in Resources */,
+				F8CEC53C2BFA36980076B7F2 /* kilometer.wav in Resources */,
 				F889D3A12BF22A9900EA19BC /* 51.wav in Resources */,
 				F889D2EA2BF1B66600EA19BC /* seconds.wav in Resources */,
 				F889D3BB2BF22B7E00EA19BC /* 600.wav in Resources */,
@@ -845,6 +861,7 @@
 				F889D39B2BF22A9900EA19BC /* 84.wav in Resources */,
 				F889D3542BF22A9900EA19BC /* 9.wav in Resources */,
 				F889D2F12BF1B7F000EA19BC /* 70.wav in Resources */,
+				F8CEC53D2BFA36980076B7F2 /* hour.wav in Resources */,
 				F889D2E92BF1B66600EA19BC /* meters.wav in Resources */,
 				F889D3612BF22A9900EA19BC /* 6.wav in Resources */,
 				F889D3C02BF260EC00EA19BC /* minutes.wav in Resources */,
@@ -865,6 +882,7 @@
 				F889D3562BF22A9900EA19BC /* 31.wav in Resources */,
 				F889D3672BF22A9900EA19BC /* 49.wav in Resources */,
 				F889D38C2BF22A9900EA19BC /* 43.wav in Resources */,
+				F8CEC53F2BFA36B60076B7F2 /* hours.wav in Resources */,
 				F889D3872BF22A9900EA19BC /* 36.wav in Resources */,
 				F889D3A02BF22A9900EA19BC /* 91.wav in Resources */,
 				F889D3902BF22A9900EA19BC /* 32.wav in Resources */,
@@ -885,6 +903,7 @@
 				F889D3952BF22A9900EA19BC /* 57.wav in Resources */,
 				F889D3782BF22A9900EA19BC /* 83.wav in Resources */,
 				F889D37E2BF22A9900EA19BC /* 64.wav in Resources */,
+				F8CEC5412BFA3A430076B7F2 /* minute.wav in Resources */,
 				F889D3822BF22A9900EA19BC /* 81.wav in Resources */,
 				F889D3932BF22A9900EA19BC /* 33.wav in Resources */,
 				F889D3BD2BF22B7E00EA19BC /* 500.wav in Resources */,
@@ -892,6 +911,7 @@
 				F889D3942BF22A9900EA19BC /* 24.wav in Resources */,
 				F889D3A42BF22A9900EA19BC /* 15.wav in Resources */,
 				F889D3BA2BF22B7E00EA19BC /* 900.wav in Resources */,
+				F8CEC5392BFA14CD0076B7F2 /* kilometers.wav in Resources */,
 				F889D3752BF22A9900EA19BC /* 29.wav in Resources */,
 				F889D36C2BF22A9900EA19BC /* 71.wav in Resources */,
 				F889D3922BF22A9900EA19BC /* 23.wav in Resources */,
@@ -951,7 +971,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F815DE1928CFAFF20006577D /* AmountFormatter.swift in Sources */,
 				F835315328AA8FCC00BF3CB2 /* UserNotifier.swift in Sources */,
 				F835309E28A9A18800BF3CB2 /* AppDelegate.swift in Sources */,
 				F8242C4A2BF6B564003C953C /* EditSheetIcon.swift in Sources */,
@@ -991,6 +1010,7 @@
 				F8FDCA262BF0F1730050CA2C /* AudioProcessor.swift in Sources */,
 				F888AAC928AECE7F007AB401 /* Constants.swift in Sources */,
 				F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */,
+				F8CEC5372BF9F5350076B7F2 /* Appearance.swift in Sources */,
 				F835309C28A99CD800BF3CB2 /* UserNotificationCenterDelegate.swift in Sources */,
 				F815DE1528CE876D0006577D /* AmountPicker.swift in Sources */,
 				F8242C502BF6BED2003C953C /* SymbolPickerItem.swift in Sources */,

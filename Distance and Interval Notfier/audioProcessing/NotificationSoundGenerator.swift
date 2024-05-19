@@ -12,15 +12,59 @@ class NotificationSoundGenerator {
     
     private let audioProcessor = AudioProcessor()
     
-    func generateNotificationSound(uuid: UUID, amount: Double, unit: Unit) async -> UNNotificationSound {
+    func generateNotificationSound(_ uuid: UUID, _ seconds: Double, _ minutes: Double?, _ hours: Double?) async -> UNNotificationSound {
         var audioFileUrls: [NSURL] = []
         
-        audioFileUrls.append(createAudioFileUrl(unit.description.lowercased()))
+        if seconds > 0 {
+            createAmountSoundUrls(amount: seconds, unit: .SECOND, audioFileUrls: &audioFileUrls)
+        }
+        
+        if let minutes = minutes {
+            if minutes > 0 {
+                createAmountSoundUrls(amount: minutes, unit: .MINUTE, audioFileUrls: &audioFileUrls)
+            }
+            
+            if let hours = hours {
+                createAmountSoundUrls(amount: hours, unit: .HOUR, audioFileUrls: &audioFileUrls)
+            }
+        }
+        
+        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
+        
+        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
+    }
+    
+    func generateNotificationSound(_ uuid: UUID, _ meters: Double, _ kilometers: Double?) async -> UNNotificationSound {
+        var audioFileUrls: [NSURL] = []
+        
+        if meters > 0 {
+            createAmountSoundUrls(amount: meters, unit: .METER, audioFileUrls: &audioFileUrls)
+        }
+        
+        if let kilometers = kilometers {
+            createAmountSoundUrls(amount: kilometers, unit: .KILOMETER, audioFileUrls: &audioFileUrls)
+        }
+        
+        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
+        
+        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
+    }
+    
+    private func createAmountSoundUrls(amount: Double, unit: Unit, audioFileUrls: inout [NSURL]) {
+        
+        var filename = String(describing: unit).lowercased()
+        if amount == 1 {
+            filename = String(filename.prefix(filename.count - 1))
+        }
+        audioFileUrls.append(createAudioFileUrl(filename))
         
         if amount <= 100 {
             audioFileUrls.append(createAudioFileUrl("\(Int(amount))"))
         } else {
-            audioFileUrls.append(createAudioFileUrl("\(Int(amount.truncatingRemainder(dividingBy: 100)))"))
+            let modulo100 = Int(amount.truncatingRemainder(dividingBy: 100))
+            if modulo100 != 0 {
+                audioFileUrls.append(createAudioFileUrl("\(modulo100)"))
+            }
             
             for i in 2...3 {
                 let position = pow(10, Double(i))
@@ -30,10 +74,6 @@ class NotificationSoundGenerator {
                 }
             }
         }
-        
-        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
-        
-        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
     }
     
     private func createAudioFileUrl(_ fileName: String) -> NSURL {
@@ -52,7 +92,6 @@ class NotificationSoundGenerator {
     private func getDigit(_ amount: Double, at position: Double) -> Int {
         let remainder = amount.truncatingRemainder(dividingBy: position * 10.0)
         
-        let digit: Int
         if position == 1 {
             return Int(remainder)
         } else {

@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum Unit: CustomStringConvertible, Codable {
+enum Unit: Double, CustomStringConvertible, Codable {
     
     case SECOND, MINUTE, HOUR,
-         METER, KILOMETER, MILE
+         METER, KILOMETER
     
     var quantity: Quantity {
         get {
@@ -29,7 +29,6 @@ enum Unit: CustomStringConvertible, Codable {
         case .HOUR: "Hours"
         case .METER: "Meters"
         case .KILOMETER: "Kilometers"
-        case .MILE: "Miles"
         }
     }
     
@@ -40,7 +39,6 @@ enum Unit: CustomStringConvertible, Codable {
         case .HOUR: "h"
         case .METER: "m"
         case .KILOMETER: "km"
-        case .MILE: "mi"
         }
     }
 }

@@ -22,8 +22,8 @@ struct QuantityPicker: View {
             selection: $quantity,
             label: Text("")
         ) {
-            Text(Quantity.TIME.description).tag(Quantity.TIME)
-            Text(Quantity.DISTANCE.description).tag(Quantity.DISTANCE)
+            Text(String(describing: Quantity.TIME)).tag(Quantity.TIME)
+            Text(String(describing: Quantity.DISTANCE)).tag(Quantity.DISTANCE)
         }
         .pickerStyle(.segmented)
     }
