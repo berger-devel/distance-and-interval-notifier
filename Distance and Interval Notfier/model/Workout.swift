@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Workout {
+class Workout: Comparable {
     
     @Attribute
     var appearance: Appearance
@@ -18,6 +18,10 @@ class Workout {
     
     @Relationship(deleteRule: .cascade, inverse: \Exercise.workout)
     var exercises: [Exercise]
+    
+    static func < (lhs: Workout, rhs: Workout) -> Bool {
+        lhs.sortIndex < rhs.sortIndex
+    }
     
     init() {
         appearance = Appearance(name: "New Workout", sfSymbol: "bicycle", colorIndex: 0)

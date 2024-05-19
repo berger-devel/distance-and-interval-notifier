@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Exercise {
+class Exercise: Comparable {
     
     var appearance: Appearance
     
@@ -23,9 +23,12 @@ class Exercise {
     
     var workout: Workout?
     
+    static func < (lhs: Exercise, rhs: Exercise) -> Bool {
+        lhs.sortIndex < rhs.sortIndex
+    }
+
     init() {
         appearance = Appearance(name: "New Exercise", sfSymbol: "bicycle", colorIndex: 0)
-        
         sortIndex = 0
         amount = Constants.TIME_AMOUNTS_SECOND[0]
         unit = .SECOND

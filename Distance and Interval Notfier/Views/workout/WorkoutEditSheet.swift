@@ -16,28 +16,29 @@ struct WorkoutEditSheet: View {
     private let onDone: () -> ()
     private let onCancel: () -> ()
     
-    @Binding
-    private var workout: Workout
+    private var workout: Binding<Workout>?
         
-    init(_ workout: Binding<Workout>, onDone: @escaping () -> (), onCancel: @escaping () -> ()) {
+    init(_ workout: Binding<Workout?>, onDone: @escaping () -> (), onCancel: @escaping () -> ()) {
         self.onDone = onDone
         self.onCancel = onCancel
-        self._workout = workout
+        self.workout = Binding(workout)
     }
     
     var body: some View {
-        NavigationStack {
-            GeometryReader { geometry in
-                Form {
-                    EditSheetIcon(sfSymbol: workout.appearance.sfSymbol, colorIndex: workout.appearance.colorIndex)
-                    NameSection(name: $workout.appearance.name)
-                    SymbolSection(sfSymbol: $workout.appearance.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
-                    ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: $workout.appearance.colorIndex)
+        if let workout = workout {
+            NavigationStack {
+                GeometryReader { geometry in
+                    Form {
+                        EditSheetIcon(sfSymbol: workout.appearance.sfSymbol.wrappedValue, colorIndex: workout.appearance.colorIndex.wrappedValue)
+                        NameSection(name: workout.appearance.name)
+                        SymbolSection(sfSymbol: workout.appearance.sfSymbol, width: geometry.size.width - Constants.ICON_SECTION_PADDING)
+                        ColorSection(width: geometry.size.width - Constants.ICON_SECTION_PADDING, selectedColorIndex: workout.appearance.colorIndex)
+                    }
                 }
-            }
-            .toolbar {
-                DoneButton(onDone: onDone)
-                CancelButton(onCancel: onCancel)
+                .toolbar {
+                    DoneButton(onDone: onDone)
+                    CancelButton(onCancel: onCancel)
+                }
             }
         }
     }

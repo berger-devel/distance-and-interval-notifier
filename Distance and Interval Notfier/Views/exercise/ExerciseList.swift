@@ -25,18 +25,11 @@ struct ExerciseList: View {
     
     let workout: Workout
     
-    @Query
-    private var exercises: [Exercise] = []
-    
     @StateObject
     private var state = ExerciseListState()
     
     init(workout: Workout) {
         self.workout = workout
-        let workoutId = workout.persistentModelID
-        _exercises = Query(filter: #Predicate<Exercise> { exercise in
-            exercise.workout?.persistentModelID == workoutId
-        }, sort: [SortDescriptor(\.sortIndex)] )
     }
     
     var body: some View {
@@ -45,7 +38,7 @@ struct ExerciseList: View {
                 ZStack {
                     ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
                     List {
-                        ForEach(exercises) { exercise in
+                        ForEach(workout.exercises.sorted()) { exercise in
                             Button(action: {
                                 state.selectedExercise = exercise
                                 state.editedExercise = Exercise()
@@ -57,11 +50,11 @@ struct ExerciseList: View {
                         }
                         .onDelete { indexSet in
                             if let index = indexSet.first {
-                                modelContext.delete(exercises[index])
+                                modelContext.delete(workout.exercises[index])
                             }
                         }
                         .onMove(perform: { indexSet, newPosition in
-                            var reorderedExercises = exercises
+                            var reorderedExercises = workout.exercises.sorted()
                             reorderedExercises.move(fromOffsets: indexSet, toOffset: newPosition)
                             reorderedExercises.enumerated().forEach({ index, exercise in
                                 exercise.sortIndex = index
@@ -72,6 +65,7 @@ struct ExerciseList: View {
                     .toolbar {
                         ExerciseListToolbar(workout: workout, onAddExercise: {
                             state.editedExercise = Exercise()
+                            state.editedExercise.sortIndex = (workout.exercises.sorted().last?.sortIndex ?? -1) + 1
                             state.isCreateSheetPresented = true
                         }, onEditWorkout: {
                             state.editedWorkout.copyValues(from: workout)
@@ -96,7 +90,7 @@ struct ExerciseList: View {
                         })
                     }
                     .sheet(isPresented: $state.isWorkoutEditSheetPresented) {
-                        WorkoutEditSheet(Binding<Workout> (get: { state.editedWorkout }, set: { _ in }), onDone: {
+                        WorkoutEditSheet(Binding<Workout?> (get: { state.editedWorkout }, set: { _ in }), onDone: {
                             state.isWorkoutEditSheetPresented = false
                             workout.copyValues(from: state.editedWorkout)
                         }, onCancel: {
@@ -106,7 +100,7 @@ struct ExerciseList: View {
                 }
                 
                 if (workout.exercises).count > 0 {
-                    StartButton(isRunning: $state.isRunning, start: { state.start(exercises) }, stop: state.stop)
+                    StartButton(isRunning: $state.isRunning, start: { state.start(workout.exercises) }, stop: state.stop)
                 }
             }
             .ignoresSafeArea(.container, edges: [.bottom])

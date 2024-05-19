@@ -71,7 +71,7 @@ struct WorkoutList: View {
             }
             .sheet(isPresented: $isCreateSheetPresented) {
                 NavigationStack {
-                    WorkoutEditSheet(Binding(get: { selectedWorkout! }, set: { _ in }), onDone: {
+                    WorkoutEditSheet(Binding(get: { selectedWorkout }, set: { _ in }), onDone: {
                         isCreateSheetPresented = false
                         modelContext.insert(selectedWorkout!)
                     }, onCancel: {
