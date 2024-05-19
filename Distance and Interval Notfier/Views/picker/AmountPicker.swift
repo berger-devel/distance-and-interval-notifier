@@ -13,6 +13,8 @@ struct AmountPicker: View {
     @Environment(\.colorScheme)
     private var colorScheme
     
+    private let amountFormatter: NumberFormatter
+    
     private let unit: Unit
     
     @Binding
@@ -22,8 +24,9 @@ struct AmountPicker: View {
     private var selectedQuantity: Quantity
     
     init(amount: Binding<Double>, unit: Unit, selectedQuantity: Binding<Quantity>) {
+        self.amountFormatter = NumberFormatter()
+        amountFormatter.maximumFractionDigits = 4
         self.unit = unit
-        
         self._amount = amount
         self._selectedQuantity = selectedQuantity
     }
@@ -37,7 +40,7 @@ struct AmountPicker: View {
                 label: Text("")
             ) {
                 ForEach(Constants.AVAILABLE_AMOUNTS(unit), id: \.self) { amount in
-                    Text(String(Int(amount)))
+                    Text(amountFormatter.string(from: amount as NSNumber)!)
                 }
             }
             .pickerStyle(.wheel)
