@@ -13,16 +13,19 @@ struct ExerciseListItem: View {
     private let timeNumberFormatter: NumberFormatter
     private let distanceNumberFormatter: NumberFormatter
     
+    @ObservedObject
+    private var exerciseListState: ExerciseListState
+    
     @State
     private var exercise: Exercise
     
-    @Binding
-    private var progress: Double
+    @State
+    private var listItemOpacity: Double = 1.0
     
     @State
-    private var isSelected = false
+    private var progressOpacity: Double = 0.0
     
-    init(_ exercise: Exercise, _ progress: Binding<Double>) {
+    init(_ exercise: Exercise, exerciseListState: ExerciseListState) {
         timeNumberFormatter = NumberFormatter()
         timeNumberFormatter.roundingMode = .down
         timeNumberFormatter.minimumIntegerDigits = 2
@@ -30,7 +33,7 @@ struct ExerciseListItem: View {
         distanceNumberFormatter.maximumFractionDigits = 1
         
         self.exercise = exercise
-        self._progress = progress
+        self.exerciseListState = exerciseListState
     }
     
     var body: some View {
@@ -38,12 +41,30 @@ struct ExerciseListItem: View {
             Icon(sfSymbol: exercise.appearance.sfSymbol, color: ColorScheme.ICON_COLOR(exercise.appearance.colorIndex))
             VStack(alignment: .leading) {
                 Text(exercise.appearance.name).font(.title)
+                
                 GeometryReader { geometry in
+                    
                     HStack() {
                         HStack {
-                            Text("\(Int(exercise.amount))\(exercise.unit.shortDescription)")
-                                .font(.system(.headline))
-                                .fontWeight(.medium)
+                            HStack(spacing: 0) {
+                                if progressOpacity != 0 {
+                                    ZStack {
+                                        HStack(spacing: 0) {
+                                            switch exercise.unit {
+                                            case .SECOND, .METER: Text("\(Int(exerciseListState.progress))")
+                                            case .MINUTE: Text("\(formatTime(exerciseListState.progress / 60)):\(formatTime(exerciseListState.progress.truncatingRemainder(dividingBy: 60)))")
+                                            case .HOUR: Text("\(formatTime(exerciseListState.progress / 3600)):\(formatTime(exerciseListState.progress.truncatingRemainder(dividingBy: 3600) / 60)):\(formatTime(exerciseListState.progress.truncatingRemainder(dividingBy: 60)))")
+                                            case .KILOMETER: Text("\(formatDistance(exerciseListState.progress / 1000))")
+                                            }
+                                            Text("/")
+                                        }
+                                    }
+                                    .opacity(progressOpacity)
+                                }
+                                Text("\(Int(exercise.amount))\(exercise.unit.shortDescription)")
+                                    .font(.system(.headline))
+                                    .fontWeight(.medium)
+                            }
                             
                             if exercise.repetitionFrequency != Constants.REPETITION_AMOUNTS[0] {
                                 Text("×\(exercise.repetitionFrequency)")
@@ -72,19 +93,27 @@ struct ExerciseListItem: View {
                                 }
                             }
                         }
-                        
-                        Spacer()
-                        
-                        switch exercise.unit {
-                        case .SECOND, .METER: Text("\(Int(progress))")
-                        case .MINUTE: Text("\(formatTime(progress / 60)):\(formatTime(progress.truncatingRemainder(dividingBy: 60)))")
-                        case .HOUR: Text("\(formatTime(progress / 3600)):\(formatTime(progress.truncatingRemainder(dividingBy: 3600) / 60)):\(formatTime(progress.truncatingRemainder(dividingBy: 60)))")
-                        case .KILOMETER: Text("\(formatDistance(progress / 1000))")
-                        }
                     }
                 }
             }
             .foregroundColor(ColorScheme.LIST_ITEM_TEXT_COLOR)
+        }
+        .opacity(listItemOpacity)
+        .onChange(of: exerciseListState.runningExercise) { _, newValue in
+            withAnimation {
+                if newValue == nil {
+                    listItemOpacity = 1.0
+                    progressOpacity = 0.0
+                } else {
+                    if newValue == exercise {
+                        listItemOpacity = 1.0
+                        progressOpacity = 1.0
+                    } else {
+                        listItemOpacity = 0.5
+                        progressOpacity = 0.0
+                    }
+                }
+            }
         }
     }
     

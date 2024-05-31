@@ -11,6 +11,8 @@ import CoreLocation
 
 class ExerciseTracker {
     
+    static let instance = ExerciseTracker()
+    
     private let userNotifier = UserNotifier()
     private let userNotificationCenterDelegate = UserNotificationCenterDelegate()
     private let clLocationManager = CLLocationManager()
@@ -19,13 +21,14 @@ class ExerciseTracker {
     private let timeTracker = TimeTracker()
     private let distanceTracker = DistanceTracker()
     
-    private var distance: Double = 0.0
+    private var exercises: [Exercise] = []
     
-    private var exerciseIterator: IndexingIterator<[Exercise]>?
+    private var onUpdate: (Exercise?, Double) -> () = { _, _ in }
     private var onFinish: () -> () = { }
-    private var onUpdate: (Double) -> () = { _ in }
     
-    func start(_ exercises: [Exercise], onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {
+    private init() { }
+    
+    func start(_ exercises: [Exercise], onFinish: @escaping () -> (), onUpdate: @escaping (Exercise?, Double) -> ()) {
         userNotifier.cancel()
         
         Task {
@@ -36,7 +39,7 @@ class ExerciseTracker {
                 Log.error("Error requesting notificaton authorizatino", error)
             }
             
-            if !exercises.filter({ exercise in exercise.unit.quantity == .DISTANCE }).isEmpty {
+            if let _ = exercises.first(where: { exercise in exercise.unit.quantity == .DISTANCE }) {
                 clLocationManager.delegate = locationManagerDelegate
                 locationManagerDelegate.onAuthorize = {
                     self.clLocationManager.requestAlwaysAuthorization()
@@ -45,19 +48,27 @@ class ExerciseTracker {
             }
         }
         
-        exerciseIterator = exercises.makeIterator()
+        self.exercises = exercises
         self.onFinish = onFinish
         self.onUpdate = onUpdate
         
-        nextExercise()
+        nextExerciseGroup(nextExerciseIndex: 0)
     }
     
-    func nextExercise() {
-        if let nextExercise = exerciseIterator?.next() {
-            if nextExercise.unit.quantity == .TIME {
-                timeTracker.track(exercise: nextExercise, onFinish: self.nextExercise, onUpdate: onUpdate)
-            } else {
-                distanceTracker.track(exercise: nextExercise, onFinish: self.nextExercise, onUpdate: onUpdate)
+    func nextExerciseGroup(nextExerciseIndex: Int) {
+        if nextExerciseIndex < exercises.count {
+            Task {
+                if exercises[nextExerciseIndex].unit.quantity == .TIME {
+                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: { exercise in exercise.unit.quantity == .DISTANCE }) ?? exercises.count
+                    if await timeTracker.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate) {
+                        nextExerciseGroup(nextExerciseIndex: endIndex)
+                    }
+                } else {
+                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: { exercise in exercise.unit.quantity == .TIME }) ?? exercises.count
+                    if await distanceTracker.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate) {
+                        nextExerciseGroup(nextExerciseIndex: endIndex)
+                    }
+                }
             }
         } else {
             onFinish()
@@ -67,7 +78,7 @@ class ExerciseTracker {
     func stop() {
         userNotifier.cancel()
         timeTracker.stop()
-        distanceTracker.stop()
+        distanceTracker.stop(startNext: false)
         onFinish()
     }
 }

@@ -16,65 +16,69 @@ class DistanceTracker {
     
     private var distance = 0.0
     private var notificationDistance = 0.0
-    private var notifications = 0.0
+    private var notification = 1.0
     
-    private var exercise = Exercise()
-    private var onFinish: () -> () = { }
-    private var onUpdate: (Double) -> () = { _ in }
+    private var exercises: ArraySlice<Exercise> = []
+    private var exerciseIndex: Int = 0
+    private var onUpdate: (Exercise?, Double) -> () = { _, _ in }
     
     private var lastLocations: [CLLocation] = []
     private var lastMovingAvgLocation = CLLocation()
-    
+    private var passage = 1
+    private var trackingTask: Task<(), Never> = Task {}
     private var isTracking = false
     
-    func track(exercise: Exercise, onFinish: @escaping () -> (), onUpdate: @escaping (Double) -> ()) {  
-        isTracking = true
-        
-        distance = 0.0
-        notifications = 1.0
-        
-        self.exercise = exercise
-        self.onFinish = onFinish
+    func track(exercises: ArraySlice<Exercise>, onUpdate: @escaping (Exercise?, Double) -> ()) async -> Bool {
+        self.exercises = exercises
         self.onUpdate = onUpdate
         
         lastLocations = []
         
-        calculateNotificationDistance()
-        
-        clBackgroundActivitySession = CLBackgroundActivitySession()
-        Task {
-            do {
-                let updates = CLLocationUpdate.liveUpdates()
-                for try await update in updates {
-                    if !isTracking {
-                        clBackgroundActivitySession?.invalidate()
-                        break
-                    }
+        if let exerciseIndex = exercises.indices.first {
+            self.exerciseIndex = exerciseIndex
+            passage = 1
+            initNotificationParameters()
+            
+            trackingTask = Task {
+                do {
+                    clBackgroundActivitySession = CLBackgroundActivitySession()
+                    onUpdate(exercises[exerciseIndex], 0)
                     
-                    if let location = update.location {
-                        lastLocations.append(location)
+                    let updates = CLLocationUpdate.liveUpdates()
+                    for try await update in updates {
+                        if let location = update.location {
+                            lastLocations.append(location)
+                        }
+                        
+                        if lastLocations.count == 3 {
+                            lastMovingAvgLocation = calculateMovingAverage()
+                        } else if lastLocations.count > 3 {
+                            let avgLocation = calculateMovingAverage()
+                            await updateDistance(exerciseName: exercises[exerciseIndex].appearance.name, distance: avgLocation.distance(from: lastMovingAvgLocation))
+                            lastMovingAvgLocation = avgLocation
+                        }
                     }
-                    
-                    if lastLocations.count == 3 {
-                        lastMovingAvgLocation = calculateMovingAverage()
-                    } else  if lastLocations.count > 3 {
-                        let avgLocation = calculateMovingAverage()
-                        updateDistance(exerciseName: exercise.appearance.name, distance: avgLocation.distance(from: lastMovingAvgLocation))
-                        lastMovingAvgLocation = avgLocation
-                    }
+                } catch {
+                    Log.error("Error updating location", error)
                 }
-            } catch {
-                Log.error("Error updating location", error)
             }
+            await trackingTask.value
         }
+        
+        return isTracking
     }
     
-    func stop() {
-        isTracking = false
+    func stop(startNext: Bool) {
+        trackingTask.cancel()
+        clBackgroundActivitySession?.invalidate()
+        onUpdate(nil, 0)
+        self.isTracking = startNext
     }
     
-    private func calculateNotificationDistance() {
-        notificationDistance = (exercise.unit == .METER ? exercise.amount : exercise.amount * 1000) / Double(exercise.notificationFrequency.rawValue + 1)
+    private func initNotificationParameters() {
+        distance = 0.0
+        notification = 1.0
+        notificationDistance = (exercises[exerciseIndex].unit == .METER ? exercises[exerciseIndex].amount : exercises[exerciseIndex].amount * 1000) / Double(exercises[exerciseIndex].notificationFrequency.rawValue + 1)
     }
     
     private func calculateMovingAverage() -> CLLocation {
@@ -88,32 +92,35 @@ class DistanceTracker {
         return CLLocation(latitude: clLocation.coordinate.latitude / 3, longitude: clLocation.coordinate.longitude / 3)
     }
     
-    private func updateDistance(exerciseName: String, distance: Double) {
+    private func updateDistance(exerciseName: String, distance: Double) async {
         self.distance += distance
-        let notificationAmount = self.notificationDistance * self.notifications
+        let notificationAmount = notificationDistance * notification
+        let finishAmount = exercises[exerciseIndex].unit == .METER ? exercises[exerciseIndex].amount : exercises[exerciseIndex].amount * 1000
         
-        if (self.distance >= notificationAmount) {
-            Task {
-                let meters: Double
-                let kilometers: Double?
-                if notificationAmount < 1000 {
-                    meters = notificationAmount
-                    kilometers = nil
+        let (kilometers, meters) = Converter.toKilometers(amount: notificationAmount)
+        if (self.distance >= finishAmount) {
+            if passage < exercises[exerciseIndex].repetitionFrequency {
+                await self.userNotifier.notify(title: exerciseName, meters: meters, kilometers: kilometers, nextExerciseIndex: exerciseIndex)
+                passage += 1
+                initNotificationParameters()
+            } else {
+                exerciseIndex += 1
+                
+                if exerciseIndex == exercises.indices.upperBound {
+                    stop(startNext: true)
+                    await self.userNotifier.notify(title: exerciseName, meters: meters, kilometers: kilometers, nextExerciseIndex: exerciseIndex)
                 } else {
-                    meters = notificationAmount.truncatingRemainder(dividingBy: 1000)
-                    kilometers = Double(Int(notificationAmount / 1000))
+                    passage = 1
+                    initNotificationParameters()
                 }
-                await self.userNotifier.notify(title: exerciseName, meters: meters, kilometers: kilometers)
             }
-            self.notifications += 1.0
-        }
-        
-        if (self.distance >= (exercise.unit == .METER ? exercise.amount : exercise.amount * 1000)) {
-            self.onUpdate(exercise.amount)
-            self.stop()
-            onFinish()
         } else {
-            self.onUpdate(self.distance)
+            onUpdate(exercises[exerciseIndex], self.distance)
+            
+            if (self.distance >= notificationAmount) {
+                await self.userNotifier.notify(title: exerciseName, meters: meters, kilometers: kilometers)
+                self.notification += 1.0
+            }
         }
     }
 }

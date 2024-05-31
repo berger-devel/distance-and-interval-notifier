@@ -82,7 +82,7 @@ struct WorkoutList: View {
             }
         } detail: {
             if let workout = selectedWorkout {
-                ExerciseList(workout: workout)
+                ExerciseList(workout: Binding(get: { workout }, set: { _ in }))
             }
         }
         .navigationSplitViewStyle(.balanced)

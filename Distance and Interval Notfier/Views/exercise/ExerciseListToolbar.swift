@@ -10,15 +10,16 @@ import SwiftUI
 
 struct ExerciseListToolbar: ToolbarContent {
     
-    let workout: Workout
+    private let workout: Workout
+    private let onEditWorkout: () -> ()
     
-    let onAddExercise: () -> ()
-    let onEditWorkout: () -> ()
+    @ObservedObject
+    private var exerciseListState: ExerciseListState
     
-    init(workout: Workout, onAddExercise: @escaping () -> (), onEditWorkout: @escaping () -> ()) {
+    init(exerciseListState: ExerciseListState, workout: Workout, onEditWorkout: @escaping () -> ()) {
         self.workout = workout
-        self.onAddExercise = onAddExercise
         self.onEditWorkout = onEditWorkout
+        self.exerciseListState = exerciseListState
     }
     
     var body: some ToolbarContent {
@@ -39,15 +40,19 @@ struct ExerciseListToolbar: ToolbarContent {
         }
         
         ToolbarItem {
-            EditButton()
+            ExerciseListConditionalToolbarItem(isHidden: $exerciseListState.isRunning) {
+                EditButton()
+            }
         }
         
         ToolbarItem {
-            HStack {
-                Button(action: {
-                    onAddExercise()
-                }) {
-                    Image(systemName: "plus")
+            ExerciseListConditionalToolbarItem(isHidden: $exerciseListState.isRunning) {
+                HStack {
+                    Button(action: {
+                        exerciseListState.onAddExercise()
+                    }) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }

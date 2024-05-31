@@ -15,10 +15,11 @@ class UserNotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        ExerciseTracker.instance.nextExerciseGroup(nextExerciseIndex: response.notification.request.content.userInfo["NEXT_EXERCISE_INDEX"] as! Int)
         completionHandler()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.badge, .sound, .list, .banner])
+        completionHandler([.banner, .sound])
     }
 }

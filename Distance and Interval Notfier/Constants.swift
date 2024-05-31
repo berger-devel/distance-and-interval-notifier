@@ -39,7 +39,7 @@ struct Constants {
     static let DISTANCE_AMOUNTS_KILOMETER: [Double] = Array(stride(from: 1.0, through: 20.0, by: 1.0)) + [21.0975] + Array(stride(from:25.0, through: 40.0, by: 5.0)) + [42.195, 45.0, 50.0]
     
     static let TIME_AMOUNTS_SECOND: [Double] = Array(stride(from: 10.0, through: 180.0, by: 10.0))
-    static let TIME_AMOUNTS_MINUTE: [Double] = Array(stride(from: 1.0, through: 30.0, by: 1.0)) + Array(stride(from: 35, through: 60.0, by: 5.0)) + Array(stride(from: 90.0, through: 180.0, by: 30.0))
+    static let TIME_AMOUNTS_MINUTE: [Double] = Array(stride(from: 1.0, through: 30.0, by: 1.0)) + Array(stride(from: 35, through: 50.0, by: 5.0)) + Array(stride(from: 60.0, through: 180.0, by: 10.0))
     static let TIME_AMOUNTS_HOUR: [Double] = Array(stride(from: 1.0, through: 5.0, by: 1.0))
     
     static let AVAILABLE_AMOUNTS: (Unit) -> [Double] = { unit in

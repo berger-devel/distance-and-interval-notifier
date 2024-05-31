@@ -20,16 +20,20 @@ struct ExerciseList: View {
     @Environment(\.presentationMode)
     private var presentationMode
     
-    @Environment(\.editMode)
-    private var editMode
+    @State
+    private var editMode: EditMode = .inactive
     
-    let workout: Workout
+    @Binding
+    var workout: Workout
     
     @StateObject
     private var state = ExerciseListState()
     
-    init(workout: Workout) {
-        self.workout = workout
+    @StateObject
+    private var workoutState = ExerciseListWorkoutState()
+    
+    init(workout: Binding<Workout>) {
+        self._workout = workout
     }
     
     var body: some View {
@@ -38,69 +42,54 @@ struct ExerciseList: View {
                 ZStack {
                     ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
                     List {
-                        ForEach(workout.exercises.sorted()) { exercise in
-                            Button(action: {
-                                state.selectedExercise = exercise
-                                state.editedExercise = Exercise()
-                                state.editedExercise.copyValues(from: exercise)
-                                state.isEditSheetPresented = true
-                            }) {
-                                ExerciseListItem(exercise, $state.progress)
+                        ForEach(state.exercises) { exercise in
+                            Button(action: { state.onEditExercise(exercise) }) {
+                                ExerciseListItem(exercise, exerciseListState: state)
                             }
                         }
                         .onDelete { indexSet in
                             if let index = indexSet.first {
-                                modelContext.delete(workout.exercises[index])
+                                modelContext.delete(state.exercises[index])
                             }
+                            state.onDeleteExercise(indexSet: indexSet)
                         }
-                        .onMove(perform: { indexSet, newPosition in
-                            var reorderedExercises = workout.exercises.sorted()
-                            reorderedExercises.move(fromOffsets: indexSet, toOffset: newPosition)
-                            reorderedExercises.enumerated().forEach({ index, exercise in
-                                exercise.sortIndex = index
-                            })
-                        })
+                        .onMove(perform: state.onMoveExercise)
+                        .deleteDisabled(state.isRunning)
+                        .moveDisabled(state.isRunning)
+                    }
+                    .onAppear{
+                        workoutState.workout = workout
+                        state.exercises = workout.exercises.sorted()
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(state.isRunning)
                     .toolbar {
-                        ExerciseListToolbar(workout: workout, onAddExercise: {
-                            state.editedExercise = Exercise()
-                            state.editedExercise.sortIndex = (workout.exercises.sorted().last?.sortIndex ?? -1) + 1
-                            state.isCreateSheetPresented = true
-                        }, onEditWorkout: {
-                            state.editedWorkout.copyValues(from: workout)
-                            state.isWorkoutEditSheetPresented = true
+                        ExerciseListToolbar(exerciseListState: state, workout: workout, onEditWorkout: {
+                            workoutState.onEditWorkout()
                         })
                     }
                     .sheet(isPresented: $state.isCreateSheetPresented) {
                         ExerciseEditSheet($state.editedExercise, onDone: {
-                            state.isCreateSheetPresented = false
+                            state.onCreateExercise(workout: workout)
                             modelContext.insert(state.editedExercise)
-                            state.editedExercise.workout = workout
-                        }, onCancel: {
-                            state.isCreateSheetPresented = false
-                        })
+                        }, onCancel: state.hideExerciseCreateSheet)
                     }
                     .sheet(isPresented: $state.isEditSheetPresented) {
-                        ExerciseEditSheet($state.editedExercise, onDone: {
-                            state.isEditSheetPresented = false
-                            state.selectedExercise.copyValues(from: state.editedExercise)
-                        }, onCancel: {
-                            state.isEditSheetPresented = false
-                        })
+                        ExerciseEditSheet($state.editedExercise, onDone: state.onUpdateExercise, onCancel: state.hideExerciseEditSheet)
                     }
-                    .sheet(isPresented: $state.isWorkoutEditSheetPresented) {
-                        WorkoutEditSheet(Binding<Workout?> (get: { state.editedWorkout }, set: { _ in }), onDone: {
-                            state.isWorkoutEditSheetPresented = false
-                            workout.copyValues(from: state.editedWorkout)
-                        }, onCancel: {
-                            state.isWorkoutEditSheetPresented = false
-                        })
+                    .sheet(isPresented: $workoutState.isWorkoutEditSheetPresented) {
+                        WorkoutEditSheet(Binding<Workout?> (get: { workoutState.editedWorkout }, set: { _ in }), onDone: {
+                            workoutState.onUpdateWorkout()
+                        }, onCancel: workoutState.hideWorkoutEditSheet)
                     }
+                    .environment(\.editMode, $editMode).animation(.spring(), value: $editMode.wrappedValue)
                 }
                 
                 if (workout.exercises).count > 0 {
-                    StartButton(isRunning: $state.isRunning, start: { state.start(workout.exercises) }, stop: state.stop)
+                    StartButton(isRunning: $state.isRunning, start: {
+                        editMode = .inactive
+                        state.start()
+                    }, stop: state.stop)
                 }
             }
             .ignoresSafeArea(.container, edges: [.bottom])

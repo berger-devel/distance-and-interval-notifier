@@ -38,6 +38,8 @@
 		F8722A7428A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */; };
 		F8722A7628A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */; };
 		F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */; };
+		F87B00C72BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */; };
+		F87B00C92BFFD25100FCD5DB /* appicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87B00C82BFFD25100FCD5DB /* appicon.jpg */; };
 		F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC028AEC418007AB401 /* WorkoutList.swift */; };
 		F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC428AEC825007AB401 /* WorkoutListItem.swift */; };
 		F888AAC928AECE7F007AB401 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC828AECE7F007AB401 /* Constants.swift */; };
@@ -168,6 +170,7 @@
 		F8CEC53D2BFA36980076B7F2 /* hour.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC53B2BFA36980076B7F2 /* hour.wav */; };
 		F8CEC53F2BFA36B60076B7F2 /* hours.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC53E2BFA36B60076B7F2 /* hours.wav */; };
 		F8CEC5412BFA3A430076B7F2 /* minute.wav in Resources */ = {isa = PBXBuildFile; fileRef = F8CEC5402BFA3A430076B7F2 /* minute.wav */; };
+		F8CEC5452BFB57DE0076B7F2 /* ExerciseListWorkoutState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CEC5442BFB57DE0076B7F2 /* ExerciseListWorkoutState.swift */; };
 		F8DCE02C29D0C6C200085D2B /* ExerciseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */; };
 		F8DCE03129D0E67200085D2B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DCE03029D0E67200085D2B /* StartButton.swift */; };
 		F8E4602B2BF7CF10007FF950 /* ExerciseListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */; };
@@ -230,6 +233,8 @@
 		F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITests.swift; sourceTree = "<group>"; };
 		F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F8722A8528A03FE9005A2718 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Distance and Interval Notfier-InfoPlist.strings"; sourceTree = "<group>"; };
+		F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListConditionalToolbarItem.swift; sourceTree = "<group>"; };
+		F87B00C82BFFD25100FCD5DB /* appicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appicon.jpg; sourceTree = "<group>"; };
 		F888AAC028AEC418007AB401 /* WorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutList.swift; sourceTree = "<group>"; };
 		F888AAC428AEC825007AB401 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		F888AAC828AECE7F007AB401 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -360,6 +365,7 @@
 		F8CEC53B2BFA36980076B7F2 /* hour.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hour.wav; sourceTree = "<group>"; };
 		F8CEC53E2BFA36B60076B7F2 /* hours.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hours.wav; sourceTree = "<group>"; };
 		F8CEC5402BFA3A430076B7F2 /* minute.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = minute.wav; sourceTree = "<group>"; };
+		F8CEC5442BFB57DE0076B7F2 /* ExerciseListWorkoutState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListWorkoutState.swift; sourceTree = "<group>"; };
 		F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTracker.swift; sourceTree = "<group>"; };
 		F8DCE03029D0E67200085D2B /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 		F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListState.swift; sourceTree = "<group>"; };
@@ -489,6 +495,7 @@
 		F8722A5728A01635005A2718 /* Distance and Interval Notfier */ = {
 			isa = PBXGroup;
 			children = (
+				F87B00822BFE983900FCD5DB /* img */,
 				F8FDCA242BF0F1560050CA2C /* audioProcessing */,
 				F8DCE02A29D0C6A200085D2B /* exerciseTracking */,
 				F821DBA028E7810E006ABA88 /* preview */,
@@ -503,6 +510,7 @@
 				F8722A5E28A01636005A2718 /* Preview Content */,
 				F835309D28A9A18800BF3CB2 /* AppDelegate.swift */,
 				F835315928AACC5700BF3CB2 /* SoundsDirectoryManager.swift */,
+				F889D3C12BF2617100EA19BC /* Converter.swift */,
 				F835316528AC185500BF3CB2 /* ColorScheme.swift */,
 				F888AAC828AECE7F007AB401 /* Constants.swift */,
 				F889D2D52BF167D700EA19BC /* Log.swift */,
@@ -535,6 +543,14 @@
 			path = "Distance and Interval NotfierUITests";
 			sourceTree = "<group>";
 		};
+		F87B00822BFE983900FCD5DB /* img */ = {
+			isa = PBXGroup;
+			children = (
+				F87B00C82BFFD25100FCD5DB /* appicon.jpg */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
 		F888AAC628AEC82A007AB401 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +560,8 @@
 				F8CD82FC29D4B3CC00B82BDF /* AnnounceIcon.swift */,
 				F806E05D2BF697B400B3B421 /* ExerciseListToolbar.swift */,
 				F8E4602A2BF7CF10007FF950 /* ExerciseListState.swift */,
+				F8CEC5442BFB57DE0076B7F2 /* ExerciseListWorkoutState.swift */,
+				F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */,
 			);
 			path = exercise;
 			sourceTree = "<group>";
@@ -586,7 +604,6 @@
 				F8DCE02B29D0C6C200085D2B /* ExerciseTracker.swift */,
 				F8251EDC2BEFFA7B00E33B1B /* TimeTracker.swift */,
 				F8251EDE2BEFFB5500E33B1B /* DistanceTracker.swift */,
-				F889D3C12BF2617100EA19BC /* Converter.swift */,
 			);
 			path = exerciseTracking;
 			sourceTree = "<group>";
@@ -928,6 +945,7 @@
 				F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */,
 				F889D36A2BF22A9900EA19BC /* 18.wav in Resources */,
 				F889D3732BF22A9900EA19BC /* 63.wav in Resources */,
+				F87B00C92BFFD25100FCD5DB /* appicon.jpg in Resources */,
 				F889D2AE2BF14CD600EA19BC /* 20.wav in Resources */,
 				F889D3912BF22A9900EA19BC /* 52.wav in Resources */,
 				F889D3842BF22A9900EA19BC /* 92.wav in Resources */,
@@ -984,6 +1002,7 @@
 				F889D2D62BF167D700EA19BC /* Log.swift in Sources */,
 				F8B9224E29CE17AC0081C238 /* NotificationFrequencySection.swift in Sources */,
 				F835317028AD257400BF3CB2 /* ExerciseEditSheet.swift in Sources */,
+				F87B00C72BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift in Sources */,
 				F888AB1528B65971007AB401 /* ColorSection.swift in Sources */,
 				F835315A28AACC5700BF3CB2 /* SoundsDirectoryManager.swift in Sources */,
 				F8242C4E2BF6BAE5003C953C /* NotificationFrequency.swift in Sources */,
@@ -1003,6 +1022,7 @@
 				F835316628AC185500BF3CB2 /* ColorScheme.swift in Sources */,
 				F8251EDD2BEFFA7B00E33B1B /* TimeTracker.swift in Sources */,
 				F81D66372BF56F6A00C7037D /* CancelButton.swift in Sources */,
+				F8CEC5452BFB57DE0076B7F2 /* ExerciseListWorkoutState.swift in Sources */,
 				F888AB1328B65872007AB401 /* SymbolSection.swift in Sources */,
 				F8722A5928A01635005A2718 /* Distance_and_Interval_NotfierApp.swift in Sources */,
 				F889D2D82BF1A78D00EA19BC /* NotificationSoundGenerator.swift in Sources */,
