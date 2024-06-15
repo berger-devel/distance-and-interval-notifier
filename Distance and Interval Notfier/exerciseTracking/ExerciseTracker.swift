@@ -19,14 +19,11 @@ class ExerciseTracker {
     private let locationManagerDelegate = LocationManagerDelegate()
     
     private let timeTracker = TimeTracker()
-    private let distanceTracker = DistanceTracker()
     
     private var exercises: [Exercise] = []
     
     private var onUpdate: (Exercise?, Double) -> () = { _, _ in }
     private var onFinish: () -> () = { }
-    
-    private init() { }
     
     func start(_ exercises: [Exercise], onFinish: @escaping () -> (), onUpdate: @escaping (Exercise?, Double) -> ()) {
         userNotifier.cancel()
@@ -39,7 +36,7 @@ class ExerciseTracker {
                 Log.error("Error requesting notificaton authorizatino", error)
             }
             
-            if let _ = exercises.first(where: { exercise in exercise.unit.quantity == .DISTANCE }) {
+            if let _ = exercises.first(where: { exercise in exercise.unit.quantity == .DISTANCE || exercise.announceBothQuantities }) {
                 clLocationManager.delegate = locationManagerDelegate
                 locationManagerDelegate.onAuthorize = {
                     self.clLocationManager.requestAlwaysAuthorization()
@@ -56,16 +53,37 @@ class ExerciseTracker {
     }
     
     func nextExerciseGroup(nextExerciseIndex: Int) {
+        let isPureTimeExercise: (Exercise) -> Bool = { exercise in exercise.unit.quantity == .TIME && !exercise.announceBothQuantities}
         if nextExerciseIndex < exercises.count {
             Task {
-                if exercises[nextExerciseIndex].unit.quantity == .TIME {
-                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: { exercise in exercise.unit.quantity == .DISTANCE }) ?? exercises.count
-                    if await timeTracker.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate) {
+                if isPureTimeExercise(exercises[nextExerciseIndex]) {
+                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: { exercise in exercise.unit.quantity == .DISTANCE || exercise.announceBothQuantities }) ?? exercises.count
+                    let startNext: Bool
+                    if exercises[nextExerciseIndex].announceBothQuantities {
+                        startNext = await DistanceTracker.instance.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate)
+                    } else {
+                        startNext = await timeTracker.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate)
+                    }
+                    if startNext {
                         nextExerciseGroup(nextExerciseIndex: endIndex)
                     }
+                } else if exercises[nextExerciseIndex].unit.quantity == .TIME, let nextPureTimeExerciseIndex = exercises[nextExerciseIndex...].firstIndex(where: isPureTimeExercise) {
+                    let endIndex = exercises[(nextExerciseIndex + 1)...].firstIndex(where: { exercise in exercise.unit.quantity == .DISTANCE }) ?? exercises.count
+                    
+                    if true {
+                        let initialDelay = exercises[nextExerciseIndex..<nextPureTimeExerciseIndex].reduce(0.0, { sum, exercise in sum + Converter.toSeconds(exercise.amount, from: exercise.unit) })
+                        let timeTrackerTask = Task {
+                            await timeTracker.track(exercises: exercises[nextPureTimeExerciseIndex..<endIndex], onUpdate: onUpdate, initialDelay: initialDelay)
+                        }
+                        if await DistanceTracker.instance.track(exercises: exercises[nextExerciseIndex..<nextPureTimeExerciseIndex], onUpdate: onUpdate) {
+                            if await timeTrackerTask.value {
+                                nextExerciseGroup(nextExerciseIndex: endIndex)
+                            }
+                        }
+                    }
                 } else {
-                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: { exercise in exercise.unit.quantity == .TIME }) ?? exercises.count
-                    if await distanceTracker.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate) {
+                    let endIndex = exercises[nextExerciseIndex...].firstIndex(where: isPureTimeExercise) ?? exercises.count
+                    if await DistanceTracker.instance.track(exercises: exercises[nextExerciseIndex..<endIndex], onUpdate: onUpdate) {
                         nextExerciseGroup(nextExerciseIndex: endIndex)
                     }
                 }
@@ -78,7 +96,7 @@ class ExerciseTracker {
     func stop() {
         userNotifier.cancel()
         timeTracker.stop()
-        distanceTracker.stop(startNext: false)
+        DistanceTracker.instance.stop(startNext: false)
         onFinish()
     }
 }

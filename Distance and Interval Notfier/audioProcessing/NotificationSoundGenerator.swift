@@ -13,6 +13,33 @@ class NotificationSoundGenerator {
     private let audioProcessor = AudioProcessor()
     
     func generateNotificationSound(_ uuid: UUID, _ seconds: Double, _ minutes: Double?, _ hours: Double?) async -> UNNotificationSound {
+        return await generateNotificationSoundFromURLs(uuid, generateTimeSoundURLs(seconds, minutes, hours))
+    }
+    
+    func generateNotificationSound(_ uuid: UUID, _ meters: Double, _ kilometers: Double?) async -> UNNotificationSound {
+        return await generateNotificationSoundFromURLs(uuid, generateDistanceSoundURLs(meters, kilometers))
+    }
+    
+    func generateNotificationSound(_ uuid: UUID, _ meters: Double, _ kilometers: Double?, _ seconds: Double, _ minutes: Double?, _ hours: Double?) async -> UNNotificationSound {
+        let audioFileUrls = generateTimeSoundURLs(seconds, minutes, hours) + generateDistanceSoundURLs(meters, kilometers)
+        return await generateNotificationSoundFromURLs(uuid, audioFileUrls)
+    }
+    
+    func generateNotificationSound(_ uuid: UUID, _ seconds: Double, _ minutes: Double?, _ hours: Double?, _ meters: Double, _ kilometers: Double?) async -> UNNotificationSound {
+        let audioFileUrls = generateDistanceSoundURLs(meters, kilometers) + generateTimeSoundURLs(seconds, minutes, hours)
+        return await generateNotificationSoundFromURLs(uuid, audioFileUrls)
+    }
+    
+    func generateOpenAppSound(_ uuid: UUID) async -> UNNotificationSound {
+        return await generateNotificationSoundFromURLs(uuid, [createAudioFileUrl("openapp")])
+    }
+    
+    private func generateNotificationSoundFromURLs(_ uuid: UUID, _ audioFileUrls: [NSURL]) async -> UNNotificationSound {
+        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
+        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
+    }
+    
+    private func generateTimeSoundURLs(_ seconds: Double, _ minutes: Double?, _ hours: Double?) -> [NSURL] {
         var audioFileUrls: [NSURL] = []
         
         if seconds > 0 {
@@ -29,25 +56,21 @@ class NotificationSoundGenerator {
             }
         }
         
-        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
-        
-        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
+        return audioFileUrls
     }
     
-    func generateNotificationSound(_ uuid: UUID, _ meters: Double, _ kilometers: Double?) async -> UNNotificationSound {
+    private func generateDistanceSoundURLs(_ meters: Double, _ kilometers: Double?) -> [NSURL] {
         var audioFileUrls: [NSURL] = []
         
         if meters > 0 {
             createAmountSoundUrls(amount: meters, unit: .METER, audioFileUrls: &audioFileUrls)
         }
         
-        if let kilometers = kilometers {
+        if let kilometers {
             createAmountSoundUrls(amount: kilometers, unit: .KILOMETER, audioFileUrls: &audioFileUrls)
         }
         
-        await audioProcessor.mix(uuid: uuid, audioFileUrls: audioFileUrls)
-        
-        return UNNotificationSound(named: UNNotificationSoundName("notification-\(uuid.uuidString).m4a"))
+        return audioFileUrls
     }
     
     private func createAmountSoundUrls(amount: Double, unit: Unit, audioFileUrls: inout [NSURL]) {

@@ -19,17 +19,40 @@ class Converter {
         }
     }
     
-    static func toKilometers(amount: Double) -> (Double?, Double) {
-        let meters: Double
+    static func toHours(_ seconds: Double) -> (Double, Double?, Double?) {
+        let secondsOfMinute: Double
+        let minutes: Double?
+        let hours: Double?
+        if seconds >= 60.0 {
+            let min = Double(Int(seconds / 60.0))
+            secondsOfMinute = seconds.truncatingRemainder(dividingBy: 60.0)
+            
+            if min >= 60.0 {
+                hours = Double(Int(min / 60.0))
+                minutes = min.truncatingRemainder(dividingBy: 60)
+            } else {
+                hours = nil
+                minutes = min
+            }
+        } else {
+            hours = nil
+            minutes = nil
+            secondsOfMinute = seconds
+        }
+        return (secondsOfMinute, minutes, hours)
+    }
+    
+    static func toKilometers(_ meters: Double) -> (Double, Double?) {
+        let metersOfKilometer: Double
         let kilometers: Double?
-        if amount < 1000 {
-            meters = amount
+        if meters < 1000 {
+            metersOfKilometer = meters
             kilometers = nil
         } else {
-            meters = amount.truncatingRemainder(dividingBy: 1000)
-            kilometers = Double(Int(amount / 1000))
+            metersOfKilometer = meters.truncatingRemainder(dividingBy: 1000)
+            kilometers = Double(Int(meters / 1000))
         }
         
-        return (kilometers, meters)
+        return (metersOfKilometer, kilometers)
     }
 }

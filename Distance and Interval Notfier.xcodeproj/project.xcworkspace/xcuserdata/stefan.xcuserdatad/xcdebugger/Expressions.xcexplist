@@ -79,6 +79,9 @@
             <PersistentString
                value = "response.notification.request.content.userInfo">
             </PersistentString>
+            <PersistentString
+               value = "response.notification.request.content.categoryIdentifier">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -114,14 +117,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "TimeTracker.scheduleUIUpdates(exercises:onUpdate:):TimeTracker.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "isTracking">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "LocationManager.locationManagerDidChangeAuthorization(_:):LocationManager.swift">
          <PersistentStrings>
             <PersistentString
@@ -145,14 +140,6 @@
             </PersistentString>
             <PersistentString
                value = "availableAmounts">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DistanceTracker.initNotificationParameters():DistanceTracker.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.exerciseIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -578,17 +565,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DistanceTracker.track(exercises:onUpdate:):DistanceTracker.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "exerciseIndex">
-            </PersistentString>
-            <PersistentString
-               value = "avgLocation.distance(from: lastMovingAvgLocation)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "closure #1 in closure #2 in closure #1 in closure #4 in closure #1 in WorkoutEditSheet.body.getter:WorkoutEditSheet.swift">
          <PersistentStrings>
             <PersistentString
@@ -878,19 +854,18 @@
          contextName = "DistanceTracker.updateDistance(exerciseName:distance:):DistanceTracker.swift">
          <PersistentStrings>
             <PersistentString
-               value = "exercises[exerciseIndex].repetitionFrequency">
+               value = "exerciseIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DistanceTracker.track(exercises:onUpdate:):DistanceTracker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lastLocations.count">
             </PersistentString>
             <PersistentString
-               value = "self.notificationDistance">
-            </PersistentString>
-            <PersistentString
-               value = "passage">
-            </PersistentString>
-            <PersistentString
-               value = "self.exerciseIndex">
-            </PersistentString>
-            <PersistentString
-               value = "self.notifications">
+               value = "avgLocation.distance(from: lastMovingAvgLocation)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -11,11 +11,11 @@ import os
 class Log {
     private static let logger = Logger(subsystem: "me.stefan-berger", category: "din")
     
-    static func debug (_ message: String) {                                   
-        logger.info("\(message)")
+    static func warn (_ message: String) {                                   
+        logger.warning("\(message, privacy: .public)")
     }
     
     static func error(_ message: String, _ error: (any Error)?) {
-        logger.error("\(message): \(error)")
+        logger.error("\(message, privacy: .public): \(error)")
     }
 }

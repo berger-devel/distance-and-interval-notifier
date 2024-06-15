@@ -39,51 +39,48 @@ struct ExerciseList: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                ZStack {
-                    ColorScheme.BACKGROUND_COLOR(colorScheme).ignoresSafeArea(.all)
-                    List {
-                        ForEach(state.exercises) { exercise in
-                            Button(action: { state.onEditExercise(exercise) }) {
-                                ExerciseListItem(exercise, exerciseListState: state)
-                            }
+                List {
+                    ForEach(state.exercises) { exercise in
+                        Button(action: { state.onEditExercise(exercise) }) {
+                            ExerciseListItem(exercise, exerciseListState: state)
                         }
-                        .onDelete { indexSet in
-                            if let index = indexSet.first {
-                                modelContext.delete(state.exercises[index])
-                            }
-                            state.onDeleteExercise(indexSet: indexSet)
+                    }
+                    .onDelete { indexSet in
+                        if let index = indexSet.first {
+                            modelContext.delete(state.exercises[index])
                         }
-                        .onMove(perform: state.onMoveExercise)
-                        .deleteDisabled(state.isRunning)
-                        .moveDisabled(state.isRunning)
+                        state.onDeleteExercise(indexSet: indexSet)
                     }
-                    .onAppear{
-                        workoutState.workout = workout
-                        state.exercises = workout.exercises.sorted()
-                    }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarBackButtonHidden(state.isRunning)
-                    .toolbar {
-                        ExerciseListToolbar(exerciseListState: state, workout: workout, onEditWorkout: {
-                            workoutState.onEditWorkout()
-                        })
-                    }
-                    .sheet(isPresented: $state.isCreateSheetPresented) {
-                        ExerciseEditSheet($state.editedExercise, onDone: {
-                            state.onCreateExercise(workout: workout)
-                            modelContext.insert(state.editedExercise)
-                        }, onCancel: state.hideExerciseCreateSheet)
-                    }
-                    .sheet(isPresented: $state.isEditSheetPresented) {
-                        ExerciseEditSheet($state.editedExercise, onDone: state.onUpdateExercise, onCancel: state.hideExerciseEditSheet)
-                    }
-                    .sheet(isPresented: $workoutState.isWorkoutEditSheetPresented) {
-                        WorkoutEditSheet(Binding<Workout?> (get: { workoutState.editedWorkout }, set: { _ in }), onDone: {
-                            workoutState.onUpdateWorkout()
-                        }, onCancel: workoutState.hideWorkoutEditSheet)
-                    }
-                    .environment(\.editMode, $editMode).animation(.spring(), value: $editMode.wrappedValue)
+                    .onMove(perform: state.onMoveExercise)
+                    .deleteDisabled(state.isRunning)
+                    .moveDisabled(state.isRunning)
                 }
+                .onAppear{
+                    workoutState.workout = workout
+                    state.exercises = workout.exercises.sorted()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(state.isRunning)
+                .toolbar {
+                    ExerciseListToolbar(exerciseListState: state, workout: workout, onEditWorkout: {
+                        workoutState.onEditWorkout()
+                    })
+                }
+                .sheet(isPresented: $state.isCreateSheetPresented) {
+                    ExerciseEditSheet($state.editedExercise, onDone: {
+                        state.onCreateExercise(workout: workout)
+                        modelContext.insert(state.editedExercise)
+                    }, onCancel: state.hideExerciseCreateSheet)
+                }
+                .sheet(isPresented: $state.isEditSheetPresented) {
+                    ExerciseEditSheet($state.editedExercise, onDone: state.onUpdateExercise, onCancel: state.hideExerciseEditSheet)
+                }
+                .sheet(isPresented: $workoutState.isWorkoutEditSheetPresented) {
+                    WorkoutEditSheet(Binding<Workout?> (get: { workoutState.editedWorkout }, set: { _ in }), onDone: {
+                        workoutState.onUpdateWorkout()
+                    }, onCancel: workoutState.hideWorkoutEditSheet)
+                }
+                .environment(\.editMode, $editMode).animation(.spring(), value: $editMode.wrappedValue)
                 
                 if (workout.exercises).count > 0 {
                     StartButton(isRunning: $state.isRunning, start: {

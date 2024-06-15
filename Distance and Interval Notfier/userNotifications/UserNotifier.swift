@@ -13,11 +13,51 @@ class UserNotifier {
     private let notificationSoundGenerator = NotificationSoundGenerator()
     private let userNotificationCenter = UNUserNotificationCenter.current()
     
-    func notify(delay: TimeInterval, title: String, seconds: Double, minutes: Double?, hours: Double?, nextExerciseIndex: Int) async {
+    func notify(_ delay: TimeInterval, _ title: String, _ seconds: Double, _ minutes: Double?, _ hours: Double?) async {
         await prepareNotificationRequest()
-        
         let uuid = UUID()
-        
+        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, seconds, minutes, hours)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delay, repeats: false)
+        let body = buildTimeBody(seconds, minutes, hours)
+        await requestNotification(uuid, title, body, sound, trigger)
+    }
+    
+    func notify(_ title: String, _ meters: Double, _ kilometers: Double?) async {
+        await prepareNotificationRequest()
+        let uuid = UUID()
+        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, meters, kilometers)
+        let body = buildDistanceBody(meters, kilometers)
+        await requestNotification(uuid, title, body, sound, nil)
+    }
+    
+    func notify(_ title: String, _ meters: Double, _ kilometers: Double?, _ seconds: Double, _ minutes: Double?, _ hours: Double?) async {
+        await prepareNotificationRequest()
+        let uuid = UUID()
+        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, meters, kilometers, seconds, minutes, hours)
+        let body = buildDistanceBody(meters, kilometers) + ", " + buildTimeBody(seconds, minutes, hours)
+        await requestNotification(uuid, title, body, sound, nil)
+    }
+    
+    func notify(_ title: String, _ seconds: Double, _ minutes: Double?, _ hours: Double?, _ meters: Double, _ kilometers: Double?) async {
+        await prepareNotificationRequest()
+        let uuid = UUID()
+        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, seconds, minutes, hours, meters, kilometers)
+        let body = buildTimeBody(seconds, minutes, hours) + ", " + buildDistanceBody(meters, kilometers) 
+        await requestNotification(uuid, title, body, sound, nil)
+    }
+    
+    func notifyOpenApp(_ title: String, _ delay: Double) async {
+        let uuid = UUID()
+        let sound = await notificationSoundGenerator.generateOpenAppSound(uuid)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delay, repeats: false)
+        await requestNotification(uuid, title, "Open the app to continue!", sound, trigger)
+    }
+    
+    func cancel() {
+        userNotificationCenter.removeAllPendingNotificationRequests()
+    }
+    
+    private func buildTimeBody(_ seconds: Double, _ minutes: Double?, _ hours: Double?) -> String {
         var body = ""
         if let hours = hours {
             body.append("\(Int(hours)) \(String(describing: Unit.HOUR)), ")
@@ -26,34 +66,20 @@ class UserNotifier {
             body.append("\(Int(minutes)) \(String(describing: Unit.MINUTE)), ")
         }
         body.append("\(Int(seconds)) \(String(describing: Unit.SECOND))")
-        
-        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, seconds, minutes, hours)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: delay, repeats: false)
-        
-        await requestNotification(uuid, title, body, sound, trigger, nextExerciseIndex)
+        return body
     }
     
-    func notify(title: String, meters: Double, kilometers: Double?, nextExerciseIndex: Int? = nil) async {
-        await prepareNotificationRequest()
-        
-        let uuid = UUID()
-        
+    private func buildDistanceBody(_ meters: Double, _ kilometers: Double?) -> String {
         var body = ""
-        if let kilometers = kilometers {
+        if let kilometers {
             body.append("\(Int(kilometers)) \(String(describing: Unit.KILOMETER)), ")
         } else if meters == 0 {
-            return
+            return "Error building message body"
         }
         
         body.append("\(Int(meters)) \(String(describing: Unit.METER))")
         
-        let sound = await notificationSoundGenerator.generateNotificationSound(uuid, meters, kilometers)
-        
-        await requestNotification(uuid, title, body, sound, nil, nextExerciseIndex)
-    }
-    
-    func cancel() {
-        userNotificationCenter.removeAllPendingNotificationRequests()
+        return body
     }
     
     private func prepareNotificationRequest() async {
@@ -65,16 +91,12 @@ class UserNotifier {
         }
     }
     
-    private func requestNotification(_ uuid: UUID, _ title: String, _ body: String, _ sound: UNNotificationSound, _ trigger: UNTimeIntervalNotificationTrigger?, _ nextExerciseIndex: Int?) async {
+    private func requestNotification(_ uuid: UUID, _ title: String, _ body: String, _ sound: UNNotificationSound, _ trigger: UNTimeIntervalNotificationTrigger?) async {
         let content = UNMutableNotificationContent()
         
         content.title = title
         content.body = body
         content.sound = sound
-        
-        if let nextExerciseIndex = nextExerciseIndex {
-            content.userInfo = ["NEXT_EXERCISE_INDEX" : nextExerciseIndex]
-        }
         
         let request = UNNotificationRequest(identifier: uuid.uuidString, content: content, trigger: trigger)
         
