@@ -40,7 +40,6 @@
 		F8722A7628A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */; };
 		F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */; };
 		F87B00C72BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */; };
-		F87B00C92BFFD25100FCD5DB /* appicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87B00C82BFFD25100FCD5DB /* appicon.jpg */; };
 		F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC028AEC418007AB401 /* WorkoutList.swift */; };
 		F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC428AEC825007AB401 /* WorkoutListItem.swift */; };
 		F888AAC928AECE7F007AB401 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC828AECE7F007AB401 /* Constants.swift */; };
@@ -161,6 +160,7 @@
 		F889D3BE2BF22B7E00EA19BC /* 700.wav in Resources */ = {isa = PBXBuildFile; fileRef = F889D3B52BF22B7E00EA19BC /* 700.wav */; };
 		F889D3C02BF260EC00EA19BC /* minutes.wav in Resources */ = {isa = PBXBuildFile; fileRef = F889D3BF2BF260EC00EA19BC /* minutes.wav */; };
 		F889D3C22BF2617100EA19BC /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F889D3C12BF2617100EA19BC /* Converter.swift */; };
+		F8A5B3FE2C1F1B90003274D1 /* appicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8A5B3FD2C1F1B8F003274D1 /* appicon.jpg */; };
 		F8B9224E29CE17AC0081C238 /* NotificationFrequencySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224D29CE17AC0081C238 /* NotificationFrequencySection.swift */; };
 		F8B9225029CE3CE40081C238 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9224F29CE3CE40081C238 /* Icon.swift */; };
 		F8CC32C52BF5566D006F2678 /* UnitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC32C42BF5566D006F2678 /* UnitPicker.swift */; };
@@ -236,7 +236,6 @@
 		F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F8722A8528A03FE9005A2718 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Distance and Interval Notfier-InfoPlist.strings"; sourceTree = "<group>"; };
 		F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListConditionalToolbarItem.swift; sourceTree = "<group>"; };
-		F87B00C82BFFD25100FCD5DB /* appicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appicon.jpg; sourceTree = "<group>"; };
 		F888AAC028AEC418007AB401 /* WorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutList.swift; sourceTree = "<group>"; };
 		F888AAC428AEC825007AB401 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
 		F888AAC828AECE7F007AB401 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -357,6 +356,7 @@
 		F889D3B52BF22B7E00EA19BC /* 700.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 700.wav; sourceTree = "<group>"; };
 		F889D3BF2BF260EC00EA19BC /* minutes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = minutes.wav; sourceTree = "<group>"; };
 		F889D3C12BF2617100EA19BC /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		F8A5B3FD2C1F1B8F003274D1 /* appicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appicon.jpg; sourceTree = "<group>"; };
 		F8B9224D29CE17AC0081C238 /* NotificationFrequencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationFrequencySection.swift; path = ../../picker/NotificationFrequencySection.swift; sourceTree = "<group>"; };
 		F8B9224F29CE3CE40081C238 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F8CC32C42BF5566D006F2678 /* UnitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPicker.swift; sourceTree = "<group>"; };
@@ -548,7 +548,7 @@
 		F87B00822BFE983900FCD5DB /* img */ = {
 			isa = PBXGroup;
 			children = (
-				F87B00C82BFFD25100FCD5DB /* appicon.jpg */,
+				F8A5B3FD2C1F1B8F003274D1 /* appicon.jpg */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -876,6 +876,7 @@
 				F889D3592BF22A9900EA19BC /* 13.wav in Resources */,
 				F889D3792BF22A9900EA19BC /* 72.wav in Resources */,
 				F889D3742BF22A9900EA19BC /* 69.wav in Resources */,
+				F8A5B3FE2C1F1B90003274D1 /* appicon.jpg in Resources */,
 				F889D3BE2BF22B7E00EA19BC /* 700.wav in Resources */,
 				F889D37D2BF22A9900EA19BC /* 56.wav in Resources */,
 				F889D39B2BF22A9900EA19BC /* 84.wav in Resources */,
@@ -949,7 +950,6 @@
 				F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */,
 				F889D36A2BF22A9900EA19BC /* 18.wav in Resources */,
 				F889D3732BF22A9900EA19BC /* 63.wav in Resources */,
-				F87B00C92BFFD25100FCD5DB /* appicon.jpg in Resources */,
 				F889D2AE2BF14CD600EA19BC /* 20.wav in Resources */,
 				F889D3912BF22A9900EA19BC /* 52.wav in Resources */,
 				F889D3842BF22A9900EA19BC /* 92.wav in Resources */,

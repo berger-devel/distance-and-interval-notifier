@@ -81,16 +81,27 @@ class DistanceTracker {
             await trackingTask.value
         }
         
+        if isTracking {
+            do {
+                guard let workoutName = exercises.first?.workout?.appearance.name else {
+                    throw OptionalError.from("first distance exercise workout name")
+                }
+                await userNotifier.notifyOpenApp(workoutName, 3.0)
+            } catch {
+                Log.error("Error notifying to open app", error)
+            }
+        }
+        
         return isTracking
     }
     
     func stop(startNext: Bool) {
+        self.isTracking = startNext
         trackingTask.cancel()
         clBackgroundActivitySession?.invalidate()
         startTime = nil
         elapsedTime = nil
         onUpdate(nil, 0)
-        self.isTracking = startNext
     }
     
     private func initNotificationParameters() {

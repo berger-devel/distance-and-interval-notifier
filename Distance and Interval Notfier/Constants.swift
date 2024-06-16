@@ -35,7 +35,7 @@ struct Constants {
     
     static let ICON_SECTION_HEIGHT = PICKER_ITEM_SIZE * 3
     
-    static let DISTANCE_AMOUNTS_METER: [Double] = Array([10, 20] + stride(from: 50, through: 500, by: 50)) + Array(stride(from: 1000, through: 3000, by: 100))
+    static let DISTANCE_AMOUNTS_METER: [Double] = Array([10, 20] + stride(from: 50, through: 500, by: 50)) + Array(stride(from: 600, through: 3000, by: 100))
     static let DISTANCE_AMOUNTS_KILOMETER: [Double] = Array(stride(from: 1.0, through: 20.0, by: 1.0)) + [21.0975] + Array(stride(from:25.0, through: 40.0, by: 5.0)) + [42.195, 45.0, 50.0]
     
     static let TIME_AMOUNTS_SECOND: [Double] = Array(stride(from: 10.0, through: 180.0, by: 10.0))

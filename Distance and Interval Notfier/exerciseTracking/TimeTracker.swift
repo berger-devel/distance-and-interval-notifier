@@ -44,7 +44,7 @@ class TimeTracker {
         do {
             let notificationDelay = delay + 3
             guard let workoutName = exercises.first?.workout?.appearance.name else {
-                throw OptionalError.from("first exercise workout")
+                throw OptionalError.from("first time exercise workout name")
             }
             Task {
                 await userNotifier.notifyOpenApp(workoutName, notificationDelay)
