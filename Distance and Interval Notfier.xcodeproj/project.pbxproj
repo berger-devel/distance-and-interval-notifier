@@ -38,7 +38,6 @@
 		F8722A6A28A01636005A2718 /* Distance_and_Interval_NotfierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A6928A01636005A2718 /* Distance_and_Interval_NotfierTests.swift */; };
 		F8722A7428A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */; };
 		F8722A7628A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */; };
-		F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */; };
 		F87B00C72BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */; };
 		F888AAC128AEC418007AB401 /* WorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC028AEC418007AB401 /* WorkoutList.swift */; };
 		F888AAC528AEC825007AB401 /* WorkoutListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F888AAC428AEC825007AB401 /* WorkoutListItem.swift */; };
@@ -234,7 +233,6 @@
 		F8722A6F28A01636005A2718 /* Distance and Interval NotfierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Distance and Interval NotfierUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8722A7328A01636005A2718 /* Distance_and_Interval_NotfierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITests.swift; sourceTree = "<group>"; };
 		F8722A7528A01636005A2718 /* Distance_and_Interval_NotfierUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance_and_Interval_NotfierUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F8722A8528A03FE9005A2718 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Distance and Interval Notfier-InfoPlist.strings"; sourceTree = "<group>"; };
 		F87B00C62BFF823800FCD5DB /* ExerciseListConditionalToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListConditionalToolbarItem.swift; sourceTree = "<group>"; };
 		F888AAC028AEC418007AB401 /* WorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutList.swift; sourceTree = "<group>"; };
 		F888AAC428AEC825007AB401 /* WorkoutListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListItem.swift; sourceTree = "<group>"; };
@@ -476,7 +474,6 @@
 		F8722A4C28A01635005A2718 = {
 			isa = PBXGroup;
 			children = (
-				F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */,
 				F8722A5728A01635005A2718 /* Distance and Interval Notfier */,
 				F8722A6828A01636005A2718 /* Distance and Interval NotfierTests */,
 				F8722A7228A01636005A2718 /* Distance and Interval NotfierUITests */,
@@ -947,7 +944,6 @@
 				F889D3B62BF22B7E00EA19BC /* 800.wav in Resources */,
 				F889D35E2BF22A9900EA19BC /* 11.wav in Resources */,
 				F889D37B2BF22A9900EA19BC /* 54.wav in Resources */,
-				F8722A8428A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings in Resources */,
 				F889D36A2BF22A9900EA19BC /* 18.wav in Resources */,
 				F889D3732BF22A9900EA19BC /* 63.wav in Resources */,
 				F889D2AE2BF14CD600EA19BC /* 20.wav in Resources */,
@@ -1075,18 +1071,6 @@
 			targetProxy = F8722A7028A01636005A2718 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F8722A8228A03FE0005A2718 /* Distance and Interval Notfier-InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8722A8528A03FE9005A2718 /* en */,
-			);
-			name = "Distance and Interval Notfier-InfoPlist.strings";
-			path = "Distance and Interval Notfier";
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F8722A7728A01636005A2718 /* Debug */ = {
